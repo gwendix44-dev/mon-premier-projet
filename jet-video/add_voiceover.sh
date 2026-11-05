@@ -12,6 +12,6 @@ curl -fsS -X POST "https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}?outpu
   -o voiceover.mp3
 # voix à 0,5 s, musique réduite (ducking) sous la voix, durée finale 10 s
 ffmpeg -y -loglevel error -i aura-jet-silent.mp4 -i music.wav -i voiceover.mp3 -filter_complex \
- "[2:a]adelay=500|500,apad,atrim=0:10,asplit=2[vo][sc];[1:a][sc]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=400[bg];[bg][vo]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]" \
+ "[2:a]atempo=1.05,adelay=500|500,apad,atrim=0:10,asplit=2[vo][sc];[1:a][sc]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=400[bg];[bg][vo]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]" \
  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -t 10 aura-jet-voiceover.mp4
 echo "OK -> aura-jet-voiceover.mp4"
