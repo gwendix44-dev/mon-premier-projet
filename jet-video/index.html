@@ -39,6 +39,21 @@ function lineReveal(t, s, x, y, size, t0, dur, o = {}) {
 function poly(pts) { ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath(); }
 function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
 
+/* ---------- photos ---------- */
+const PH = {};
+const photoSrc = window.PHOTO_DATA || { hero: 'photos/hero.jpg', flight: 'photos/flight.jpg' };
+window.ready = Promise.all(Object.entries(photoSrc).map(([k, src]) => new Promise(r => { const i = new Image(); i.onload = () => { PH[k] = i; r(); }; i.src = src; })));
+function cover(img, s = 1, dx = 0, dy = 0) { const r = Math.max(W / img.width, H / img.height) * s, w = img.width * r, h = img.height * r; ctx.drawImage(img, (W - w) / 2 + dx, (H - h) / 2 + dy, w, h); }
+let HERO_F = null;
+function heroFeathered() {
+  if (HERO_F || !PH.hero) return HERO_F;
+  const im = PH.hero, c2 = document.createElement('canvas'); c2.width = im.width; c2.height = im.height;
+  const x = c2.getContext('2d'); x.drawImage(im, 0, 0); x.globalCompositeOperation = 'destination-in';
+  const g = x.createLinearGradient(0, 0, 0, c2.height);
+  g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.14, 'rgba(0,0,0,1)'); g.addColorStop(.8, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  x.fillStyle = g; x.fillRect(0, 0, c2.width, c2.height); return HERO_F = c2;
+}
+
 /* ---------- background ---------- */
 const starsR = rng(42), STARS = Array.from({ length: 220 }, () => ({ x: starsR() * W, y: starsR() * H * .8, r: .4 + starsR() * 1.4, ph: starsR() * 6.28, sp: .5 + starsR() * 2 }));
 function sky(t, dusk) {
@@ -173,62 +188,52 @@ function sceneA(t) {
   ctx.fillRect(960 - 450 - 8, 729, 2, 14); ctx.fillRect(960 + 450 + 6, 729, 2, 14); ctx.globalAlpha = 1;
 }
 
-/* ---------- SCENE B : jet in sunset ---------- */
+/* ---------- SCENE B : vraie photo de Falcon 7X ---------- */
 function sceneB(t) {
-  const tb = t - 1.9;
-  sky(t, 1);
-  // sun
-  glow(1480, 640, 700, 'rgba(255,170,90,A)', .55);
-  const sg = ctx.createRadialGradient(1480, 640, 0, 1480, 640, 120);
-  sg.addColorStop(0, '#fff6e0'); sg.addColorStop(1, '#ffc27a');
-  ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(1480, 640, 118, 0, 6.283); ctx.fill();
-  clouds(t, 0, .9);
-  // speed streaks
-  for (let i = 0; i < 16; i++) {
-    const r = rng(i * 13 + 5), y = 120 + r() * 600, len = 160 + r() * 420, sp = 1400 + r() * 1400;
-    const x = ((r() * 3000 - tb * sp) % 3200 + 3200) % 3200 - 600;
-    const a = .06 + r() * .1;
-    const lg = ctx.createLinearGradient(x, 0, x + len, 0);
-    lg.addColorStop(0, 'rgba(255,255,255,0)'); lg.addColorStop(1, `rgba(255,255,255,${a})`);
+  const tb = t - 1.9, pz = prog(t, 1.8, 4.7);
+  ctx.fillStyle = '#0a0c1c'; ctx.fillRect(0, 0, W, H);
+  const k = lerp(1.02, 1.14, eInOut(pz)), cx = 960 - lerp(0, 40, pz), cy = 455;
+  if (PH.hero) {
+    ctx.save(); ctx.filter = 'blur(40px) brightness(.7)'; cover(PH.hero, 1.4 * k, 0, -60); ctx.restore();
+    ctx.drawImage(heroFeathered(), cx - 960 * k, cy - 384 * k, 1920 * k, 768 * k);
+  }
+  // étalonnage chaud (violet ombres / or hautes lumières)
+  ctx.save(); ctx.globalCompositeOperation = 'soft-light';
+  let g = ctx.createLinearGradient(0, 0, W, H); g.addColorStop(0, 'rgba(90,60,200,.55)'); g.addColorStop(1, 'rgba(255,150,70,.8)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.restore();
+  glow(1700, 250, 900, 'rgba(255,170,90,A)', .2 + .05 * Math.sin(t * 2));
+  // traînées de vitesse
+  for (let i = 0; i < 12; i++) {
+    const r = rng(i * 13 + 5), y = 90 + r() * 560, len = 160 + r() * 420, sp = 1400 + r() * 1400;
+    const x = ((r() * 3000 - tb * sp) % 3200 + 3200) % 3200 - 600, a = .05 + r() * .08;
+    const lg = ctx.createLinearGradient(x, 0, x + len, 0); lg.addColorStop(0, 'rgba(255,255,255,0)'); lg.addColorStop(1, `rgba(255,255,255,${a})`);
     ctx.fillStyle = lg; ctx.fillRect(x, y, len, 2);
   }
-  clouds(t, 1, .85);
-  // jet
-  const pj = eOut3(prog(tb, .1, 1.9));
-  const jx = lerp(-520, 1180, pj) + 30 * Math.sin(tb * .8), jy = 430 + Math.sin(tb * 2.1) * 12 - 40 * pj;
-  const rot = -0.045 * (1 - pj) - 0.015 + Math.sin(tb * 2.1 + .8) * .006;
-  // contrail
-  const tx = jx - 330 * 1.45 * Math.cos(rot), ty = jy - 8 + 330 * 1.45 * Math.sin(-rot) * -1;
-  const tl = clamp((jx + 520) * 1.2, 0, 1500);
-  const cg = ctx.createLinearGradient(tx - tl, 0, tx, 0);
-  cg.addColorStop(0, 'rgba(255,255,255,0)'); cg.addColorStop(1, 'rgba(255,240,225,.55)');
-  ctx.fillStyle = cg; ctx.beginPath();
-  ctx.moveTo(tx, ty - 4); ctx.lineTo(tx - tl, ty - 22 + Math.sin(tb) * 6); ctx.lineTo(tx - tl, ty + 24); ctx.lineTo(tx, ty + 8); ctx.fill();
-  drawJet(jx, jy, 1.45, rot);
-  // HUD callout
-  const hp = eOut3(prog(tb, 1.0, 1.6));
+  // reflet qui balaie le fuselage
+  const sp = prog(t, 3.0, 4.1);
+  if (sp > 0 && sp < 1) {
+    const sx = lerp(-300, 2300, eInOut(sp)); ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    const lg = ctx.createLinearGradient(sx - 170, 0, sx + 170, 0); lg.addColorStop(0, 'rgba(255,220,160,0)'); lg.addColorStop(.5, 'rgba(255,228,175,.24)'); lg.addColorStop(1, 'rgba(255,220,160,0)');
+    ctx.fillStyle = lg; poly([[sx - 110, 300], [sx + 230, 300], [sx + 110, 720], [sx - 230, 720]]); ctx.fill(); ctx.restore();
+  }
+  // cartouche ancré sur le moteur central
+  const hp = eOut3(prog(tb, .9, 1.5));
   if (hp > 0) {
-    const hx = jx + 110, hy = jy - 190;
-    ctx.save(); ctx.globalAlpha = hp;
-    ctx.strokeStyle = GOLD2; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(hx, hy + 150 * (1 - hp) * 0); ctx.lineTo(hx + 90, hy - 70); ctx.lineTo(hx + 330, hy - 70); ctx.stroke();
-    ctx.fillStyle = GOLD2; ctx.beginPath(); ctx.arc(hx, hy, 6, 0, 6.283); ctx.fill();
-    ctx.beginPath(); ctx.arc(hx, hy, 6 + 14 * ((tb * 1.5) % 1), 0, 6.283); ctx.globalAlpha = hp * (1 - (tb * 1.5) % 1) * .8; ctx.stroke();
-    ctx.globalAlpha = hp;
-    text(`${Math.round(lerp(0, 1020, eOut3(prog(tb, 1.0, 2.2))))} KM/H`, hx + 100, hy - 84, { size: 34, weight: 700, color: '#fff', ls: 3 });
-    text('VITESSE DE CROISIÈRE', hx + 100, hy - 46, { size: 18, weight: 500, color: '#ffe8c4', ls: 6 });
+    const ax = cx - 960 * k + .60 * 1920 * k, ay = cy - 384 * k + .57 * 768 * k, ph = (tb * 1.5) % 1;
+    ctx.save(); ctx.globalAlpha = hp; ctx.strokeStyle = GOLD2; ctx.fillStyle = GOLD2; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax - 110, ay - 190); ctx.lineTo(ax - 470, ay - 190); ctx.stroke();
+    ctx.beginPath(); ctx.arc(ax, ay, 6, 0, 6.283); ctx.fill();
+    ctx.globalAlpha = hp * (1 - ph) * .8; ctx.beginPath(); ctx.arc(ax, ay, 6 + 18 * ph, 0, 6.283); ctx.stroke(); ctx.globalAlpha = hp;
+    text(`${Math.round(11000 * eOut3(prog(tb, .9, 2.1))).toLocaleString('fr-FR').replace(/ /g, ' ')} KM`, ax - 450, ay - 206, { size: 38, weight: 700, color: '#fff', ls: 3 });
+    text("D'AUTONOMIE  ·  TRIJET", ax - 450, ay - 164, { size: 18, weight: 500, color: '#ffe8c4', ls: 6 });
     ctx.restore();
   }
-  // bottom veil + front cloud
-  const vg = ctx.createLinearGradient(0, 640, 0, H);
-  vg.addColorStop(0, 'rgba(8,10,28,0)'); vg.addColorStop(1, 'rgba(8,10,28,.88)');
-  ctx.fillStyle = vg; ctx.fillRect(0, 640, W, 440);
-  clouds(t, 2, .5);
-  // headline
-  lineReveal(t, 'LE CIEL,', 130, 805, 112, 2.55, .8, { weight: 800, ls: -2 });
-  lineReveal(t, "SANS FILE D'ATTENTE.", 130, 927, 112, 2.8, .9, { weight: 800, ls: -2, color: GOLD });
-  const bar = eExpo(prog(t, 2.5, 3.4));
-  ctx.fillStyle = GOLD; ctx.fillRect(130, 703, 120 * bar, 3);
+  // voile bas + titre
+  const vg = ctx.createLinearGradient(0, 600, 0, H); vg.addColorStop(0, 'rgba(8,10,28,0)'); vg.addColorStop(1, 'rgba(8,10,28,.9)');
+  ctx.fillStyle = vg; ctx.fillRect(0, 600, W, 480);
+  lineReveal(t, 'LE CIEL,', 130, 838, 112, 2.55, .8, { weight: 800, ls: -2 });
+  lineReveal(t, "SANS FILE D'ATTENTE.", 130, 950, 112, 2.8, .9, { weight: 800, ls: -2, color: GOLD });
+  ctx.fillStyle = GOLD; ctx.fillRect(130, 732, 120 * eExpo(prog(t, 2.5, 3.4)), 3);
 }
 
 /* ---------- SCENE C : numbers ---------- */
@@ -247,6 +252,10 @@ function perimeter(x, y, w, h, p) {
 }
 function sceneC(t) {
   sky(t, 0);
+  if (PH.flight) {
+    ctx.save(); ctx.filter = 'blur(12px) brightness(.5) saturate(.85)'; cover(PH.flight, 1.15 + (t - 5) * .015, -(t - 5) * 14, 0); ctx.restore();
+    ctx.fillStyle = 'rgba(6,10,30,.5)'; ctx.fillRect(0, 0, W, H);
+  }
   // perspective grid
   ctx.save(); ctx.strokeStyle = 'rgba(227,184,102,.13)'; ctx.lineWidth = 1.5;
   const hz = 640, off = (t * 0.9) % 1;
@@ -344,6 +353,12 @@ function sceneD(t) {
 /* ---------- SCENE E : outro ---------- */
 function sceneE(t) {
   sky(t, 0);
+  if (PH.flight) {
+    const pe = eOut3(prog(t, 8.4, 9.4));
+    ctx.save(); ctx.globalAlpha = .9 * pe; ctx.filter = 'brightness(.5) saturate(.9)'; cover(PH.flight, lerp(1.16, 1.05, pe), 0, 0); ctx.restore();
+    const rg = ctx.createRadialGradient(960, 520, 100, 960, 520, 900); rg.addColorStop(0, 'rgba(6,8,22,.78)'); rg.addColorStop(1, 'rgba(6,8,22,.2)');
+    ctx.fillStyle = rg; ctx.fillRect(0, 0, W, H);
+  }
   const p0 = prog(t, 8.55, 9.4);
   glow(960, 500, 900, 'rgba(227,184,102,A)', .14 * eOut3(p0));
   drawMark(960, 360, 1.05, prog(t, 8.55, 9.4));
@@ -352,6 +367,7 @@ function sceneE(t) {
   const lw = 760 * eExpo(prog(t, 8.8, 9.5));
   ctx.fillStyle = GOLD; ctx.fillRect(960 - lw / 2, 618, lw, 2);
   text('VOLEZ AU-DELÀ.', 960, 700, { size: 40, weight: 500, color: GOLD2, ls: lerp(40, 20, eExpo(prog(t, 8.95, 9.8))), align: 'center', alpha: eOut3(prog(t, 8.95, 9.35)) });
+  text('PHOTOS : ACROTERION  ·  CC BY-SA 4.0  ·  WIKIMEDIA COMMONS', 960, 940, { size: 15, weight: 500, color: '#8d93a8', ls: 4, align: 'center', alpha: eOut3(prog(t, 9.3, 9.7)) });
   text('PRIVATE AVIATION  ·  RÉSERVATION 24/7', 960, 790, { size: 20, weight: 500, color: '#9aa0b4', ls: 10, align: 'center', alpha: eOut3(prog(t, 9.3, 9.7)) });
 }
 

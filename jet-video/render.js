@@ -8,8 +8,12 @@ const fs = require('fs'), path = require('path');
   fs.mkdirSync(dir, { recursive: true });
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  // photos injectées en data-URL (évite le canvas "tainted" en file://)
+  const b64 = f => 'data:image/jpeg;base64,' + fs.readFileSync(path.join(__dirname, 'photos', f)).toString('base64');
+  await page.addInitScript(d => { window.PHOTO_DATA = d; }, { hero: b64('hero.jpg'), flight: b64('flight.jpg') });
   await page.goto('file://' + path.resolve(__dirname, 'index.html'));
   await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(() => window.ready);
   const grab = t => page.evaluate(t => { window.render(t); return document.getElementById('c').toDataURL('image/png').split(',')[1]; }, t);
   if (only) {
     for (const t of only.split(',').map(Number)) fs.writeFileSync(path.join(dir, `t_${t}.png`), Buffer.from(await grab(t), 'base64'));
