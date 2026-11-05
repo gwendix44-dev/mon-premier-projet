@@ -1,0 +1,5 @@
+node_modules/
+cache/
+frames/
+rel_*.json
+*.mp4
