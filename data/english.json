@@ -2,7 +2,7 @@
   {
     "id": "e1",
     "icon": "🛄",
-    "conf": "ok",
+    "conf": "lang",
     "title": {
       "fr": "Aéroport : vocabulaire de voyage",
       "en": "Airport: travel vocabulary"
@@ -123,7 +123,8 @@
           "claimed",
           "checked"
         ],
-        "a": 0
+        "a": 0,
+        "why": "« delayed » = retardé. « boarded » = embarqué."
       },
       {
         "type": "mcq",
@@ -134,7 +135,8 @@
           "security check",
           "layover"
         ],
-        "a": 0
+        "a": 0,
+        "why": "Le baggage claim est la zone de retrait des bagages."
       },
       {
         "type": "mcq",
@@ -148,7 +150,8 @@
           "hand gate",
           "cabin check"
         ],
-        "a": 0
+        "a": 0,
+        "why": "« carry-on bag » = bagage cabine (en anglais britannique, on dit aussi « hand luggage »)."
       },
       {
         "type": "write",
@@ -168,7 +171,7 @@
   {
     "id": "e2",
     "icon": "📞",
-    "conf": "ok",
+    "conf": "lang",
     "title": {
       "fr": "Au téléphone : la demande d'un client",
       "en": "On the phone: a client request"
@@ -254,7 +257,8 @@
           "London",
           "Geneva"
         ],
-        "a": 1
+        "a": 1,
+        "why": "Le trajet est Paris → Nice : la destination est Nice."
       },
       {
         "type": "listen",
@@ -275,7 +279,8 @@
           "At noon",
           "Next month"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« Around ten in the morning » = vers dix heures du matin."
       },
       {
         "type": "mcq",
@@ -289,7 +294,8 @@
           "I'd like to book a flight.",
           "Flight, now."
         ],
-        "a": 2
+        "a": 2,
+        "why": "« I'd like to… » est la forme polie ; « I want » et « Give me » sont trop directs."
       },
       {
         "type": "order",
@@ -325,7 +331,7 @@
   {
     "id": "e3",
     "icon": "🔢",
-    "conf": "ok",
+    "conf": "lang",
     "title": {
       "fr": "Chiffres, prix et dates",
       "en": "Numbers, prices and dates"
@@ -382,7 +388,8 @@
           "1 h 15",
           "2 h 05"
         ],
-        "a": 1
+        "a": 1,
+        "why": "Fifteen = 15 : l'accent tombe sur la fin (fif-TEEN). Fifty = 50 : accent au début."
       },
       {
         "type": "listen",
@@ -401,8 +408,8 @@
         ],
         "a": 1,
         "why": {
-          "fr": "Nineteen = 19 (accent final). Taxes comprises = including taxes.",
-          "en": "Nineteen = 19; including taxes."
+          "fr": "Nineteen = 19 (accent final). « Including taxes » = taxes comprises.",
+          "en": "Nineteen = 19; 'including taxes'."
         }
       },
       {
@@ -420,7 +427,8 @@
           "March 15, 10:10",
           "May 15, 10:30"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« the fifteenth of March » = 15 mars ; « half past ten » = 10 h 30."
       },
       {
         "type": "mcq",
@@ -431,10 +439,11 @@
         "opts": [
           "fifty",
           "fifteen",
-          "five-oh-one",
-          "fiftin"
+          "five-oh",
+          "fiveteen"
         ],
-        "a": 0
+        "a": 0,
+        "why": "Fifty (50) s'écrit avec -ty ; fifteen (15) avec -teen."
       },
       {
         "type": "mcq",
@@ -470,7 +479,7 @@
   {
     "id": "e4",
     "icon": "🛩️",
-    "conf": "ok",
+    "conf": "lang",
     "title": {
       "fr": "Appel avec un opérateur : slot et équipage",
       "en": "Operator call: slots and crew"
@@ -531,7 +540,8 @@
           "The crew hotel",
           "The invoice"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« Slot » = créneau. L'opérateur confirme l'horaire d'arrivée au Bourget."
       },
       {
         "type": "listen",
@@ -548,7 +558,8 @@
           "It has no fuel",
           "The client is late"
         ],
-        "a": 0
+        "a": 0,
+        "why": "« Positioning flight » : l'avion doit d'abord rejoindre Paris depuis Lyon."
       },
       {
         "type": "listen",
@@ -620,7 +631,8 @@
           "Speak!",
           "No."
         ],
-        "a": 1
+        "a": 1,
+        "why": "« Could you repeat that, please? » est poli et professionnel."
       },
       {
         "type": "write",
@@ -706,7 +718,8 @@
           "don't sign",
           "not signed"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« yet » avec une négation → present perfect : haven't signed."
       },
       {
         "type": "mcq",
@@ -717,7 +730,8 @@
           "calls",
           "has been calling"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« two hours ago » = moment précis → past simple : called."
       },
       {
         "type": "mcq",
@@ -728,7 +742,8 @@
           "ago",
           "during"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« for » + durée (five years). « since » + point de départ."
       },
       {
         "type": "mcq",
@@ -739,7 +754,8 @@
           "already",
           "since"
         ],
-        "a": 0
+        "a": 0,
+        "why": "« ever » = déjà, dans une question (« à un moment quelconque »)."
       },
       {
         "type": "write",
@@ -755,6 +771,12 @@
         "min": 2,
         "model": "I have never flown on a private jet."
       }
+    ],
+    "src": [
+      [
+        "Oxford Learner's Dictionaries : present perfect avec for et since",
+        "https://www.oxfordlearnersdictionaries.com/grammar/online-grammar/present-perfect-simple-with-for-and-since"
+      ]
     ]
   },
   {
@@ -804,7 +826,8 @@
           "signing",
           "signature"
         ],
-        "a": 1
+        "a": 1,
+        "why": "Un participe passé (signed) fait office d'adjectif : « the signed invoice » = la facture signée."
       },
       {
         "type": "mcq",
@@ -823,14 +846,15 @@
       },
       {
         "type": "mcq",
-        "q": "The meeting has been moved ___ Tuesday.",
+        "q": "The annual conference will take place ___ June.",
         "opts": [
+          "in",
           "on",
           "at",
-          "in",
-          "to"
+          "by"
         ],
-        "a": 3
+        "a": 0,
+        "why": "« in » + mois : in June. (On dit « on » avec une date précise : on June 5.)"
       },
       {
         "type": "mcq",
@@ -841,7 +865,8 @@
           "in",
           "by"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« at least » = au moins (expression fixe)."
       },
       {
         "type": "mcq",
@@ -852,7 +877,8 @@
           "highest",
           "highly"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« than » suit le comparatif : higher than."
       },
       {
         "type": "mcq",
@@ -863,8 +889,15 @@
           "whose",
           "whom"
         ],
-        "a": 0
+        "a": 0,
+        "why": "« who » remplace une personne sujet (Ms. Martin)."
       }
+    ],
+    "src": [
+      [
+        "TOEIC Listening & Reading : format officiel (IIBC)",
+        "https://www.iibc-global.org/english/toeic/test/lr/about/format.html"
+      ]
     ]
   },
   {
@@ -906,8 +939,7 @@
         "opts": [
           "A",
           "B",
-          "C",
-          "None"
+          "C"
         ],
         "a": 0,
         "why": {
@@ -931,10 +963,10 @@
         "opts": [
           "A",
           "B",
-          "C",
-          "None"
+          "C"
         ],
-        "a": 1
+        "a": 1,
+        "why": "Where → un lieu : « At the baggage claim »."
       },
       {
         "type": "listen",
@@ -952,10 +984,10 @@
         "opts": [
           "A",
           "B",
-          "C",
-          "None"
+          "C"
         ],
-        "a": 2
+        "a": 2,
+        "why": "Who → une personne : « Sarah from the operations team »."
       },
       {
         "type": "listen",
@@ -973,10 +1005,10 @@
         "opts": [
           "A",
           "B",
-          "C",
-          "None"
+          "C"
         ],
-        "a": 0
+        "a": 0,
+        "why": "Question fermée (Would you like…?) → oui/non : « Yes, please »."
       },
       {
         "type": "listen",
@@ -994,17 +1026,23 @@
         "opts": [
           "A",
           "B",
-          "C",
-          "None"
+          "C"
         ],
-        "a": 0
+        "a": 0,
+        "why": "How long → une durée : « About forty minutes »."
       }
+    ],
+    "src": [
+      [
+        "TOEIC Listening & Reading : format officiel (IIBC)",
+        "https://www.iibc-global.org/english/toeic/test/lr/about/format.html"
+      ]
     ]
   },
   {
     "id": "e8",
     "icon": "🧳",
-    "conf": "ok",
+    "conf": "lang",
     "title": {
       "fr": "En voyage : hôtel, taxi, restaurant",
       "en": "Travelling: hotel, taxi, restaurant"
@@ -1055,7 +1093,8 @@
           "7 to 11",
           "8 to 10"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« from seven to ten » = de 7 h à 10 h."
       },
       {
         "type": "listen",
@@ -1072,7 +1111,8 @@
           "A taxi",
           "A room"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« Could I have the bill, please? » = l'addition, s'il vous plaît."
       },
       {
         "type": "listen",
@@ -1093,7 +1133,8 @@
           "€54",
           "€40"
         ],
-        "a": 1
+        "a": 1,
+        "why": "« forty-five » = 45. Attention : forty (40) ≠ fourteen (14)."
       },
       {
         "type": "mcq",
@@ -1107,7 +1148,8 @@
           "My reservation are Martin.",
           "Reservation me Martin."
         ],
-        "a": 0
+        "a": 0,
+        "why": "« under Martin » = au nom de Martin."
       },
       {
         "type": "write",

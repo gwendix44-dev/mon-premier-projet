@@ -14,3 +14,10 @@ Règle : aucune information n'entre dans l'application sans source, et chaque le
 
 ## À faire pour la V2
 Remplacer les sources commerciales par des textes primaires (EASA, DGAC, BOFiP, sites ARGUS/Wyvern, Avinode) et relire chaque chiffre.
+
+## Audit du contenu (V1)
+- Liens : non testables depuis l'environnement de développement (réseau restreint). Ils proviennent des résultats de recherche, sauf EUR-Lex (lien standard CELEX:32012R0965). À cliquer une fois sur téléphone.
+- AOC / CTA : exigence confirmée par ORO.AOC.100 (règlement UE 965/2012). « Délivré par la DGAC en France » : usage courant, texte DGAC primaire non consulté.
+- TOEIC : format (parties, types de questions) cité d'après la page officielle IIBC ; aucun nombre de questions par partie n'est affiché dans l'application.
+- Anglais courant (badge « Anglais courant ») : contenu linguistique standard, sans source externe.
+- Limites connues : les schémas SVG restent en français aux niveaux 3 et 4 ; le contenu Business n'a pas encore toutes ses traductions anglaises ; la réponse écrite est notée par mots-clés (indulgente, ignore les accents).

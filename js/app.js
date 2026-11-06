@@ -14,7 +14,7 @@ const UI = {
   level:['Niveau d\'anglais de l\'interface','Interface English level'],
   l1:['1 · Français','1 · French'], l2:['2 · Boutons EN','2 · EN buttons'], l3:['3 · EN + aide','3 · EN + help'], l4:['4 · 100 % EN','4 · 100% EN'],
   unlockAll:['Tout déverrouiller','Unlock everything'], export:['Exporter ma progression','Export my progress'], import:['Importer','Import'], reset:['Tout effacer','Reset everything'],
-  verified:['Vérifié','Verified'], tocheck:['À vérifier','To verify'], sources:['Sources','Sources'],
+  verified:['Vérifié','Verified'], langc:['Anglais courant','Everyday English'], tocheck:['À vérifier','To verify'], sources:['Sources','Sources'],
   flags:['Indicateur de fiabilité','Reliability'], badges:['Badges','Badges'], weak:['Points faibles','Weak spots'],
   write:['Écrivez votre réponse…','Type your answer…'], tapPair:['Associez les paires','Match the pairs'], order:['Remettez dans l\'ordre','Put in order'],
   leave:['Quitter la leçon ? Votre progression de cette leçon sera perdue.','Leave the lesson? Progress in this lesson will be lost.'],
@@ -109,6 +109,7 @@ function speakWord(text) { stopAudio(); speakFallback(text, 'f', 0.9); }
 // ---------- Vues principales ----------
 const view = $('#view');
 function chrome(active) {
+  document.querySelectorAll('#foot').forEach(f => f.remove());
   document.body.classList.remove('in-lesson');
   $('#top').innerHTML = '';
   $('#top').append(el('span', { class: 'logo' }, '✈ JetForm'),
@@ -169,7 +170,7 @@ function stats() {
   });
   const weak = Object.values(S.done).length ? Object.entries(S.done).sort((a, b) => a[1].score - b[1].score).filter(([, v]) => v.score < 85).slice(0, 4) : [];
   view.append(el('h2', {}, t('weak')));
-  view.append(weak.length ? weak.map(([id, v]) => el('div', { class: 'card row' }, el('span', {}, `${D.lessons[id].icon} ${tr(D.lessons[id].title)}`), el('b', {}, v.score + ' %'))) : el('p', { class: 'muted' }, '—'));
+  view.append(...(weak.length ? weak.map(([id, v]) => el('div', { class: 'card row' }, el('span', {}, `${D.lessons[id].icon} ${tr(D.lessons[id].title)}`), el('b', {}, v.score + ' %'))) : [el('p', { class: 'muted' }, '—')]));
   view.append(el('h2', {}, t('badges')));
   const bs = Object.values(S.badges);
   view.append(bs.length ? el('div', { class: 'chips-row' }, bs.map(b => el('span', { class: 'chip' }, `${b.ic} ${b.name}`))) : el('p', { class: 'muted' }, '—'));
@@ -207,13 +208,13 @@ function runSession(L) {
   function showCard() {
     const c = L.cards[st.cardIdx]; view.innerHTML = ''; foot.className = ''; foot.innerHTML = '';
     const box = el('div', { class: 'lcard' });
+    if (c.t) { box.append(el('div', {}, tr(c.t))); if (S.lang === 3 && c.t.fr && c.t.en) box.append(el('div', { class: 'tr' }, c.t.fr)); }
     if (c.vocab) c.vocab.forEach(([en, fr]) => box.append(el('div', { class: 'row', style: 'padding:6px 0;border-bottom:1px solid var(--line)' },
       el('span', {}, el('b', {}, en), el('span', { class: 'muted' }, '  ' + fr)), el('button', { class: 'tile', onclick: () => speakWord(en) }, '🔊'))));
-    if (c.t) { box.append(el('div', {}, tr(c.t))); if (S.lang === 3 && c.t.fr && c.t.en) box.append(el('div', { class: 'tr' }, c.t.fr)); }
     if (c.svg) box.append(el('img', { src: `assets/svg/${c.svg}.svg`, alt: '' }));
     if (st.cardIdx === 0 && L.id !== 'review') {
       box.append(el('div', { style: 'margin-top:10px' },
-        el('span', { class: 'badge ' + (L.conf === 'check' ? 'check' : 'ok') }, L.conf === 'check' ? '⚠ ' + t('tocheck') : '✓ ' + t('verified'))));
+        el('span', { class: 'badge ' + (L.conf === 'check' ? 'check' : 'ok') }, L.conf === 'check' ? '⚠ ' + t('tocheck') : L.conf === 'lang' ? '🗣 ' + t('langc') : '✓ ' + t('verified'))));
       if (L.src?.length) box.append(el('div', { class: 'src' }, t('sources') + ' : ', L.src.map((s, i) => [i ? ' · ' : '', el('a', { href: s[1], target: '_blank', rel: 'noopener' }, s[0])])));
     }
     view.append(head(), box);
@@ -226,7 +227,7 @@ function runSession(L) {
   }
 
   function showEx(ex) {
-    view.innerHTML = ''; foot.className = ''; foot.innerHTML = '';
+    view.innerHTML = ''; foot.className = ''; foot.innerHTML = ''; foot.style.display = '';
     let result = null;           // fonction qui renvoie {ok, correct}
     const body = el('div');
     const btn = el('button', { class: 'btn', disabled: '' }, t('check'));
@@ -272,14 +273,14 @@ function runSession(L) {
         if (left === i) { lb[i].classList.remove('sel'); lb[i].classList.add('good', 'done'); rb[R2.indexOf(i)].classList.add('good', 'done'); lb[i].disabled = true; rb[R2.indexOf(i)].disabled = true; left = null; found++; if (found === ex.pairs.length) { btn.removeAttribute('disabled'); btn.click(); } }
         else { mistakes++; const b = rb[R2.indexOf(i)]; b.classList.add('bad'); setTimeout(() => b.classList.remove('bad'), 500); }
       }
-      btn.style.display = 'none';
+      btn.style.display = 'none'; foot.style.display = 'none';
       result = () => ({ ok: mistakes === 0, correct: ex.pairs.map(p => tr(p[0]) + ' = ' + tr(p[1])).join(' · ') });
     } else if (ex.type === 'write') {
       const ta = el('textarea', { placeholder: t('write'), oninput: () => ready(ta.value.trim().length > 2) });
       body.append(ta);
       result = () => {
-        ta.disabled = true; const txt = ta.value.toLowerCase();
-        const hits = ex.keys.filter(k => k.split('|').some(v => txt.includes(v.toLowerCase()))).length;
+        ta.disabled = true; const norm = x => x.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); const txt = norm(ta.value);
+        const hits = ex.keys.filter(k => k.split('|').some(v => txt.includes(norm(v)))).length;
         return { ok: hits >= (ex.min ?? Math.ceil(ex.keys.length / 2)), correct: tr(ex.model) };
       };
     }
@@ -287,7 +288,7 @@ function runSession(L) {
     foot.append(el('div', { class: 'in' }, btn));
 
     btn.onclick = () => {
-      const r = result(); btn.style.display = '';
+      const r = result(); btn.style.display = ''; foot.style.display = '';
       const first = !st.retried.has(ex._key) && !st.seen.has(ex._key);
       st.seen.add(ex._key);
       if (r.ok) { if (first) { st.first++; st.xp += 10; } } else { st.perfect = false; st.queue.push(ex); st.retried.add(ex._key); }
