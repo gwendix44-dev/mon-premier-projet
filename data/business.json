@@ -1,0 +1,128 @@
+[
+  {
+    "id": "b1", "icon": "🔗", "conf": "ok",
+    "title": {"fr": "La chaîne d'un vol charter", "en": "The charter value chain"},
+    "src": [["Glossaire SkyAccess : charter broker", "https://skyaccess.com/glossary/charter-broker"]],
+    "cards": [
+      {"t": {"fr": "Un vol charter implique 4 acteurs : le client, le courtier (broker), l'opérateur et le FBO.", "en": "A charter flight involves 4 players: the client, the broker, the operator and the FBO."}, "svg": "chain"},
+      {"t": {"fr": "Le courtier cherche les avions disponibles chez plusieurs opérateurs, compare les offres et les vend au client.", "en": "The broker searches several operators' available aircraft, compares offers and sells them to the client."}},
+      {"t": {"fr": "L'opérateur fait voler l'avion avec son équipage. C'est lui qui détient l'AOC (Air Operator Certificate).", "en": "The operator flies the aircraft with its crew. It holds the AOC (Air Operator Certificate)."}},
+      {"t": {"fr": "Le FBO (Fixed Base Operator) accueille passagers et avion au sol : salon, bagages, carburant, parking (handling).", "en": "The FBO (Fixed Base Operator) looks after passengers and aircraft on the ground: lounge, bags, fuel, parking (handling)."}}
+    ],
+    "ex": [
+      {"type": "mcq", "q": {"fr": "Qui exploite l'avion et détient l'AOC ?", "en": "Who operates the aircraft and holds the AOC?"}, "opts": [{"fr": "Le courtier", "en": "The broker"}, {"fr": "L'opérateur", "en": "The operator"}, {"fr": "Le FBO", "en": "The FBO"}, {"fr": "Le client", "en": "The client"}], "a": 1, "why": {"fr": "L'AOC est le certificat de l'exploitant : c'est l'opérateur qui fait voler l'avion.", "en": "The AOC belongs to the operator, who flies the aircraft."}},
+      {"type": "tf", "q": {"fr": "Le courtier fait voler lui-même l'avion.", "en": "The broker flies the aircraft himself."}, "a": false, "why": {"fr": "Le courtier est un intermédiaire : il vend, l'opérateur vole.", "en": "The broker is an intermediary: he sells, the operator flies."}},
+      {"type": "match", "q": {"fr": "Associez chaque acteur à son rôle", "en": "Match each player to its role"}, "pairs": [[{"fr": "Client", "en": "Client"}, {"fr": "Demande un vol", "en": "Requests a flight"}], [{"fr": "Courtier", "en": "Broker"}, {"fr": "Cherche et vend", "en": "Searches and sells"}], [{"fr": "Opérateur", "en": "Operator"}, {"fr": "Fait voler l'avion", "en": "Flies the aircraft"}], [{"fr": "FBO", "en": "FBO"}, {"fr": "Accueil au sol", "en": "Ground handling"}]]},
+      {"type": "order", "q": {"fr": "Remettez les étapes d'un vol charter dans l'ordre", "en": "Put the steps of a charter flight in order"}, "items": [{"fr": "Demande du client", "en": "Client request"}, {"fr": "Recherche d'avions", "en": "Aircraft search"}, {"fr": "Devis", "en": "Quote"}, {"fr": "Confirmation et contrat", "en": "Confirmation and contract"}, {"fr": "Vol", "en": "Flight"}, {"fr": "Facturation", "en": "Invoicing"}], "why": {"fr": "On ne cherche pas d'avion avant d'avoir compris la demande, et on ne vole qu'après contrat.", "en": "You do not search before understanding the request, nor fly before the contract."}},
+      {"type": "mcq", "q": {"fr": "Que fait le FBO pour un vol charter ?", "en": "What does the FBO do for a charter flight?"}, "opts": [{"fr": "Il vend le vol au client", "en": "It sells the flight to the client"}, {"fr": "Il accueille passagers et avion au sol", "en": "It handles passengers and aircraft on the ground"}, {"fr": "Il délivre l'AOC", "en": "It issues the AOC"}, {"fr": "Il pilote l'avion", "en": "It pilots the aircraft"}], "a": 1},
+      {"type": "write", "q": {"fr": "En une phrase : quelle est la différence entre un courtier et un opérateur ?", "en": "In one sentence: what is the difference between a broker and an operator?"}, "keys": ["intermédiaire|vend|cherche", "opérateur|exploit|fait voler|aoc|équipage|avion"], "min": 2, "model": {"fr": "Le courtier est un intermédiaire qui cherche et vend le vol ; l'opérateur exploite l'avion avec son équipage et son AOC.", "en": "The broker is an intermediary who finds and sells the flight; the operator runs the aircraft with its crew and AOC."}}
+    ]
+  },
+  {
+    "id": "b2", "icon": "📜", "conf": "ok",
+    "title": {"fr": "AOC : la base légale", "en": "AOC: the legal basis"},
+    "src": [["EUR-Lex : Règlement UE 965/2012 (opérations aériennes)", "https://eur-lex.europa.eu/eli/reg/2012/965/oj"]],
+    "cards": [
+      {"t": {"fr": "AOC = Air Operator Certificate. Il autorise une entreprise à faire du transport aérien commercial.", "en": "AOC = Air Operator Certificate. It allows a company to carry out commercial air transport."}},
+      {"t": {"fr": "En Europe, le cadre est commun (règlement UE 965/2012, EASA). L'AOC est délivré par l'autorité nationale : en France, la DGAC.", "en": "In Europe the framework is shared (EU Reg. 965/2012, EASA). The AOC is issued by the national authority: in France, the DGAC."}},
+      {"t": {"fr": "Avant chaque vente, le courtier vérifie que l'AOC est valide et couvre bien l'avion et le type de vol.", "en": "Before each sale, the broker checks that the AOC is valid and covers the aircraft and the type of flight."}},
+      {"t": {"fr": "Piège : l'« illegal charter ». Un vol vendu comme privé alors qu'il est commercial, sans AOC. Risque légal et assurance invalide.", "en": "Trap: 'illegal charter'. A flight sold as private although it is commercial, without an AOC. Legal risk and invalid insurance."}}
+    ],
+    "ex": [
+      {"type": "mcq", "q": {"fr": "Que signifie AOC ?", "en": "What does AOC stand for?"}, "opts": ["Air Operator Certificate", "Aircraft Owner Contract", "Airport Operations Center", "Authorized Operator Charter"], "a": 0},
+      {"type": "mcq", "q": {"fr": "Quelle autorité délivre l'AOC d'un opérateur français ?", "en": "Which authority issues a French operator's AOC?"}, "opts": ["EASA", "DGAC", "ACA", "Le FBO"], "a": 1, "why": {"fr": "L'EASA fixe les règles européennes ; l'AOC est délivré par l'autorité nationale (DGAC en France).", "en": "EASA sets European rules; the national authority issues the AOC (DGAC in France)."}},
+      {"type": "tf", "q": {"fr": "ARGUS et Wyvern remplacent l'AOC.", "en": "ARGUS and Wyvern replace the AOC."}, "a": false, "why": {"fr": "L'AOC est obligatoire. ARGUS et Wyvern sont des audits complémentaires et volontaires.", "en": "The AOC is mandatory. ARGUS and Wyvern are voluntary add-ons."}},
+      {"type": "mcq", "q": {"fr": "Un client propose de payer un vol « en privé » alors qu'il paie pour l'avion. Quel risque ?", "en": "A client wants to pay for a flight 'as private' although he is paying for the aircraft. What is the risk?"}, "opts": [{"fr": "Aucun", "en": "None"}, {"fr": "Illegal charter : vol commercial sans AOC", "en": "Illegal charter: commercial flight without an AOC"}, {"fr": "Le vol sera moins cher", "en": "The flight will be cheaper"}, {"fr": "Le vol sera plus rapide", "en": "The flight will be faster"}], "a": 1},
+      {"type": "order", "q": {"fr": "Les 3 vérifications du courtier avant de vendre", "en": "The broker's 3 checks before selling"}, "items": [{"fr": "L'AOC existe et est valide", "en": "AOC exists and is valid"}, {"fr": "Il couvre cet avion", "en": "It covers this aircraft"}, {"fr": "Il couvre ce type de vol", "en": "It covers this type of flight"}], "why": {"fr": "On part du plus général (certificat) vers le plus précis (avion, puis mission).", "en": "From the most general (certificate) to the most specific."}}
+    ]
+  },
+  {
+    "id": "b3", "icon": "💶", "conf": "check",
+    "title": {"fr": "Comment un courtier gagne sa vie", "en": "How a broker makes money"},
+    "src": [["SkyAccess : coût des courtiers", "https://skyaccess.com/blog/true-cost-of-charter-brokers-per-leg"], ["Business Jet Traveler : opérateur ou courtier", "https://bjtonline.com/business-jet-news/operator-or-broker"]],
+    "cards": [
+      {"t": {"fr": "L'opérateur donne un prix net. Le courtier y ajoute sa marge. Le client voit le total : l'écart est le revenu du courtier.", "en": "The operator gives a net price. The broker adds a margin. The client sees the total: the gap is the broker's income."}, "svg": "quote"},
+      {"t": {"fr": "3 modèles : commission payée par l'opérateur, marge ajoutée au prix, ou frais fixes facturés au client (ou un mélange).", "en": "3 models: commission paid by the operator, margin added to the price, or fixed fees billed to the client (or a mix)."}},
+      {"t": {"fr": "Le niveau varie beaucoup (type de vol, client, saison). Certaines sources citent environ 10 à 15 %. Ce chiffre n'est pas une norme du secteur.", "en": "Levels vary a lot (flight, client, season). Some sources mention about 10–15%. This is not an industry standard."}},
+      {"t": {"fr": "Attention : 10 % ajoutés au coût ≠ 10 % du prix de vente. 20 000 € + 10 % = 22 000 €. Le courtier gagne 2 000 €, soit 9,1 % du prix de vente.", "en": "Careful: 10% added to cost ≠ 10% of the sale price. €20,000 + 10% = €22,000. The broker earns €2,000, i.e. 9.1% of the sale price."}}
+    ],
+    "ex": [
+      {"type": "mcq", "q": {"fr": "Prix net opérateur : 15 000 €. Marge ajoutée : 12 % du coût. Prix client ?", "en": "Operator net price: €15,000. Margin added: 12% on cost. Client price?"}, "opts": ["16 500 €", "16 800 €", "17 000 €", "18 000 €"], "a": 1, "why": {"fr": "15 000 × 1,12 = 16 800 €. Gain du courtier : 1 800 €.", "en": "15,000 × 1.12 = 16,800. Broker earns 1,800."}},
+      {"type": "mcq", "q": {"fr": "Le client paie 22 000 €. Le courtier a ajouté 2 000 €. Quel était le prix net de l'opérateur ?", "en": "The client pays €22,000. The broker added €2,000. What was the operator's net price?"}, "opts": ["19 800 €", "20 000 €", "20 500 €", "24 000 €"], "a": 1},
+      {"type": "tf", "q": {"fr": "Il existe un taux de commission unique et officiel pour tous les courtiers.", "en": "There is a single official commission rate for all brokers."}, "a": false, "why": {"fr": "Les pratiques varient fortement. Les chiffres cités sont des ordres de grandeur.", "en": "Practice varies a lot; numbers are orders of magnitude."}},
+      {"type": "mcq", "q": {"fr": "Un client demande « combien gagnez-vous sur ce vol ? ». Meilleure réaction professionnelle ?", "en": "A client asks 'how much do you earn on this flight?'. Best professional reaction?"}, "opts": [{"fr": "Mentir sur le montant", "en": "Lie about the amount"}, {"fr": "Refuser de répondre et changer de sujet", "en": "Refuse and change the subject"}, {"fr": "Répondre avec transparence sur le modèle (frais ou marge) et justifier la valeur apportée", "en": "Answer transparently about the model (fee or margin) and explain the value you bring"}, {"fr": "Baisser le prix sans rien dire", "en": "Lower the price silently"}], "a": 2, "why": {"fr": "La confiance fait les portefeuilles clients durables. Ne jamais mentir sur le prix ou le rôle.", "en": "Trust builds lasting client books. Never lie about price or role."}},
+      {"type": "write", "q": {"fr": "Expliquez à un client, en 2 phrases, pourquoi passer par un courtier peut être utile.", "en": "Explain to a client, in 2 sentences, why a broker can be useful."}, "keys": ["compar|plusieurs|choix|offres", "temps|disponib|conseil|expert|sécurité|vérif"], "min": 2, "model": {"fr": "Je compare plusieurs opérateurs pour trouver l'avion adapté à votre besoin au bon prix. Je vérifie la sécurité et gère les détails pour vous faire gagner du temps.", "en": "I compare several operators to find the right aircraft at a fair price. I check safety and handle the details to save you time."}}
+    ]
+  },
+  {
+    "id": "b4", "icon": "🧾", "conf": "ok",
+    "title": {"fr": "Anatomie d'un devis", "en": "Anatomy of a quote"},
+    "src": [["Business Jet Traveler : opérateur ou courtier", "https://bjtonline.com/business-jet-news/operator-or-broker"]],
+    "cards": [
+      {"t": {"fr": "Un devis charter = heures de vol × tarif horaire + frais annexes. Le tarif horaire seul ne suffit jamais.", "en": "A charter quote = flight hours × hourly rate + extras. The hourly rate alone is never enough."}, "svg": "quote"},
+      {"t": {"fr": "Frais fréquents : repositionnement (l'avion vient d'ailleurs), atterrissage et handling, nuits d'équipage, catering, dégivrage.", "en": "Common extras: positioning (the aircraft comes from elsewhere), landing and handling, crew overnights, catering, de-icing."}},
+      {"t": {"fr": "Selon l'opérateur, on facture le temps de vol (airborne) ou le temps bloc (calage à calage). Toujours demander laquelle.", "en": "Depending on the operator, billing uses flight time (airborne) or block time (chock to chock). Always ask which."}},
+      {"t": {"fr": "Les taxes dépendent du pays, du type de vol et du client. Un devis doit dire ce qui est inclus et exclu.", "en": "Taxes depend on country, flight type and client. A quote must say what is included and excluded."}}
+    ],
+    "ex": [
+      {"type": "mcq", "q": {"fr": "Tarif indicatif 4 000 €/h, vol de 2 h 30. Coût des seules heures de vol ?", "en": "Indicative rate €4,000/h, 2h30 flight. Cost of flight hours only?"}, "opts": ["8 000 €", "9 000 €", "10 000 €", "12 000 €"], "a": 2, "why": {"fr": "2,5 × 4 000 = 10 000 €. Les frais annexes s'ajoutent.", "en": "2.5 × 4,000 = 10,000. Extras are added."}},
+      {"type": "match", "q": {"fr": "Associez frais et définition", "en": "Match fee and meaning"}, "pairs": [["Positioning", {"fr": "L'avion arrive à vide au départ", "en": "Aircraft arrives empty at departure"}], ["Handling", {"fr": "Services au sol (FBO)", "en": "Ground services (FBO)"}], ["Crew overnight", {"fr": "Hôtel et frais d'équipage", "en": "Crew hotel and expenses"}], ["De-icing", {"fr": "Retrait du givre sur l'avion", "en": "Removing ice from the aircraft"}]]},
+      {"type": "tf", "q": {"fr": "Le prix horaire affiché est toujours le prix total du vol.", "en": "The advertised hourly rate is always the total flight price."}, "a": false},
+      {"type": "mcq", "q": {"fr": "Deux devis pour le même vol : 18 000 € et 21 000 €. Première chose à vérifier ?", "en": "Two quotes for the same flight: €18,000 and €21,000. First thing to check?"}, "opts": [{"fr": "Choisir le moins cher", "en": "Pick the cheaper"}, {"fr": "Ce qui est inclus (frais, taxes, temps facturé, type d'avion)", "en": "What is included (fees, taxes, billed time, aircraft type)"}, {"fr": "Choisir le plus cher", "en": "Pick the pricier"}, {"fr": "Rien", "en": "Nothing"}], "a": 1, "why": {"fr": "Un devis moins cher peut simplement omettre des frais.", "en": "A cheaper quote may just omit fees."}},
+      {"type": "order", "q": {"fr": "Remettez le calcul d'un devis dans l'ordre", "en": "Order the quote calculation"}, "items": [{"fr": "Estimer le temps de vol", "en": "Estimate flight time"}, {"fr": "Multiplier par le tarif horaire", "en": "Multiply by hourly rate"}, {"fr": "Ajouter les frais annexes", "en": "Add extras"}, {"fr": "Ajouter la marge", "en": "Add the margin"}, {"fr": "Préciser taxes incluses ou non", "en": "State whether taxes are included"}]}
+    ]
+  },
+  {
+    "id": "b5", "icon": "🧭", "conf": "check",
+    "title": {"fr": "Charter, carte, fractional, propriété", "en": "Charter, card, fractional, ownership"},
+    "src": [["Flexjet : comparer fractional, charter et cartes", "https://flexjet.com/en-gb/blog/the-flight-thats-right-comparing-fractional-ownership-private-jet-charter-jet-cards"], ["Jet Advisors : fractional vs jet card", "https://jetadvisors.com/fractional-vs-jet-card/"]],
+    "cards": [
+      {"t": {"fr": "Quatre façons de voler en jet privé, de la plus flexible à la plus engageante.", "en": "Four ways to fly privately, from most flexible to most committing."}, "svg": "models"},
+      {"t": {"fr": "Charter : on paie vol par vol. Jet card : on prépaie des heures, souvent par blocs de 25 h, à tarif fixé.", "en": "Charter: pay per flight. Jet card: prepaid hours, often in 25-hour blocks, at a set rate."}},
+      {"t": {"fr": "Fractional : on achète une part d'un avion d'une flotte gérée (ex. 1/16e ≈ 50 h/an chez NetJets). Il y a des frais de gestion mensuels.", "en": "Fractional: you buy a share of a managed fleet's aircraft (e.g. 1/16 ≈ 50 h/year at NetJets). Monthly management fees apply."}},
+      {"t": {"fr": "Propriété : on achète l'avion entier et on paie sa gestion. Pour un très gros volume. Les seuils d'heures sont des repères commerciaux, pas des règles.", "en": "Ownership: you buy a whole aircraft and pay for management. For very high volume. Hour thresholds are commercial guidelines, not rules."}}
+    ],
+    "ex": [
+      {"type": "match", "q": {"fr": "Associez la formule à sa description", "en": "Match the model to its description"}, "pairs": [["Charter", {"fr": "Vol par vol, sans engagement", "en": "Per flight, no commitment"}], ["Jet card", {"fr": "Heures prépayées", "en": "Prepaid hours"}], ["Fractional", {"fr": "Part d'un avion d'une flotte", "en": "Share of a fleet aircraft"}], [{"fr": "Propriété", "en": "Ownership"}, {"fr": "Avion entier + gestion", "en": "Whole aircraft + management"}]]},
+      {"type": "mcq", "q": {"fr": "Un client vole environ 10 heures par an, au hasard des besoins. Quelle formule proposer d'abord ?", "en": "A client flies about 10 hours a year, ad hoc. Which model first?"}, "opts": ["Charter", "Fractional", {"fr": "Acheter un avion", "en": "Buy an aircraft"}, {"fr": "Aucune", "en": "None"}], "a": 0, "why": {"fr": "Volume faible : pas d'engagement, on paie ce qu'on utilise.", "en": "Low volume: no commitment, pay for what you use."}},
+      {"type": "mcq", "q": {"fr": "Un client vole ~80 h/an avec le même profil de trajets. Quelle piste explorer ?", "en": "A client flies ~80 h/year on similar routes. Which option to explore?"}, "opts": ["Charter seul", "Jet card ou fractional", {"fr": "Aucune", "en": "None"}, {"fr": "Un airliner", "en": "An airliner"}], "a": 1, "why": {"fr": "Repère courant : au-delà de ~25–50 h/an, cartes et fractional deviennent pertinents. Comparez toujours les devis réels.", "en": "Common guide: above ~25–50 h/year cards and fractional become relevant. Always compare real quotes."}},
+      {"type": "tf", "q": {"fr": "Une jet card donne la propriété d'une part de l'avion.", "en": "A jet card gives you ownership of a share of the aircraft."}, "a": false, "why": {"fr": "C'est du prépaiement d'heures, pas de la propriété. La part d'avion, c'est le fractional.", "en": "It is prepaid hours, not ownership. A share is fractional."}},
+      {"type": "mcq", "q": {"fr": "Un « empty leg » est…", "en": "An 'empty leg' is…"}, "opts": [{"fr": "Un vol sans passagers qu'un opérateur peut vendre à prix réduit", "en": "A flight without passengers an operator may sell at a reduced price"}, {"fr": "Un avion en panne", "en": "A broken aircraft"}, {"fr": "Un vol gratuit", "en": "A free flight"}, {"fr": "Un vol de nuit", "en": "A night flight"}], "a": 0, "why": {"fr": "Le prix est moins élevé, mais le trajet et l'horaire sont imposés par l'opérateur.", "en": "Cheaper, but route and timing are set by the operator."}}
+    ]
+  },
+  {
+    "id": "b6", "icon": "🛡️", "conf": "check",
+    "title": {"fr": "Sécurité : ARGUS et Wyvern", "en": "Safety: ARGUS and Wyvern"},
+    "src": [["Grand Aire : ratings ARGUS et Wyvern", "https://grandaire.com/?p=885"], ["The Flying Engineer : audits de sécurité", "https://theflyingengineer.com/private-jet-safety-audits-argus-wyvern-is-bao/"]],
+    "cards": [
+      {"t": {"fr": "ARGUS et Wyvern sont des organismes d'audit indépendants. Ils évaluent la sécurité des opérateurs.", "en": "ARGUS and Wyvern are independent audit firms assessing operator safety."}},
+      {"t": {"fr": "Ce n'est pas obligatoire : l'AOC est la seule exigence légale. Mais beaucoup de clients et de courtiers demandent ces audits.", "en": "It is not mandatory: the AOC is the only legal requirement. But many clients and brokers demand these audits."}},
+      {"t": {"fr": "ARGUS : niveaux Gold, Gold+ et Platinum. Wyvern : Registered et Wingman. Les statuts expirent : toujours vérifier leur validité.", "en": "ARGUS: Gold, Gold+ and Platinum. Wyvern: Registered and Wingman. Statuses expire: always check validity."}},
+      {"t": {"fr": "Un courtier peut aussi être audité. Mais un courtier noté n'est pas un opérateur noté : le rating du courtier ne certifie pas l'avion.", "en": "A broker can also be audited. But a rated broker is not a rated operator: the broker's rating does not certify the aircraft."}}
+    ],
+    "ex": [
+      {"type": "mcq", "q": {"fr": "Qu'est-ce qui est obligatoire pour un opérateur charter ?", "en": "What is mandatory for a charter operator?"}, "opts": ["AOC", "ARGUS Platinum", "Wyvern Wingman", {"fr": "Aucun des trois", "en": "None of the three"}], "a": 0},
+      {"type": "tf", "q": {"fr": "Les audits ARGUS et Wyvern sont volontaires.", "en": "ARGUS and Wyvern audits are voluntary."}, "a": true},
+      {"type": "mcq", "q": {"fr": "Un courtier a un rating Wyvern. Que peut-on en déduire ?", "en": "A broker has a Wyvern rating. What can you infer?"}, "opts": [{"fr": "Tous les avions qu'il vend sont certifiés", "en": "All aircraft he sells are certified"}, {"fr": "Son propre fonctionnement est audité, pas forcément l'opérateur de l'avion", "en": "His own process is audited, not necessarily the aircraft's operator"}, {"fr": "Il n'a pas besoin d'opérateur", "en": "He needs no operator"}, {"fr": "Rien", "en": "Nothing"}], "a": 1},
+      {"type": "tf", "q": {"fr": "Un rating ARGUS obtenu il y a longtemps reste valable indéfiniment.", "en": "An ARGUS rating earned long ago remains valid forever."}, "a": false, "why": {"fr": "Les statuts expirent et doivent être renouvelés : vérifier la base de données avant chaque vente.", "en": "Ratings expire and must be renewed: check the database before each sale."}},
+      {"type": "match", "q": {"fr": "Associez organisme et niveaux", "en": "Match audit body and levels"}, "pairs": [["ARGUS", "Gold · Gold+ · Platinum"], ["Wyvern", "Registered · Wingman"]]}
+    ]
+  },
+  {
+    "id": "b7", "icon": "🏛️", "conf": "check",
+    "title": {"fr": "TVA et fiscalité : les bons réflexes", "en": "VAT and tax: good reflexes"},
+    "src": [["GlobeAir : TVA et charter", "https://www.globeair.com/p/is-vat-applicable-when-booking-a-private-jet-charter-flight"], ["OPSGROUP : contrôles en France", "https://ops.group/blog/paris-ramp-checks/?print=pdf"]],
+    "cards": [
+      {"t": {"fr": "La TVA d'un vol dépend de plusieurs facteurs : pays de départ et d'arrivée, vol commercial ou privé, statut du client (entreprise ou particulier).", "en": "A flight's VAT depends on several factors: departure and arrival countries, commercial or private flight, client status (company or individual)."}},
+      {"t": {"fr": "Les vols internationaux commerciaux sont souvent exonérés ou à taux zéro. Les vols intérieurs peuvent être taxés.", "en": "Commercial international flights are often exempt or zero-rated. Domestic flights may be taxed."}},
+      {"t": {"fr": "Les sources se contredisent sur les taux exacts en France. Ne jamais annoncer un taux sans validation de l'opérateur ou d'un fiscaliste.", "en": "Sources disagree on exact French rates. Never quote a rate without confirmation from the operator or a tax advisor."}},
+      {"t": {"fr": "Ce module sera approfondi avec les textes officiels (directive TVA, BOFiP). Pour l'instant : retenez le réflexe, pas le taux.", "en": "This module will be deepened with official texts (VAT directive, BOFiP). For now: remember the reflex, not the rate."}}
+    ],
+    "ex": [
+      {"type": "mcq", "q": {"fr": "Un client demande « TVA incluse ? » sur un vol Paris–Nice. Réflexe ?", "en": "A client asks 'VAT included?' on a Paris–Nice flight. Reflex?"}, "opts": [{"fr": "Répondre « 20 % » de mémoire", "en": "Say '20%' from memory"}, {"fr": "Répondre « pas de TVA »", "en": "Say 'no VAT'"}, {"fr": "Vérifier avec l'opérateur ou un fiscaliste avant de répondre", "en": "Check with the operator or tax advisor before answering"}, {"fr": "Changer de sujet", "en": "Change subject"}], "a": 2, "why": {"fr": "Un vol intérieur peut être taxé, mais le traitement dépend du cas : ne pas improviser.", "en": "A domestic flight may be taxed but treatment depends on the case: do not improvise."}},
+      {"type": "tf", "q": {"fr": "Le traitement de TVA est identique pour tous les vols.", "en": "VAT treatment is identical for all flights."}, "a": false},
+      {"type": "mcq", "q": {"fr": "Quel facteur influence la TVA ?", "en": "Which factor affects VAT?"}, "opts": [{"fr": "Le type de vol (commercial ou privé)", "en": "Flight type (commercial or private)"}, {"fr": "La couleur de l'avion", "en": "Aircraft colour"}, {"fr": "Le nom du pilote", "en": "Pilot's name"}, {"fr": "Aucun", "en": "None"}], "a": 0},
+      {"type": "write", "q": {"fr": "Rédigez votre réponse à un client qui demande le taux de TVA exact.", "en": "Write your answer to a client asking the exact VAT rate."}, "keys": ["vérif|confirm|valider|fiscal|opérateur", "devis|inclus|précis|retour"], "min": 1, "model": {"fr": "Je vérifie le traitement exact avec l'opérateur et je vous le confirme dans le devis, avec ce qui est inclus ou non.", "en": "I will confirm the exact treatment with the operator and state it clearly in the quote."}}
+    ]
+  }
+]

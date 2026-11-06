@@ -1,0 +1,1127 @@
+[
+  {
+    "id": "e1",
+    "icon": "🛄",
+    "conf": "ok",
+    "title": {
+      "fr": "Aéroport : vocabulaire de voyage",
+      "en": "Airport: travel vocabulary"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "Les mots que vous entendez à chaque voyage. Touchez 🔊 pour les écouter.",
+          "en": "Words you hear on every trip. Tap 🔊 to listen."
+        },
+        "vocab": [
+          [
+            "boarding pass",
+            "carte d'embarquement"
+          ],
+          [
+            "gate",
+            "porte d'embarquement"
+          ],
+          [
+            "carry-on bag",
+            "bagage cabine"
+          ],
+          [
+            "checked luggage",
+            "bagage en soute"
+          ],
+          [
+            "layover",
+            "escale"
+          ],
+          [
+            "delayed",
+            "retardé"
+          ]
+        ]
+      },
+      {
+        "t": {
+          "fr": "Plus de mots utiles.",
+          "en": "More useful words."
+        },
+        "vocab": [
+          [
+            "baggage claim",
+            "retrait des bagages"
+          ],
+          [
+            "customs",
+            "douane"
+          ],
+          [
+            "security check",
+            "contrôle de sécurité"
+          ],
+          [
+            "aisle seat",
+            "place côté couloir"
+          ],
+          [
+            "window seat",
+            "place côté hublot"
+          ],
+          [
+            "to board",
+            "embarquer"
+          ]
+        ]
+      }
+    ],
+    "ex": [
+      {
+        "type": "match",
+        "q": {
+          "fr": "Associez mot et traduction",
+          "en": "Match word and meaning"
+        },
+        "pairs": [
+          [
+            "gate",
+            "porte d'embarquement"
+          ],
+          [
+            "layover",
+            "escale"
+          ],
+          [
+            "customs",
+            "douane"
+          ],
+          [
+            "delayed",
+            "retardé"
+          ]
+        ]
+      },
+      {
+        "type": "mcq",
+        "q": "Please show your ___ at the gate.",
+        "opts": [
+          "boarding pass",
+          "layover",
+          "customs",
+          "aisle"
+        ],
+        "a": 0,
+        "why": {
+          "fr": "On présente sa carte d'embarquement (boarding pass).",
+          "en": "You show your boarding pass."
+        }
+      },
+      {
+        "type": "mcq",
+        "q": "Our flight is ___ by two hours because of the fog.",
+        "opts": [
+          "delayed",
+          "boarded",
+          "claimed",
+          "checked"
+        ],
+        "a": 0
+      },
+      {
+        "type": "mcq",
+        "q": "After landing, we collected our bags at the ___.",
+        "opts": [
+          "baggage claim",
+          "gate",
+          "security check",
+          "layover"
+        ],
+        "a": 0
+      },
+      {
+        "type": "mcq",
+        "q": {
+          "fr": "Comment dit-on « bagage cabine » ?",
+          "en": "How do you say 'bagage cabine'?"
+        },
+        "opts": [
+          "carry-on bag",
+          "checked luggage",
+          "hand gate",
+          "cabin check"
+        ],
+        "a": 0
+      },
+      {
+        "type": "write",
+        "q": {
+          "fr": "Traduisez en anglais : « Où est la porte d'embarquement ? »",
+          "en": "Translate: « Où est la porte d'embarquement ? »"
+        },
+        "keys": [
+          "where",
+          "gate"
+        ],
+        "min": 2,
+        "model": "Where is the gate? (Where is the boarding gate?)"
+      }
+    ]
+  },
+  {
+    "id": "e2",
+    "icon": "📞",
+    "conf": "ok",
+    "title": {
+      "fr": "Au téléphone : la demande d'un client",
+      "en": "On the phone: a client request"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "Phrases polies à connaître pour recevoir un appel.",
+          "en": "Polite phrases to receive a call."
+        },
+        "vocab": [
+          [
+            "How can I help you?",
+            "Comment puis-je vous aider ?"
+          ],
+          [
+            "I'd like to book a flight.",
+            "Je voudrais réserver un vol."
+          ],
+          [
+            "Could you tell me…?",
+            "Pourriez-vous me dire… ?"
+          ],
+          [
+            "How many passengers?",
+            "Combien de passagers ?"
+          ],
+          [
+            "Let me check availability.",
+            "Je vérifie la disponibilité."
+          ]
+        ]
+      },
+      {
+        "t": {
+          "fr": "Astuce : « I'd like » est plus poli que « I want ». Utilisez « could » pour demander.",
+          "en": "Tip: 'I'd like' is more polite than 'I want'. Use 'could' to ask."
+        }
+      }
+    ],
+    "ex": [
+      {
+        "type": "listen",
+        "q": "How many passengers will travel?",
+        "script": [
+          {
+            "v": "f",
+            "t": "Hello, I'd like to book a flight from Paris to Nice next Friday."
+          },
+          {
+            "v": "m",
+            "t": "Of course. How many passengers will be travelling?"
+          },
+          {
+            "v": "f",
+            "t": "Four adults, with six suitcases."
+          }
+        ],
+        "opts": [
+          "Two",
+          "Four",
+          "Six",
+          "Ten"
+        ],
+        "a": 1,
+        "why": {
+          "fr": "« Four adults, with six suitcases » : quatre adultes, six valises.",
+          "en": "Four adults, six suitcases."
+        }
+      },
+      {
+        "type": "listen",
+        "q": "What is the destination?",
+        "script": [
+          {
+            "v": "f",
+            "t": "Hello, I'd like to book a flight from Paris to Nice next Friday."
+          }
+        ],
+        "opts": [
+          "Paris",
+          "Nice",
+          "London",
+          "Geneva"
+        ],
+        "a": 1
+      },
+      {
+        "type": "listen",
+        "q": "When does the client want to travel?",
+        "script": [
+          {
+            "v": "m",
+            "t": "Do you have a preferred departure time?"
+          },
+          {
+            "v": "f",
+            "t": "Around ten in the morning, if possible."
+          }
+        ],
+        "opts": [
+          "At ten in the evening",
+          "Around ten in the morning",
+          "At noon",
+          "Next month"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": {
+          "fr": "Quelle phrase est la plus polie ?",
+          "en": "Which sentence is the most polite?"
+        },
+        "opts": [
+          "I want a flight.",
+          "Give me a flight.",
+          "I'd like to book a flight.",
+          "Flight, now."
+        ],
+        "a": 2
+      },
+      {
+        "type": "order",
+        "q": {
+          "fr": "Remettez la phrase dans l'ordre",
+          "en": "Put the sentence in order"
+        },
+        "items": [
+          "Could",
+          "you",
+          "tell",
+          "me",
+          "your",
+          "budget?"
+        ]
+      },
+      {
+        "type": "write",
+        "q": {
+          "fr": "Écrivez une phrase polie pour demander le nombre de passagers.",
+          "en": "Write a polite sentence to ask the number of passengers."
+        },
+        "keys": [
+          "how many|number",
+          "passenger",
+          "could|may|would|please"
+        ],
+        "min": 2,
+        "model": "Could you tell me how many passengers will be travelling?"
+      }
+    ]
+  },
+  {
+    "id": "e3",
+    "icon": "🔢",
+    "conf": "ok",
+    "title": {
+      "fr": "Chiffres, prix et dates",
+      "en": "Numbers, prices and dates"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "Piège classique : fifteen (15) / fifty (50). Dans -teen l'accent est sur la fin ; dans -ty il est sur le début.",
+          "en": "Classic trap: fifteen (15) / fifty (50). In -teen the stress is at the end; in -ty at the start."
+        },
+        "vocab": [
+          [
+            "fifteen / fifty",
+            "15 / 50"
+          ],
+          [
+            "nineteen / ninety",
+            "19 / 90"
+          ],
+          [
+            "twelve thousand",
+            "12 000"
+          ],
+          [
+            "a hundred and twenty",
+            "120"
+          ],
+          [
+            "two point five",
+            "2,5 (on dit « point »)"
+          ]
+        ]
+      },
+      {
+        "t": {
+          "fr": "Dates : on dit « the fifth of March » ou « March fifth ». L'heure : « half past ten » = 10 h 30.",
+          "en": "Dates: 'the fifth of March' or 'March fifth'. Time: 'half past ten' = 10:30."
+        }
+      }
+    ],
+    "ex": [
+      {
+        "type": "listen",
+        "q": "How long is the flight?",
+        "script": [
+          {
+            "v": "m",
+            "t": "The flight time is two hours and fifteen minutes."
+          }
+        ],
+        "opts": [
+          "2 h 50",
+          "2 h 15",
+          "1 h 15",
+          "2 h 05"
+        ],
+        "a": 1
+      },
+      {
+        "type": "listen",
+        "q": "What is the total price?",
+        "script": [
+          {
+            "v": "m",
+            "t": "The total price is nineteen thousand five hundred euros, including taxes."
+          }
+        ],
+        "opts": [
+          "€ 15,500",
+          "€ 19,500",
+          "€ 90,500",
+          "€ 19,050"
+        ],
+        "a": 1,
+        "why": {
+          "fr": "Nineteen = 19 (accent final). Taxes comprises = including taxes.",
+          "en": "Nineteen = 19; including taxes."
+        }
+      },
+      {
+        "type": "listen",
+        "q": "When is the departure?",
+        "script": [
+          {
+            "v": "f",
+            "t": "We depart on the fifteenth of March at half past ten."
+          }
+        ],
+        "opts": [
+          "March 5, 10:30",
+          "March 15, 10:30",
+          "March 15, 10:10",
+          "May 15, 10:30"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": {
+          "fr": "Comment lit-on 50 ?",
+          "en": "How do you read 50?"
+        },
+        "opts": [
+          "fifty",
+          "fifteen",
+          "five-oh-one",
+          "fiftin"
+        ],
+        "a": 0
+      },
+      {
+        "type": "mcq",
+        "q": "How do you say 2.5 hours?",
+        "opts": [
+          "two point five hours",
+          "two comma five hours",
+          "two and five hours",
+          "two five hours"
+        ],
+        "a": 0,
+        "why": {
+          "fr": "En anglais on utilise le point décimal : « point ».",
+          "en": "English uses a decimal point."
+        }
+      },
+      {
+        "type": "write",
+        "q": {
+          "fr": "Écrivez en toutes lettres : 18 000 euros",
+          "en": "Write in words: €18,000"
+        },
+        "keys": [
+          "eighteen",
+          "thousand",
+          "euro"
+        ],
+        "min": 3,
+        "model": "eighteen thousand euros"
+      }
+    ]
+  },
+  {
+    "id": "e4",
+    "icon": "🛩️",
+    "conf": "ok",
+    "title": {
+      "fr": "Appel avec un opérateur : slot et équipage",
+      "en": "Operator call: slots and crew"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "Mots d'un appel d'opérations.",
+          "en": "Words from an operations call."
+        },
+        "vocab": [
+          [
+            "slot",
+            "créneau de départ/arrivée"
+          ],
+          [
+            "ETA / ETD",
+            "heure d'arrivée / de départ estimée"
+          ],
+          [
+            "crew duty time",
+            "temps de service de l'équipage"
+          ],
+          [
+            "positioning flight",
+            "vol de repositionnement"
+          ],
+          [
+            "handling agent",
+            "agent d'assistance au sol"
+          ],
+          [
+            "to confirm",
+            "confirmer"
+          ]
+        ]
+      },
+      {
+        "t": {
+          "fr": "Pour confirmer : « Can you confirm…? ». Pour demander de répéter : « Could you repeat that, please? »",
+          "en": "To confirm: 'Can you confirm…?'. To ask to repeat: 'Could you repeat that, please?'"
+        }
+      }
+    ],
+    "ex": [
+      {
+        "type": "listen",
+        "q": "What is confirmed?",
+        "script": [
+          {
+            "v": "m",
+            "t": "Good morning, this is the operations desk. Your slot at Le Bourget is confirmed for two thirty p.m."
+          }
+        ],
+        "opts": [
+          "The catering",
+          "The slot",
+          "The crew hotel",
+          "The invoice"
+        ],
+        "a": 1
+      },
+      {
+        "type": "listen",
+        "q": "Why does the aircraft need a positioning flight?",
+        "script": [
+          {
+            "v": "f",
+            "t": "The aircraft is currently in Lyon, so we need a positioning flight to Paris before your departure."
+          }
+        ],
+        "opts": [
+          "It is in Lyon",
+          "It has no crew",
+          "It has no fuel",
+          "The client is late"
+        ],
+        "a": 0
+      },
+      {
+        "type": "listen",
+        "q": "What is the problem?",
+        "script": [
+          {
+            "v": "m",
+            "t": "I'm afraid the crew will reach their duty limit if we leave after six p.m."
+          }
+        ],
+        "opts": [
+          "Bad weather",
+          "A late departure exceeds the crew duty limit",
+          "The airport is closed",
+          "A missing passport"
+        ],
+        "a": 1,
+        "why": {
+          "fr": "Duty limit = limite de temps de service ; partir trop tard la dépasse.",
+          "en": "A late departure exceeds duty time."
+        }
+      },
+      {
+        "type": "match",
+        "q": {
+          "fr": "Associez terme et sens",
+          "en": "Match term and meaning"
+        },
+        "pairs": [
+          [
+            "slot",
+            {
+              "fr": "créneau",
+              "en": "time window"
+            }
+          ],
+          [
+            "ETA",
+            {
+              "fr": "arrivée estimée",
+              "en": "estimated arrival"
+            }
+          ],
+          [
+            "handling agent",
+            {
+              "fr": "assistance au sol",
+              "en": "ground support"
+            }
+          ],
+          [
+            "crew duty time",
+            {
+              "fr": "temps de service",
+              "en": "working-time limit"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "mcq",
+        "q": {
+          "fr": "Vous n'avez pas compris. Que dites-vous ?",
+          "en": "You did not understand. What do you say?"
+        },
+        "opts": [
+          "What?",
+          "Could you repeat that, please?",
+          "Speak!",
+          "No."
+        ],
+        "a": 1
+      },
+      {
+        "type": "write",
+        "q": {
+          "fr": "Demandez à l'opérateur de confirmer l'heure d'arrivée estimée.",
+          "en": "Ask the operator to confirm the estimated arrival time."
+        },
+        "keys": [
+          "confirm",
+          "eta|arrival|arrive",
+          "could|can|please"
+        ],
+        "min": 2,
+        "model": "Could you confirm the ETA, please?"
+      }
+    ]
+  },
+  {
+    "id": "e5",
+    "icon": "🧩",
+    "conf": "ok",
+    "title": {
+      "fr": "Grammaire : past simple vs present perfect",
+      "en": "Grammar: past simple vs present perfect"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "Past simple : action terminée à un moment précis. « I flew to Nice last week. » Marqueurs : yesterday, last week, in 2022, ago.",
+          "en": "Past simple: finished action at a specific time. 'I flew to Nice last week.' Markers: yesterday, last week, in 2022, ago."
+        }
+      },
+      {
+        "t": {
+          "fr": "Present perfect (have/has + participe passé) : lien avec le présent, sans date. « I have visited Paris. » Marqueurs : ever, never, already, yet, for, since.",
+          "en": "Present perfect (have/has + past participle): link with now, no date. 'I have visited Paris.' Markers: ever, never, already, yet, for, since."
+        }
+      },
+      {
+        "t": {
+          "fr": "for + durée (for two years). since + point de départ (since 2022).",
+          "en": "for + duration (for two years). since + starting point (since 2022)."
+        }
+      }
+    ],
+    "ex": [
+      {
+        "type": "mcq",
+        "q": "I ___ to London last year.",
+        "opts": [
+          "went",
+          "have gone",
+          "have been going",
+          "go"
+        ],
+        "a": 0,
+        "why": {
+          "fr": "« last year » = date précise → past simple.",
+          "en": "'last year' = specific time → past simple."
+        }
+      },
+      {
+        "type": "mcq",
+        "q": "She ___ here since 2019.",
+        "opts": [
+          "worked",
+          "has worked",
+          "works",
+          "is working"
+        ],
+        "a": 1,
+        "why": {
+          "fr": "since + point de départ → present perfect.",
+          "en": "since → present perfect."
+        }
+      },
+      {
+        "type": "mcq",
+        "q": "We ___ the contract yet.",
+        "opts": [
+          "didn't sign",
+          "haven't signed",
+          "don't sign",
+          "not signed"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": "He ___ the client two hours ago.",
+        "opts": [
+          "has called",
+          "called",
+          "calls",
+          "has been calling"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": "They have worked in aviation ___ five years.",
+        "opts": [
+          "since",
+          "for",
+          "ago",
+          "during"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Have you ___ flown on a private jet?",
+        "opts": [
+          "ever",
+          "yet",
+          "already",
+          "since"
+        ],
+        "a": 0
+      },
+      {
+        "type": "write",
+        "q": {
+          "fr": "Écrivez une phrase au present perfect avec « never ».",
+          "en": "Write a present perfect sentence with 'never'."
+        },
+        "keys": [
+          "never",
+          "have|has",
+          "ed |been|flown|seen|visited|done|gone|worked|met"
+        ],
+        "min": 2,
+        "model": "I have never flown on a private jet."
+      }
+    ]
+  },
+  {
+    "id": "e6",
+    "icon": "📝",
+    "conf": "ok",
+    "title": {
+      "fr": "TOEIC Partie 5 : phrases à compléter",
+      "en": "TOEIC Part 5: incomplete sentences"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "La partie 5 du TOEIC : une phrase avec un trou, 4 choix. Rapide : trouvez la nature du mot manquant (nom, verbe, adjectif, adverbe, préposition).",
+          "en": "TOEIC Part 5: a sentence with a gap, 4 choices. Quick method: find the part of speech needed."
+        }
+      },
+      {
+        "t": {
+          "fr": "Indices : après « the » → nom ou adjectif. Avant un nom → adjectif. Avant un verbe → adverbe ou sujet. Après une préposition → nom ou -ing.",
+          "en": "Clues: after 'the' → noun/adjective. Before a noun → adjective. Before a verb → adverb or subject. After a preposition → noun or -ing."
+        }
+      }
+    ],
+    "ex": [
+      {
+        "type": "mcq",
+        "q": "The company will ___ a new aircraft next month.",
+        "opts": [
+          "purchase",
+          "purchased",
+          "purchasing",
+          "purchaser"
+        ],
+        "a": 0,
+        "why": {
+          "fr": "Après « will » → verbe à l'infinitif.",
+          "en": "After 'will' → base verb."
+        }
+      },
+      {
+        "type": "mcq",
+        "q": "Please send the ___ invoice by Friday.",
+        "opts": [
+          "sign",
+          "signed",
+          "signing",
+          "signature"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Our flight attendants are ___ trained.",
+        "opts": [
+          "professional",
+          "professionally",
+          "profession",
+          "professionalism"
+        ],
+        "a": 1,
+        "why": {
+          "fr": "Adverbe devant un participe (trained).",
+          "en": "Adverb before a participle."
+        }
+      },
+      {
+        "type": "mcq",
+        "q": "The meeting has been moved ___ Tuesday.",
+        "opts": [
+          "on",
+          "at",
+          "in",
+          "to"
+        ],
+        "a": 3
+      },
+      {
+        "type": "mcq",
+        "q": "Passengers must arrive ___ least one hour before departure.",
+        "opts": [
+          "on",
+          "at",
+          "in",
+          "by"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": "The price is ___ than we expected.",
+        "opts": [
+          "high",
+          "higher",
+          "highest",
+          "highly"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Ms. Martin, ___ is our new sales manager, will join the meeting.",
+        "opts": [
+          "who",
+          "which",
+          "whose",
+          "whom"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "e7",
+    "icon": "🎧",
+    "conf": "ok",
+    "title": {
+      "fr": "TOEIC Partie 2 : question et réponse",
+      "en": "TOEIC Part 2: question and response"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "Partie 2 : vous entendez une question, puis 3 réponses (A, B, C). Écoutez le premier mot de la question : When, Where, Who, How…",
+          "en": "Part 2: you hear a question then 3 responses. Listen to the first word: When, Where, Who, How…"
+        }
+      },
+      {
+        "t": {
+          "fr": "Piège : une réponse peut ressembler au son de la question (flight / light) mais ne répond pas. Choisissez le sens, pas le son.",
+          "en": "Trap: a response may sound similar but not answer. Choose meaning, not sound."
+        }
+      }
+    ],
+    "ex": [
+      {
+        "type": "listen",
+        "q": "Question 1 · choose the best response.",
+        "script": [
+          {
+            "v": "m",
+            "t": "When does the flight depart?"
+          },
+          {
+            "v": "f",
+            "t": "A. At six p.m. B. From gate twelve. C. Yes, it's a long flight."
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "None"
+        ],
+        "a": 0,
+        "why": {
+          "fr": "When → réponse sur l'heure : « at six p.m. ».",
+          "en": "When → a time."
+        }
+      },
+      {
+        "type": "listen",
+        "q": "Question 2 · choose the best response.",
+        "script": [
+          {
+            "v": "f",
+            "t": "Where can I pick up my luggage?"
+          },
+          {
+            "v": "m",
+            "t": "A. In the morning. B. At the baggage claim. C. It was heavy."
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "None"
+        ],
+        "a": 1
+      },
+      {
+        "type": "listen",
+        "q": "Question 3 · choose the best response.",
+        "script": [
+          {
+            "v": "m",
+            "t": "Who is handling the VIP client tomorrow?"
+          },
+          {
+            "v": "f",
+            "t": "A. At the main lounge. B. Around noon. C. Sarah from the operations team."
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "None"
+        ],
+        "a": 2
+      },
+      {
+        "type": "listen",
+        "q": "Question 4 · choose the best response.",
+        "script": [
+          {
+            "v": "f",
+            "t": "Would you like some water?"
+          },
+          {
+            "v": "m",
+            "t": "A. Yes, please. B. It's a long road. C. At eight o'clock."
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "None"
+        ],
+        "a": 0
+      },
+      {
+        "type": "listen",
+        "q": "Question 5 · choose the best response.",
+        "script": [
+          {
+            "v": "m",
+            "t": "How long will the meeting take?"
+          },
+          {
+            "v": "f",
+            "t": "A. About forty minutes. B. In the conference room. C. Yes, I met him."
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "None"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "e8",
+    "icon": "🧳",
+    "conf": "ok",
+    "title": {
+      "fr": "En voyage : hôtel, taxi, restaurant",
+      "en": "Travelling: hotel, taxi, restaurant"
+    },
+    "cards": [
+      {
+        "t": {
+          "fr": "Phrases pour vos voyages perso. Touchez 🔊 pour écouter.",
+          "en": "Phrases for your personal trips. Tap 🔊."
+        },
+        "vocab": [
+          [
+            "I have a reservation under…",
+            "J'ai une réservation au nom de…"
+          ],
+          [
+            "Could I have the bill, please?",
+            "L'addition, s'il vous plaît."
+          ],
+          [
+            "How much is the fare to the airport?",
+            "Combien coûte la course jusqu'à l'aéroport ?"
+          ],
+          [
+            "Is breakfast included?",
+            "Le petit-déjeuner est-il inclus ?"
+          ],
+          [
+            "I'm allergic to nuts.",
+            "Je suis allergique aux noix."
+          ]
+        ]
+      }
+    ],
+    "ex": [
+      {
+        "type": "listen",
+        "q": "What time is breakfast?",
+        "script": [
+          {
+            "v": "m",
+            "t": "Welcome to the hotel. Breakfast is served from seven to ten in the restaurant."
+          }
+        ],
+        "opts": [
+          "6 to 9",
+          "7 to 10",
+          "7 to 11",
+          "8 to 10"
+        ],
+        "a": 1
+      },
+      {
+        "type": "listen",
+        "q": "What does the guest ask for?",
+        "script": [
+          {
+            "v": "f",
+            "t": "Excuse me, could I have the bill, please?"
+          }
+        ],
+        "opts": [
+          "The menu",
+          "The bill",
+          "A taxi",
+          "A room"
+        ],
+        "a": 1
+      },
+      {
+        "type": "listen",
+        "q": "How much is the taxi?",
+        "script": [
+          {
+            "v": "f",
+            "t": "How much is the fare to the airport?"
+          },
+          {
+            "v": "m",
+            "t": "It's about forty-five euros."
+          }
+        ],
+        "opts": [
+          "€14",
+          "€45",
+          "€54",
+          "€40"
+        ],
+        "a": 1
+      },
+      {
+        "type": "mcq",
+        "q": {
+          "fr": "À la réception de l'hôtel, vous dites…",
+          "en": "At the hotel desk you say…"
+        },
+        "opts": [
+          "I have a reservation under Martin.",
+          "I have reserve Martin.",
+          "My reservation are Martin.",
+          "Reservation me Martin."
+        ],
+        "a": 0
+      },
+      {
+        "type": "write",
+        "q": {
+          "fr": "Au restaurant, dites que vous êtes allergique aux noix.",
+          "en": "At a restaurant, say you are allergic to nuts."
+        },
+        "keys": [
+          "allerg",
+          "nut"
+        ],
+        "min": 2,
+        "model": "I'm allergic to nuts."
+      }
+    ]
+  }
+]

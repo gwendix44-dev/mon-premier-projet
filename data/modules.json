@@ -1,0 +1,12 @@
+[
+  {"id":"jets","n":1,"icon":"✈️","color":"#0ea5e9","status":"soon","title":{"fr":"Jets et flotte","en":"Jets and fleet"},
+   "topics":[{"fr":"Catégories (light → ultra-long-range)","en":"Categories (light → ultra-long-range)"},{"fr":"Performances, cabine, pistes","en":"Performance, cabin, runways"},{"fr":"Choisir le bon appareil","en":"Choosing the right aircraft"}]},
+  {"id":"ops","n":2,"icon":"🛫","color":"#14b8a6","status":"soon","title":{"fr":"Opérations et réglementation","en":"Operations and regulation"},
+   "topics":[{"fr":"AOC, handling, FBO, slots","en":"AOC, handling, FBO, slots"},{"fr":"Douane, temps de service équipage","en":"Customs, crew duty time"},{"fr":"Avinode, ARGUS, Wyvern","en":"Avinode, ARGUS, Wyvern"}]},
+  {"id":"business","n":3,"icon":"💼","color":"#1d4ed8","file":"data/business.json","title":{"fr":"Business et économie","en":"Business and economics"}},
+  {"id":"sales","n":4,"icon":"🤝","color":"#a855f7","status":"soon","title":{"fr":"Vente, clients et hospitalité VIP","en":"Sales, clients and VIP hospitality"},
+   "topics":[{"fr":"Comprendre un client fortuné","en":"Understanding a wealthy client"},{"fr":"Négociation, objections, relances","en":"Negotiation, objections, follow-ups"},{"fr":"Protocole et service haut de gamme","en":"Protocol and premium service"}]},
+  {"id":"english","n":5,"icon":"🗣️","color":"#f97316","file":"data/english.json","title":{"fr":"English Lab","en":"English Lab"}},
+  {"id":"interview","n":6,"icon":"🎓","color":"#64748b","status":"soon","title":{"fr":"Entretien FBO (à la fin)","en":"FBO interview (at the end)"},
+   "topics":[{"fr":"Questions types, vos atouts","en":"Typical questions, your strengths"},{"fr":"CV et lettre en anglais","en":"CV and cover letter in English"}]}
+]
