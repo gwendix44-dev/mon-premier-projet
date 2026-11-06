@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 190" font-family="system-ui,Arial,sans-serif">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs>
+<text x="180" y="16" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Quatre façons de voler</text>
+<rect x="10" y="26" width="340" height="10" rx="5" fill="url(#g)"/>
+<text x="10" y="52" font-size="10" fill="#16a34a" font-weight="700">Flexibilité ◄</text><text x="350" y="52" text-anchor="end" font-size="10" fill="#1d4ed8" font-weight="700">► Engagement</text>
+<g text-anchor="middle">
+<rect x="6" y="64" width="80" height="100" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="94" y="64" width="80" height="100" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="182" y="64" width="80" height="100" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<rect x="270" y="64" width="84" height="100" rx="12" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<g font-size="12" font-weight="700"><text x="46" y="84" fill="#166534">Charter</text><text x="134" y="84" fill="#075985">Jet card</text><text x="222" y="84" fill="#5b21b6">Fractional</text><text x="312" y="84" fill="#1e3a8a">Propriété</text></g>
+<g font-size="10" fill="#475569"><text x="46" y="104">Vol par vol</text><text x="46" y="118">sans engagement</text><text x="134" y="104">Heures</text><text x="134" y="118">prépayées</text><text x="222" y="104">Part d'un</text><text x="222" y="118">avion géré</text><text x="312" y="104">Avion entier</text><text x="312" y="118">+ gestion</text></g>
+<g font-size="10" font-weight="700"><text x="46" y="146" fill="#166534">occasionnel</text><text x="134" y="146" fill="#075985">≈ 25 h/an et +</text><text x="222" y="146" fill="#5b21b6">≈ 50 h/an et +</text><text x="312" y="146" fill="#1e3a8a">gros volume</text></g>
+</g>
+<text x="180" y="184" text-anchor="middle" font-size="9.5" fill="#64748b">Seuils indicatifs, variables selon les programmes.</text>
+</svg>

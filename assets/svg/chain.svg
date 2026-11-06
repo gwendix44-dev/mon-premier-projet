@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" font-family="system-ui,Arial,sans-serif">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#64748b"/></marker></defs>
+<g text-anchor="middle">
+<rect x="4" y="30" width="76" height="82" rx="14" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="94" y="30" width="76" height="82" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<rect x="184" y="30" width="76" height="82" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="274" y="30" width="82" height="82" rx="14" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+<text x="42" y="62" font-size="26">🧑‍💼</text><text x="132" y="62" font-size="26">🤝</text><text x="222" y="62" font-size="26">✈️</text><text x="315" y="62" font-size="26">🏢</text>
+<text x="42" y="86" font-size="13" font-weight="700" fill="#1e3a8a">Client</text><text x="132" y="86" font-size="13" font-weight="700" fill="#5b21b6">Courtier</text>
+<text x="222" y="86" font-size="13" font-weight="700" fill="#166534">Opérateur</text><text x="315" y="86" font-size="13" font-weight="700" fill="#9a3412">FBO</text>
+<text x="42" y="103" font-size="10.5" fill="#475569">demande</text><text x="132" y="103" font-size="10.5" fill="#475569">vend</text>
+<text x="222" y="103" font-size="10.5" fill="#475569">vole · AOC</text><text x="315" y="103" font-size="10.5" fill="#475569">accueil au sol</text>
+<text x="42" y="132" font-size="10.5" fill="#64748b">passager</text><text x="132" y="132" font-size="10.5" fill="#64748b">broker</text>
+<text x="222" y="132" font-size="10.5" fill="#64748b">operator</text><text x="315" y="132" font-size="10.5" fill="#64748b">handling</text>
+</g>
+<g stroke="#64748b" stroke-width="2.5" marker-end="url(#a)"><line x1="81" y1="71" x2="92" y2="71"/><line x1="171" y1="71" x2="182" y2="71"/><line x1="261" y1="71" x2="272" y2="71"/></g>
+<text x="180" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">La chaîne d'un vol charter</text>
+<text x="180" y="158" text-anchor="middle" font-size="10.5" fill="#64748b">Le courtier vend ; l'opérateur fait voler.</text>
+</svg>
