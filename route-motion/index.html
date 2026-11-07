@@ -143,9 +143,9 @@ window.setFrame = async t => {
   stationLabel(ROUTE[0], CFG.start.name, CFG.start.sub, sa * (1 - sstep(0.02, 0.12, s.p)), t, 0);
   stationLabel(ROUTE[ROUTE.length - 1], CFG.end.name, CFG.end.sub, sa * sstep(0.88, 0.98, s.p), t, 0.5);
   // train
-  if (s.p > 0.004 && s.p < 0.996) {
+  if (s.p > 0.0004 && s.p < 0.9998) {
     const a = pointAt(Math.max(0, s.p - 0.004)), b = pointAt(Math.min(1, s.p + 0.004)), pa = map.project(a), pb = map.project(b), ph = map.project(s.head);
-    train(ph.x, ph.y, Math.atan2(pb.y - pa.y, pb.x - pa.x), lerp(.75, 1.25, sstep(6, 13, s.zoom)), sstep(0.004, 0.03, s.p) * (1 - sstep(0.97, 0.996, s.p)));
+    train(ph.x, ph.y, Math.atan2(pb.y - pa.y, pb.x - pa.x), lerp(.75, 1.25, sstep(6, 13, s.zoom)), sstep(0.0004, 0.002, s.p) * (1 - sstep(0.9985, 0.9998, s.p)));
   }
   // barre de progression avec kilomètres (bas gauche)
   const bx = 60, by = H - 150, ha = sstep(0, 1.0, t) * (1 - sstep(T - CFG.fadeOut - 0.2, T - CFG.fadeOut + 0.6, t));
