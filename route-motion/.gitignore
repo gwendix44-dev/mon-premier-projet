@@ -1,0 +1,8 @@
+node_modules
+cache
+frames/
+*.mp4
+routes/*/rel.json
+routes/*/q_*.txt
+routes/*/r1.json
+routes/*/fetch.log

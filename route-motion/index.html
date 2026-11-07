@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Route motion</title>
+<link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css">
+<style>html,body{margin:0;background:#000;overflow:hidden}#map{position:absolute;left:0;top:0;width:1920px;height:1080px}#out{position:absolute;left:0;top:0}</style></head>
+<body><div id="map"></div><canvas id="out" width="1920" height="1080" style="display:none"></canvas>
+<script src="/node_modules/maplibre-gl/dist/maplibre-gl.js"></script>
+<script>
+/* Animation d'itinéraire — carte plate au style clair, mouvements très doux.
+   Déroulé : arrêt sur image au départ -> trajet (dézoom puis rezoom) -> arrêt sur image à l'arrivée -> fondu.
+   Tout est une fonction de t : le rendu est identique à chaque exécution. */
+const W = 1920, H = 1080, Q = new URLSearchParams(location.search), ROUTE_ID = Q.get('route') || 'tgv-marseille', O = location.origin;
+const BLUE = '#1747ff', BLUE2 = '#5b8cff', INK = '#0e1b3d', MUTED = '#5b6b92';
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, t) => a + (b - a) * t;
+const sm5 = x => { x = clamp(x); return x * x * x * (x * (x * 6 - 15) + 10); };      // vitesse ET accélération nulles aux extrémités
+const sstep = (a, b, x) => sm5((x - a) / (b - a));
+const D2R = Math.PI / 180;
+function hav(a, b) { const R = 6371.0088, p1 = a[1] * D2R, p2 = b[1] * D2R, dl = (b[0] - a[0]) * D2R, dp = p2 - p1; const h = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); }
+let CFG, ROUTE, CUM, TOTAL, map, PASS;
+const DUR = () => CFG.duration, P0 = () => CFG.tStart, P1 = () => CFG.tEnd;
+function pointAt(p) {
+  const km = clamp(p) * TOTAL; let lo = 0, hi = CUM.length - 1;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (CUM[m] <= km) lo = m; else hi = m; }
+  const f = (km - CUM[lo]) / ((CUM[hi] - CUM[lo]) || 1); return [lerp(ROUTE[lo][0], ROUTE[hi][0], f), lerp(ROUTE[lo][1], ROUTE[hi][1], f)];
+}
+function pOfPoint(ll) { // fraction du trajet du point de la ligne le plus proche
+  let best = 1e9, bi = 0; for (let i = 0; i < ROUTE.length; i++) { const d = hav(ROUTE[i], ll); if (d < best) { best = d; bi = i; } } return CUM[bi] / TOTAL;
+}
+function tOfP(p) { let lo = P0(), hi = P1(); for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (sm5((m - P0()) / (P1() - P0())) < p) lo = m; else hi = m; } return (lo + hi) / 2; }
+function state(t) {
+  const u = clamp((t - P0()) / (P1() - P0())), p = sm5(u);
+  const q = 0.5 + 0.5 * Math.cos(2 * Math.PI * u);                    // 1 -> 0 -> 1 : zoom doux, parfaitement immobile aux arrêts
+  const zoom = CFG.zov + (CFG.zst - CFG.zov) * Math.pow(q, 0.8);
+  const head = pointAt(p), w = 1 - sstep(CFG.zov + 0.2, CFG.zov + 3.2, zoom);
+  const center = [lerp(head[0], CFG.overview[0], w), lerp(head[1], CFG.overview[1], w)];
+  const pitch = 42 * sstep(11.2, 13.3, zoom);
+  return { p, head, zoom, center, pitch, u };
+}
+function gradient(p, color) {
+  const clear = 'rgba(255,255,255,0)';
+  if (p <= 0.0002) return ['interpolate', ['linear'], ['line-progress'], 0, clear, 1, clear];
+  if (p >= 0.9999) return ['interpolate', ['linear'], ['line-progress'], 0, color, 1, color];
+  return ['interpolate', ['linear'], ['line-progress'], 0, color, p, color, Math.min(0.99995, p + 0.0001), clear, 1, clear];
+}
+async function init() {
+  CFG = await (await fetch(`/routes/${ROUTE_ID}/config.json`)).json();
+  const gj = await (await fetch(`/routes/${ROUTE_ID}/route.geojson`)).json(); ROUTE = gj.features[0].geometry.coordinates;
+  CUM = [0]; for (let i = 1; i < ROUTE.length; i++) CUM.push(CUM[i - 1] + hav(ROUTE[i - 1], ROUTE[i])); TOTAL = CUM[CUM.length - 1];
+  PASS = CFG.pass.map(c => ({ ...c, p: pOfPoint(c.ll) }));
+  const s0 = state(+Q.get('t0') || 0);
+  const casing = [], fills = [];
+  const road = (cls, minz, w0, w1) => {
+    const f = ['in', ['get', 'class'], ['literal', cls]], id = cls.join('_');
+    casing.push({ id: 'rc_' + id, type: 'line', source: 'omt', 'source-layer': 'transportation', minzoom: minz, filter: f, layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#d4cdc0', 'line-width': ['interpolate', ['exponential', 1.5], ['zoom'], 6, w0 + 0.6, 16, w1 + 2] } });
+    fills.push({ id: 'rd_' + id, type: 'line', source: 'omt', 'source-layer': 'transportation', minzoom: minz, filter: f, layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#ffffff', 'line-width': ['interpolate', ['exponential', 1.5], ['zoom'], 6, w0, 16, w1] } });
+  };
+  road(['minor', 'service', 'track'], 12.5, 0.2, 2.4); road(['tertiary', 'secondary'], 9, 0.5, 3.6); road(['primary', 'trunk'], 7, 0.8, 4.6); road(['motorway'], 6, 1.1, 5.4);
+  map = new maplibregl.Map({
+    container: 'map', interactive: false, fadeDuration: 0, attributionControl: false, maxPitch: 70,
+    center: s0.center, zoom: s0.zoom, pitch: s0.pitch, bearing: 0, canvasContextAttributes: { antialias: true, preserveDrawingBuffer: true },
+    style: {
+      version: 8,
+      sources: { omt: { type: 'vector', tiles: [`${O}/t/omt/{z}/{x}/{y}`], maxzoom: 14 }, route: { type: 'geojson', data: gj, lineMetrics: true } },
+      layers: [
+        { id: 'land', type: 'background', paint: { 'background-color': '#f3efe6' } },
+        { id: 'lc', type: 'fill', source: 'omt', 'source-layer': 'landcover', paint: { 'fill-color': '#e4ecd8', 'fill-opacity': 0.9 } },
+        { id: 'lu', type: 'fill', source: 'omt', 'source-layer': 'landuse', filter: ['in', ['get', 'class'], ['literal', ['residential', 'commercial', 'retail', 'industrial']]], paint: { 'fill-color': '#ebe5d9', 'fill-opacity': 0.95 } },
+        { id: 'park', type: 'fill', source: 'omt', 'source-layer': 'park', paint: { 'fill-color': '#d9e7cc', 'fill-opacity': 0.9 } },
+        { id: 'water', type: 'fill', source: 'omt', 'source-layer': 'water', paint: { 'fill-color': '#b6d4ec' } },
+        { id: 'waterway', type: 'line', source: 'omt', 'source-layer': 'waterway', paint: { 'line-color': '#b6d4ec', 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.6, 14, 3] } },
+        { id: 'border', type: 'line', source: 'omt', 'source-layer': 'boundary', filter: ['all', ['==', ['get', 'admin_level'], 2], ['==', ['get', 'maritime'], 0]], paint: { 'line-color': '#a597bd', 'line-width': 1.3, 'line-dasharray': [3, 2] } },
+        { id: 'rail', type: 'line', source: 'omt', 'source-layer': 'transportation', minzoom: 7, filter: ['==', ['get', 'class'], 'rail'], paint: { 'line-color': '#bdb7ac', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 0.5, 16, 1.8], 'line-dasharray': [3, 2] } },
+        ...casing, ...fills,
+        { id: 'bld', type: 'fill-extrusion', source: 'omt', 'source-layer': 'building', minzoom: 13, paint: { 'fill-extrusion-color': '#e9e2d4', 'fill-extrusion-height': ['get', 'render_height'], 'fill-extrusion-base': ['get', 'render_min_height'], 'fill-extrusion-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.6, 0.95], 'fill-extrusion-vertical-gradient': true } },
+        { id: 'glow', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': BLUE2, 'line-blur': 8, 'line-opacity': 0.7, 'line-width': ['interpolate', ['exponential', 1.6], ['zoom'], 5, 11, 9, 16, 13, 28, 16, 40], 'line-gradient': gradient(0, BLUE2) } },
+        { id: 'case', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-width': ['interpolate', ['exponential', 1.6], ['zoom'], 5, 6.5, 9, 9, 13, 13, 16, 20], 'line-gradient': gradient(0, '#ffffff') } },
+        { id: 'core', type: 'line', source: 'route', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-width': ['interpolate', ['exponential', 1.6], ['zoom'], 5, 3.4, 9, 5.4, 13, 8.5, 16, 14], 'line-gradient': gradient(0, BLUE) } },
+      ],
+    },
+  });
+  map.on('error', e => console.log('maperr', e.error && e.error.message));
+  await new Promise(r => map.once('load', r));
+}
+
+/* ---------- surimpression 2D ---------- */
+const out = document.getElementById('out'), X = out.getContext('2d');
+function txt(s, x, y, o = {}) {
+  const { size = 30, weight = 700, color = INK, ls = 0, align = 'left', alpha = 1 } = o;
+  X.save(); X.globalAlpha *= alpha; X.font = `${weight} ${size}px "Inter","Inter Display",sans-serif`; X.letterSpacing = ls + 'px'; X.textAlign = align; X.fillStyle = color;
+  X.fillText(s, x + (align === 'center' ? ls / 2 : 0), y); X.restore();
+}
+function panel(x, y, w, h, a) {
+  X.save(); X.globalAlpha *= a; X.shadowColor = 'rgba(20,35,80,.22)'; X.shadowBlur = 24; X.shadowOffsetY = 6; X.fillStyle = 'rgba(255,255,255,.96)'; X.beginPath(); X.roundRect(x, y, w, h, 18); X.fill();
+  X.shadowColor = 'transparent'; X.strokeStyle = 'rgba(23,71,255,.14)'; X.lineWidth = 1.5; X.stroke(); X.restore();
+}
+function train(x, y, ang, s, a) {
+  X.save(); X.globalAlpha *= a; X.translate(x, y); X.rotate(ang); X.scale(s, s);
+  X.shadowColor = 'rgba(23,71,255,.55)'; X.shadowBlur = 18; X.fillStyle = '#fff'; X.beginPath(); X.roundRect(-32, -9, 64, 18, 9); X.fill(); X.shadowBlur = 0;
+  X.strokeStyle = BLUE; X.lineWidth = 2; X.stroke();
+  X.fillStyle = BLUE; X.beginPath(); X.roundRect(12, -9, 20, 18, [0, 9, 9, 0]); X.fill();
+  X.fillStyle = '#9db6ff'; for (let i = 0; i < 4; i++) X.fillRect(-26 + i * 9, -4, 6, 5);
+  X.restore();
+}
+function pin(pt, a, t, phase, big) { // repère de gare : point + anneau qui pulse (très doux)
+  X.save(); X.globalAlpha = a; const ph = ((t * 0.4) + phase) % 1;
+  X.strokeStyle = `rgba(23,71,255,${(1 - ph) * .6})`; X.lineWidth = 3; X.beginPath(); X.arc(pt.x, pt.y, 14 + ph * 48, 0, 6.283); X.stroke();
+  X.fillStyle = BLUE; X.strokeStyle = '#fff'; X.lineWidth = 4.5; X.beginPath(); X.arc(pt.x, pt.y, big ? 12 : 9, 0, 6.283); X.fill(); X.stroke(); X.restore();
+}
+function stationLabel(ll, name, sub, a, t, phase) {
+  if (a < 0.01) return; const pt = map.project(ll); pin(pt, a, t, phase, true);
+  X.save(); X.globalAlpha = a; X.strokeStyle = 'rgba(14,27,61,.5)'; X.lineWidth = 2.5; X.beginPath(); X.moveTo(pt.x, pt.y - 18); X.lineTo(pt.x, pt.y - 118); X.stroke(); X.restore();
+  const wl = 90 + name.length * 22; panel(pt.x - wl / 2, pt.y - 200, wl, 84, a);
+  txt(name, pt.x, pt.y - 162, { size: 31, weight: 800, ls: 4, align: 'center', alpha: a }); txt(sub, pt.x, pt.y - 132, { size: 17, weight: 700, ls: 8, align: 'center', color: BLUE, alpha: a });
+}
+function totalKm() { return Math.round(TOTAL / 10) * 10; }
+const km3 = k => String(Math.round(k)).padStart(3, '0');
+window.setFrame = async t => {
+  const s = state(t), T = DUR();
+  map.jumpTo({ center: s.center, zoom: s.zoom, pitch: s.pitch, bearing: 0 });
+  for (const [id, col] of [['glow', BLUE2], ['case', '#ffffff'], ['core', BLUE]]) map.setPaintProperty(id, 'line-gradient', gradient(s.p, col));
+  await new Promise(r => { const d = () => r(); map.once('idle', d); map.triggerRepaint(); setTimeout(d, 90000); });
+  X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = 1; X.clearRect(0, 0, W, H); X.drawImage(map.getCanvas(), 0, 0, W, H);
+  // villes traversées : pastilles qui s'allument au passage du train
+  const ca = 1 - sstep(CFG.zov + 2.4, CFG.zov + 4.2, s.zoom);
+  if (ca > 0.01) for (const c of PASS) {
+    const pt = map.project(c.ll); if (pt.x < 30 || pt.x > W - 30 || pt.y < 30 || pt.y > H - 30) continue;
+    const passed = s.p >= c.p - 0.0005, tp = tOfP(c.p), since = t - tp, lit = passed ? sstep(0, 0.5, since) : 0;
+    X.save(); X.globalAlpha = ca;
+    if (passed && since < 1.6) { const ph = since / 1.6; X.strokeStyle = `rgba(23,71,255,${(1 - ph) * .6})`; X.lineWidth = 3; X.beginPath(); X.arc(pt.x, pt.y, 10 + ph * 42, 0, 6.283); X.stroke(); }
+    X.fillStyle = lit > 0 ? BLUE : '#ffffff'; X.strokeStyle = lit > 0 ? '#fff' : '#9aa7c9'; X.lineWidth = 3.5; X.beginPath(); X.arc(pt.x, pt.y, 9 + 2 * lit, 0, 6.283); X.fill(); X.stroke(); X.restore();
+    txt(c.name.toUpperCase(), pt.x + 20, pt.y + 7, { size: 21, weight: 700, ls: 3, color: passed ? INK : MUTED, alpha: ca });
+  }
+  // gares de départ et d'arrivée
+  const sa = sstep(10.6, 12.8, s.zoom);
+  stationLabel(ROUTE[0], CFG.start.name, CFG.start.sub, sa * (1 - sstep(0.02, 0.12, s.p)), t, 0);
+  stationLabel(ROUTE[ROUTE.length - 1], CFG.end.name, CFG.end.sub, sa * sstep(0.88, 0.98, s.p), t, 0.5);
+  // train
+  if (s.p > 0.004 && s.p < 0.996) {
+    const a = pointAt(Math.max(0, s.p - 0.004)), b = pointAt(Math.min(1, s.p + 0.004)), pa = map.project(a), pb = map.project(b), ph = map.project(s.head);
+    train(ph.x, ph.y, Math.atan2(pb.y - pa.y, pb.x - pa.x), lerp(.75, 1.25, sstep(6, 13, s.zoom)), sstep(0.004, 0.03, s.p) * (1 - sstep(0.97, 0.996, s.p)));
+  }
+  // barre de progression avec kilomètres (bas gauche)
+  const bx = 60, by = H - 150, ha = sstep(0, 1.0, t) * (1 - sstep(T - CFG.fadeOut - 0.2, T - CFG.fadeOut + 0.6, t));
+  panel(bx, by, 700, 104, ha);
+  txt(CFG.start.name.split(' ')[0], bx + 34, by + 36, { size: 17, weight: 700, ls: 5, color: MUTED, alpha: ha }); txt(CFG.end.name.split(' ')[0], bx + 666, by + 36, { size: 17, weight: 700, ls: 5, color: MUTED, align: 'right', alpha: ha });
+  txt(`${km3(s.p * TOTAL)} km`, bx + 34, by + 78, { size: 42, weight: 800, alpha: ha }); txt(`of ${totalKm()} km`, bx + 666, by + 78, { size: 24, weight: 600, color: MUTED, align: 'right', alpha: ha });
+  X.save(); X.globalAlpha = ha; X.fillStyle = '#dbe3f7'; X.beginPath(); X.roundRect(bx + 34, by + 90, 632, 6, 3); X.fill(); X.fillStyle = BLUE; X.beginPath(); X.roundRect(bx + 34, by + 90, Math.max(6, 632 * s.p), 6, 3); X.fill(); X.restore();
+  // chiffres clés (fondus de 0,7 s)
+  for (const c of CFG.cards) {
+    const tA = tOfP(c.a), tB = tOfP(c.b), a = sstep(tA, tA + 0.7, t) * (1 - sstep(tB - 0.7, tB, t)); if (a < 0.01) continue; const dx = (1 - a) * -40;
+    const big = c.big === 'TOTAL_KM' ? `${totalKm()} km` : c.big;
+    panel(70 + dx, 70, 640, 150, a); X.save(); X.globalAlpha = a; X.fillStyle = BLUE; X.beginPath(); X.roundRect(70 + dx, 70, 10, 150, [18, 0, 0, 18]); X.fill(); X.restore();
+    txt(big, 112 + dx, 148, { size: 70, weight: 800, alpha: a }); txt(c.small, 112 + dx, 196, { size: 18, weight: 700, ls: 3, color: BLUE, alpha: a });
+  }
+  X.save(); X.fillStyle = 'rgba(14,27,61,.5)'; X.font = '500 14px "Inter",sans-serif'; X.textAlign = 'right'; X.fillText('© OpenStreetMap contributors  ·  OpenFreeMap', W - 24, H - 20); X.restore();
+  const fade = Math.max(1 - sstep(0, 0.7, t), sstep(T - CFG.fadeOut, T, t)); if (fade > 0) { X.fillStyle = `rgba(0,0,0,${fade})`; X.fillRect(0, 0, W, H); }
+  return out.toDataURL('image/jpeg', 0.93).split(',')[1];
+};
+window.debugState = t => { const s = state(t); return { p: +s.p.toFixed(3), zoom: +s.zoom.toFixed(2), pitch: +s.pitch.toFixed(1), km: +(s.p * TOTAL).toFixed(1), total: +TOTAL.toFixed(1), pass: PASS.map(c => [c.name, +c.p.toFixed(3)]) }; };
+init().then(() => { window.ready = true; });
+</script></body></html>
