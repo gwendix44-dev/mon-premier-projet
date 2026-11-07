@@ -194,8 +194,8 @@
       48.771492
      ],
      "name": "Créteil Pompadour (gare)",
-     "dx": -330,
-     "dy": -20
+     "dx": -300,
+     "dy": 58
     },
     {
      "ll": [
@@ -214,7 +214,7 @@
      "name": "km 9,4 : la LGV commence",
      "stop": true,
      "dx": -420,
-     "dy": 8
+     "dy": -30
     },
     {
      "ll": [
