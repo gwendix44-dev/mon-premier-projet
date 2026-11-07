@@ -164,10 +164,11 @@ window.setFrame = async t => {
 function sliceKm(k0, k1) { const out = [pointAt(k0 / TOTAL)]; for (let i = 0; i < ROUTE.length; i++) if (CUM[i] > k0 && CUM[i] < k1) out.push(ROUTE[i]); out.push(pointAt(k1 / TOTAL)); return out; }
 window.still = async ({ center, zoom, pitch = 0, segs = [], marks = [], legend = [], title = '' }) => {
   for (const id of ['glow', 'case', 'core']) map.setPaintProperty(id, 'line-gradient', gradient(0, BLUE));
-  if (map.getLayer('seg-solid')) { map.removeLayer('seg-solid'); map.removeLayer('seg-dash'); map.removeSource('segs'); }
+  for (const id of ['seg-solid', 'seg-dash']) if (map.getLayer(id)) map.removeLayer(id);
+  if (map.getSource('segs')) map.removeSource('segs');
   const feats = segs.map(s => ({ type: 'Feature', properties: { color: s.color, w: s.w || 1, dash: s.dash ? 1 : 0 }, geometry: { type: 'LineString', coordinates: sliceKm(s.k0, s.k1) } }));
   map.addSource('segs', { type: 'geojson', data: { type: 'FeatureCollection', features: feats } });
-  const wexp = m => ['*', m, ['interpolate', ['exponential', 1.6], ['zoom'], 5, 3.4, 9, 5.4, 13, 8.5, 16, 14]];
+  const wexp = m => ['interpolate', ['exponential', 1.6], ['zoom'], 5, ['*', m, 3.4], 9, ['*', m, 5.4], 13, ['*', m, 8.5], 16, ['*', m, 14]];
   map.addLayer({ id: 'seg-solid', type: 'line', source: 'segs', filter: ['==', ['get', 'dash'], 0], layout: { 'line-cap': 'butt', 'line-join': 'round' }, paint: { 'line-color': ['get', 'color'], 'line-width': wexp(['get', 'w']) } });
   map.addLayer({ id: 'seg-dash', type: 'line', source: 'segs', filter: ['==', ['get', 'dash'], 1], layout: { 'line-cap': 'butt', 'line-join': 'round' }, paint: { 'line-color': ['get', 'color'], 'line-width': wexp(['get', 'w']), 'line-dasharray': [1.6, 1.2] } });
   map.jumpTo({ center, zoom, pitch, bearing: 0 });

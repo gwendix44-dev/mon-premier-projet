@@ -7,7 +7,7 @@
     3.9,
     46.1
    ],
-   "zoom": 6.35,
+   "zoom": 6.2,
    "title": "Paris Gare de Lyon → Marseille Saint-Charles · 750 km",
    "segs": [
     {
@@ -46,7 +46,7 @@
       48.8443
      ],
      "name": "Paris Gare de Lyon",
-     "dx": -270,
+     "dx": -300,
      "dy": 6
     },
     {
