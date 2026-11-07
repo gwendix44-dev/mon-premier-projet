@@ -5,21 +5,77 @@
   "tStart": 4.0,
   "tEnd": 25.0,
   "fadeOut": 1.0,
-  "zov": 6.0,
+  "zov": 6.2,
   "zst": 13.4,
-  "overview": [3.9, 46.1],
+  "overview": [
+    3.9,
+    46.1
+  ],
   "tripMin": 190,
-  "start": { "name": "PARIS GARE DE LYON", "sub": "DEPARTURE" },
-  "end": { "name": "MARSEILLE SAINT-CHARLES", "sub": "ARRIVAL" },
+  "start": {
+    "name": "PARIS GARE DE LYON",
+    "sub": "DEPARTURE",
+    "ll": [
+      2.3733,
+      48.8443
+    ]
+  },
+  "end": {
+    "name": "MARSEILLE SAINT-CHARLES",
+    "sub": "ARRIVAL",
+    "ll": [
+      5.3803,
+      43.3028
+    ]
+  },
   "pass": [
-    { "name": "Lyon", "ll": [4.8186, 45.7216] },
-    { "name": "Valence", "ll": [4.9788, 44.9917] },
-    { "name": "Avignon", "ll": [4.9860, 43.9217] },
-    { "name": "Aix-en-Provence", "ll": [5.3178, 43.4553] }
+    {
+      "name": "Lyon St-Exupéry",
+      "ll": [
+        5.077,
+        45.7208
+      ]
+    },
+    {
+      "name": "Valence",
+      "ll": [
+        4.9788,
+        44.9917
+      ]
+    },
+    {
+      "name": "Avignon",
+      "ll": [
+        4.986,
+        43.9217
+      ]
+    },
+    {
+      "name": "Aix-en-Provence",
+      "ll": [
+        5.3178,
+        43.4553
+      ]
+    }
   ],
   "cards": [
-    { "a": 0.12, "b": 0.30, "big": "320 km/h", "small": "TOP SPEED ON HIGH-SPEED LINES" },
-    { "a": 0.40, "b": 0.58, "big": "3 lines", "small": "LGV SUD-EST · RHÔNE-ALPES · MÉDITERRANÉE" },
-    { "a": 0.74, "b": 0.92, "big": "TOTAL_KM", "small": "FROM PARIS TO THE MEDITERRANEAN" }
+    {
+      "a": 0.12,
+      "b": 0.3,
+      "big": "320 km/h",
+      "small": "TOP SPEED ON HIGH-SPEED LINES"
+    },
+    {
+      "a": 0.4,
+      "b": 0.58,
+      "big": "3 lines",
+      "small": "LGV SUD-EST · RHÔNE-ALPES · MÉDITERRANÉE"
+    },
+    {
+      "a": 0.74,
+      "b": 0.92,
+      "big": "TOTAL_KM",
+      "small": "FROM PARIS TO THE MEDITERRANEAN"
+    }
   ]
 }

@@ -46,7 +46,7 @@ async function init() {
   CFG = await (await fetch(`/routes/${ROUTE_ID}/config.json`)).json();
   const gj = await (await fetch(`/routes/${ROUTE_ID}/route.geojson`)).json(); ROUTE = gj.features[0].geometry.coordinates;
   CUM = [0]; for (let i = 1; i < ROUTE.length; i++) CUM.push(CUM[i - 1] + hav(ROUTE[i - 1], ROUTE[i])); TOTAL = CUM[CUM.length - 1];
-  PASS = CFG.pass.map(c => ({ ...c, p: pOfPoint(c.ll) }));
+  PASS = CFG.pass.map(c => { const p = pOfPoint(c.ll); return { ...c, p, ll: pointAt(p) }; });   // repère posé exactement sur la ligne
   const s0 = state(+Q.get('t0') || 0);
   const casing = [], fills = [];
   const road = (cls, minz, w0, w1) => {

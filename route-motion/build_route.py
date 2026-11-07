@@ -1,20 +1,41 @@
 """Construit routes/<id>/route.geojson à partir de rel.json (relation OSM, `out geom`).
+La relation contient souvent plusieurs variantes dans le désordre : on construit un graphe de toutes les voies
+et on prend le plus court chemin entre la gare de départ (config.start.ll) et la gare d'arrivée (config.end.ll).
 Usage : python3 build_route.py routes/<id>"""
-import json, math, sys
+import json, math, sys, heapq
 R = 6371.0088
 def hav(a, b):
     p1, p2 = math.radians(a[1]), math.radians(b[1]); dl = math.radians(b[0] - a[0]); dp = p2 - p1
     h = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 2 * R * math.asin(math.sqrt(h))
 d = sys.argv[1]
-rel = json.load(open(f'{d}/rel.json'))['elements'][0]
-segs = [[(p['lon'], p['lat']) for p in m['geometry']] for m in rel['members'] if m['type'] == 'way' and m.get('geometry') and m['role'] not in ('platform', 'stop', 'platform_entry_only', 'platform_exit_only')]
-line = list(segs[0]); gaps = []
-for i, s in enumerate(segs[1:], 1):
-    if hav(line[-1], s[-1]) < hav(line[-1], s[0]): s = s[::-1]
-    g = hav(line[-1], s[0])
-    if g > 0.3: gaps.append((i, round(g, 2)))
-    line.extend(s if g > 0.003 else s[1:])
+cfg = json.load(open(f'{d}/config.json')); rel = json.load(open(f'{d}/rel.json'))['elements'][0]
+key = lambda p: (round(p[0], 5), round(p[1], 5))
+adj = {}; pos = {}
+for m in rel['members']:
+    if m['type'] != 'way' or not m.get('geometry') or m['role'] in ('platform', 'stop', 'platform_entry_only', 'platform_exit_only'): continue
+    pts = [(p['lon'], p['lat']) for p in m['geometry']]
+    for a, b in zip(pts, pts[1:]):
+        ka, kb = key(a), key(b)
+        if ka == kb: continue
+        pos[ka] = a; pos[kb] = b; w = hav(a, b)
+        adj.setdefault(ka, []).append((kb, w)); adj.setdefault(kb, []).append((ka, w))
+nodes = list(adj)
+near = lambda ll: min(nodes, key=lambda k: hav(pos[k], ll))
+S, E = near(cfg['start']['ll']), near(cfg['end']['ll'])
+print('départ', pos[S], 'à', round(hav(pos[S], cfg['start']['ll']), 2), 'km de la gare | arrivée', pos[E], 'à', round(hav(pos[E], cfg['end']['ll']), 2), 'km')
+dist = {S: 0.0}; prev = {}; pq = [(0.0, S)]
+while pq:
+    dd, u = heapq.heappop(pq)
+    if u == E: break
+    if dd > dist.get(u, 1e18): continue
+    for v, w in adj[u]:
+        nd = dd + w
+        if nd < dist.get(v, 1e18): dist[v] = nd; prev[v] = u; heapq.heappush(pq, (nd, v))
+if E not in dist: sys.exit('aucun chemin entre les deux gares : le graphe est déconnecté')
+path = [E]
+while path[-1] != S: path.append(prev[path[-1]])
+line = [pos[k] for k in reversed(path)]
 def dp(pts, eps):
     if len(pts) < 3: return pts
     (x1, y1), (x2, y2) = pts[0], pts[-1]; best, idx = 0, 0
@@ -26,7 +47,9 @@ def dp(pts, eps):
     if best > eps: return dp(pts[:idx + 1], eps)[:-1] + dp(pts[idx:], eps)
     return [pts[0], pts[-1]]
 sys.setrecursionlimit(30000)
-simp = dp(line, 0.004); dist = [0.0]
-for i in range(1, len(simp)): dist.append(dist[-1] + hav(simp[i - 1], simp[i]))
-json.dump({'type': 'FeatureCollection', 'features': [{'type': 'Feature', 'properties': {'name': rel['tags'].get('name'), 'km': round(dist[-1], 1)}, 'geometry': {'type': 'LineString', 'coordinates': [[round(x, 6), round(y, 6)] for x, y in simp]}}]}, open(f'{d}/route.geojson', 'w'))
-print(rel['tags'].get('name'), '| points', len(line), '->', len(simp), '| km', round(dist[-1], 1), '| lacunes >300 m:', gaps[:8], '| début', simp[0], '| fin', simp[-1])
+simp = dp(line, 0.004); cum = [0.0]
+for i in range(1, len(simp)): cum.append(cum[-1] + hav(simp[i - 1], simp[i]))
+json.dump({'type': 'FeatureCollection', 'features': [{'type': 'Feature', 'properties': {'name': rel['tags'].get('name'), 'km': round(cum[-1], 1)}, 'geometry': {'type': 'LineString', 'coordinates': [[round(x, 6), round(y, 6)] for x, y in simp]}}]}, open(f'{d}/route.geojson', 'w'))
+print(rel['tags'].get('name'), '| chemin', len(line), 'pts ->', len(simp), '| km', round(cum[-1], 1))
+for c in cfg.get('pass', []):
+    k = min(range(len(simp)), key=lambda i: hav(simp[i], c['ll'])); print(f"  {c['name']:16s} à {hav(simp[k], c['ll']):5.1f} km du tracé (km {cum[k]:6.1f})")
