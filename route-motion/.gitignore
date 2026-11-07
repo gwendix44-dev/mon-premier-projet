@@ -6,3 +6,5 @@ routes/*/rel.json
 routes/*/q_*.txt
 routes/*/r1.json
 routes/*/fetch.log
+routes/*/stops.json
+routes/*/stops.log
