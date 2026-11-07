@@ -16,12 +16,18 @@ const sm5 = x => { x = clamp(x); return x * x * x * (x * (x * 6 - 15) + 10); }; 
 const sstep = (a, b, x) => sm5((x - a) / (b - a));
 const D2R = Math.PI / 180;
 function hav(a, b) { const R = 6371.0088, p1 = a[1] * D2R, p2 = b[1] * D2R, dl = (b[0] - a[0]) * D2R, dp = p2 - p1; const h = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); }
-let CFG, ROUTE, CUM, TOTAL, map, PASS;
+let CFG, ROUTE, CUM, CUMM, TOTAL, map, PASS;
 const DUR = () => CFG.duration, P0 = () => CFG.tStart, P1 = () => CFG.tEnd;
 function pointAt(p) {
   const km = clamp(p) * TOTAL; let lo = 0, hi = CUM.length - 1;
   while (hi - lo > 1) { const m = (lo + hi) >> 1; if (CUM[m] <= km) lo = m; else hi = m; }
   const f = (km - CUM[lo]) / ((CUM[hi] - CUM[lo]) || 1); return [lerp(ROUTE[lo][0], ROUTE[hi][0], f), lerp(ROUTE[lo][1], ROUTE[hi][1], f)];
+}
+// MapLibre calcule 'line-progress' avec la longueur projetée (Mercator), pas la distance réelle : on convertit pour que la ligne atteigne exactement le point de tête.
+function lineP(p) {
+  const km = clamp(p) * TOTAL; let lo = 0, hi = CUM.length - 1;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (CUM[m] <= km) lo = m; else hi = m; }
+  const f = (km - CUM[lo]) / ((CUM[hi] - CUM[lo]) || 1); return (CUMM[lo] + f * (CUMM[hi] - CUMM[lo])) / CUMM[CUMM.length - 1];
 }
 function pOfPoint(ll) { // fraction du trajet du point de la ligne le plus proche
   let best = 1e9, bi = 0; for (let i = 0; i < ROUTE.length; i++) { const d = hav(ROUTE[i], ll); if (d < best) { best = d; bi = i; } } return CUM[bi] / TOTAL;
@@ -46,6 +52,7 @@ async function init() {
   CFG = await (await fetch(`/routes/${ROUTE_ID}/config.json`)).json();
   const gj = await (await fetch(`/routes/${ROUTE_ID}/route.geojson`)).json(); ROUTE = gj.features[0].geometry.coordinates;
   CUM = [0]; for (let i = 1; i < ROUTE.length; i++) CUM.push(CUM[i - 1] + hav(ROUTE[i - 1], ROUTE[i])); TOTAL = CUM[CUM.length - 1];
+  const mer = c => [c[0] * D2R, Math.log(Math.tan(Math.PI / 4 + c[1] * D2R / 2))]; CUMM = [0]; for (let i = 1; i < ROUTE.length; i++) { const a = mer(ROUTE[i - 1]), b = mer(ROUTE[i]); CUMM.push(CUMM[i - 1] + Math.hypot(b[0] - a[0], b[1] - a[1])); }
   PASS = CFG.pass.map(c => { const p = pOfPoint(c.ll); return { ...c, p, ll: pointAt(p) }; });   // repère posé exactement sur la ligne
   const s0 = state(+Q.get('t0') || 0);
   const casing = [], fills = [];
@@ -93,12 +100,10 @@ function panel(x, y, w, h, a) {
   X.save(); X.globalAlpha *= a; X.shadowColor = 'rgba(20,35,80,.22)'; X.shadowBlur = 24; X.shadowOffsetY = 6; X.fillStyle = 'rgba(255,255,255,.96)'; X.beginPath(); X.roundRect(x, y, w, h, 18); X.fill();
   X.shadowColor = 'transparent'; X.strokeStyle = 'rgba(23,71,255,.14)'; X.lineWidth = 1.5; X.stroke(); X.restore();
 }
-function train(x, y, ang, s, a) {
-  X.save(); X.globalAlpha *= a; X.translate(x, y); X.rotate(ang); X.scale(s, s);
-  X.shadowColor = 'rgba(23,71,255,.55)'; X.shadowBlur = 18; X.fillStyle = '#fff'; X.beginPath(); X.roundRect(-32, -9, 64, 18, 9); X.fill(); X.shadowBlur = 0;
-  X.strokeStyle = BLUE; X.lineWidth = 2; X.stroke();
-  X.fillStyle = BLUE; X.beginPath(); X.roundRect(12, -9, 20, 18, [0, 9, 9, 0]); X.fill();
-  X.fillStyle = '#9db6ff'; for (let i = 0; i < 4; i++) X.fillRect(-26 + i * 9, -4, 6, 5);
+function train(x, y, ang, s, a) { // tête de ligne : simple point (halo + anneau blanc + coeur bleu)
+  X.save(); X.globalAlpha *= a; X.translate(x, y); X.scale(s, s);
+  X.shadowColor = 'rgba(23,71,255,.55)'; X.shadowBlur = 16; X.fillStyle = '#fff'; X.beginPath(); X.arc(0, 0, 12, 0, Math.PI * 2); X.fill(); X.shadowBlur = 0;
+  X.fillStyle = BLUE; X.beginPath(); X.arc(0, 0, 8, 0, Math.PI * 2); X.fill();
   X.restore();
 }
 function pin(pt, a, t, phase, big) { // repère de gare : point + anneau qui pulse (très doux)
@@ -117,7 +122,7 @@ const km3 = k => String(Math.round(k)).padStart(3, '0');
 window.setFrame = async t => {
   const s = state(t), T = DUR();
   map.jumpTo({ center: s.center, zoom: s.zoom, pitch: s.pitch, bearing: 0 });
-  for (const [id, col] of [['glow', BLUE2], ['case', '#ffffff'], ['core', BLUE]]) map.setPaintProperty(id, 'line-gradient', gradient(s.p, col));
+  for (const [id, col] of [['glow', BLUE2], ['case', '#ffffff'], ['core', BLUE]]) map.setPaintProperty(id, 'line-gradient', gradient(s.p <= 0.0002 ? 0 : Math.min(1, lineP(s.p) + 0.00004), col));
   await new Promise(r => { const d = () => r(); map.once('idle', d); map.triggerRepaint(); setTimeout(d, 90000); });
   X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = 1; X.clearRect(0, 0, W, H); X.drawImage(map.getCanvas(), 0, 0, W, H);
   // repères le long du trajet : 'stop' = gare où le train s'arrête (mise en avant), sinon simple repère discret
