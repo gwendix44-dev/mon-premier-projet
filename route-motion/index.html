@@ -120,15 +120,18 @@ window.setFrame = async t => {
   for (const [id, col] of [['glow', BLUE2], ['case', '#ffffff'], ['core', BLUE]]) map.setPaintProperty(id, 'line-gradient', gradient(s.p, col));
   await new Promise(r => { const d = () => r(); map.once('idle', d); map.triggerRepaint(); setTimeout(d, 90000); });
   X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = 1; X.clearRect(0, 0, W, H); X.drawImage(map.getCanvas(), 0, 0, W, H);
-  // villes traversées : pastilles qui s'allument au passage du train
-  const ca = 1 - sstep(CFG.zov + 2.4, CFG.zov + 4.2, s.zoom);
-  if (ca > 0.01) for (const c of PASS) {
-    const pt = map.project(c.ll); if (pt.x < 30 || pt.x > W - 30 || pt.y < 30 || pt.y > H - 30) continue;
-    const passed = s.p >= c.p - 0.0005, tp = tOfP(c.p), since = t - tp, lit = passed ? sstep(0, 0.5, since) : 0;
-    X.save(); X.globalAlpha = ca;
-    if (passed && since < 1.6) { const ph = since / 1.6; X.strokeStyle = `rgba(23,71,255,${(1 - ph) * .6})`; X.lineWidth = 3; X.beginPath(); X.arc(pt.x, pt.y, 10 + ph * 42, 0, 6.283); X.stroke(); }
-    X.fillStyle = lit > 0 ? BLUE : '#ffffff'; X.strokeStyle = lit > 0 ? '#fff' : '#9aa7c9'; X.lineWidth = 3.5; X.beginPath(); X.arc(pt.x, pt.y, 9 + 2 * lit, 0, 6.283); X.fill(); X.stroke(); X.restore();
-    txt(c.name.toUpperCase(), pt.x + 20, pt.y + 7, { size: 21, weight: 700, ls: 3, color: passed ? INK : MUTED, alpha: ca });
+  // repères le long du trajet : 'stop' = gare où le train s'arrête (mise en avant), sinon simple repère discret
+  const ca = 1 - sstep(CFG.zov + 2.4, CFG.zov + 4.2, s.zoom), ca2 = 1 - sstep(12.0, 13.0, s.zoom);
+  for (const c of PASS) {
+    const pt = map.project(c.ll), a0 = c.stop ? ca2 : ca; if (a0 < 0.01 || pt.x < 30 || pt.x > W - 30 || pt.y < 30 || pt.y > H - 30) continue;
+    const passed = s.p >= c.p - 0.0005, since = t - tOfP(c.p), lit = passed ? sstep(0, 0.5, since) : 0;
+    X.save(); X.globalAlpha = a0;
+    if (passed && since < 2.2) { const ph = since / 2.2; X.strokeStyle = `rgba(23,71,255,${(1 - ph) * .65})`; X.lineWidth = c.stop ? 4 : 3; X.beginPath(); X.arc(pt.x, pt.y, (c.stop ? 14 : 10) + ph * (c.stop ? 64 : 42), 0, 6.283); X.stroke(); }
+    if (c.stop) { X.fillStyle = lit > 0 ? BLUE : '#ffffff'; X.strokeStyle = BLUE; X.lineWidth = 4.5; X.beginPath(); X.arc(pt.x, pt.y, 14 + 3 * lit, 0, 6.283); X.fill(); X.stroke(); X.strokeStyle = '#fff'; X.lineWidth = 2.5; if (lit > 0) { X.beginPath(); X.arc(pt.x, pt.y, 8, 0, 6.283); X.stroke(); } }
+    else { X.fillStyle = lit > 0 ? BLUE : '#ffffff'; X.strokeStyle = lit > 0 ? '#fff' : '#9aa7c9'; X.lineWidth = 3.5; X.beginPath(); X.arc(pt.x, pt.y, 8 + 2 * lit, 0, 6.283); X.fill(); X.stroke(); }
+    X.restore();
+    if (c.stop) { const wl = 78 + c.name.length * 18; panel(pt.x + 34, pt.y - 40, wl, 80, a0); txt(c.name.toUpperCase(), pt.x + 34 + wl / 2, pt.y - 6, { size: 25, weight: 800, ls: 3, align: 'center', alpha: a0 }); txt('TRAIN STOP', pt.x + 34 + wl / 2, pt.y + 24, { size: 15, weight: 700, ls: 7, align: 'center', color: BLUE, alpha: a0 }); }
+    else txt(c.name.toUpperCase(), pt.x + 18, pt.y + 6, { size: 17, weight: 600, ls: 3, color: passed ? MUTED : '#8b97b8', alpha: a0 });
   }
   // gares de départ et d'arrivée
   const sa = sstep(10.6, 12.8, s.zoom);

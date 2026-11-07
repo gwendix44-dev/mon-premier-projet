@@ -19,7 +19,7 @@ for m in rel['members']:
         ka, kb = key(a), key(b)
         if ka == kb: continue
         pos[ka] = a; pos[kb] = b; w = hav(a, b)
-        adj.setdefault(ka, []).append((kb, w)); adj.setdefault(kb, []).append((ka, w))
+        adj.setdefault(ka, []).append((kb, w, m['ref'])); adj.setdefault(kb, []).append((ka, w, m['ref']))
 nodes = list(adj)
 near = lambda ll: min(nodes, key=lambda k: hav(pos[k], ll))
 S, E = near(cfg['start']['ll']), near(cfg['end']['ll'])
@@ -29,13 +29,21 @@ while pq:
     dd, u = heapq.heappop(pq)
     if u == E: break
     if dd > dist.get(u, 1e18): continue
-    for v, w in adj[u]:
+    for v, w, wid in adj[u]:
         nd = dd + w
-        if nd < dist.get(v, 1e18): dist[v] = nd; prev[v] = u; heapq.heappush(pq, (nd, v))
+        if nd < dist.get(v, 1e18): dist[v] = nd; prev[v] = (u, wid); heapq.heappush(pq, (nd, v))
 if E not in dist: sys.exit('aucun chemin entre les deux gares : le graphe est déconnecté')
-path = [E]
-while path[-1] != S: path.append(prev[path[-1]])
-line = [pos[k] for k in reversed(path)]
+path = [E]; wids = []
+while path[-1] != S: u, wid = prev[path[-1]]; wids.append(wid); path.append(u)
+path.reverse(); wids.reverse(); line = [pos[k] for k in path]
+# tronçons (way id) dans l'ordre du trajet, avec kilomètres de début / fin
+segs = []; acc = 0.0
+for i, wid in enumerate(wids):
+    w = hav(pos[path[i]], pos[path[i + 1]])
+    if segs and segs[-1]['way'] == wid: segs[-1]['km1'] = round(acc + w, 2)
+    else: segs.append({'way': wid, 'km0': round(acc, 2), 'km1': round(acc + w, 2), 'p0': list(pos[path[i]])})
+    acc += w
+json.dump(segs, open(f'{d}/route_ways.json', 'w'))
 def dp(pts, eps):
     if len(pts) < 3: return pts
     (x1, y1), (x2, y2) = pts[0], pts[-1]; best, idx = 0, 0

@@ -34,28 +34,32 @@
       "ll": [
         5.077,
         45.7208
-      ]
+      ],
+      "stop": false
     },
     {
-      "name": "Valence",
+      "name": "Valence TGV",
       "ll": [
         4.9788,
         44.9917
-      ]
+      ],
+      "stop": false
     },
     {
-      "name": "Avignon",
+      "name": "Avignon TGV",
       "ll": [
-        4.986,
+        4.7862,
         43.9217
-      ]
+      ],
+      "stop": true
     },
     {
-      "name": "Aix-en-Provence",
+      "name": "Aix-en-Provence TGV",
       "ll": [
         5.3178,
         43.4553
-      ]
+      ],
+      "stop": true
     }
   ],
   "cards": [

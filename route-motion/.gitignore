@@ -8,3 +8,7 @@ routes/*/r1.json
 routes/*/fetch.log
 routes/*/stops.json
 routes/*/stops.log
+routes/*/ways_tags.json
+routes/*/ways.log
+routes/*/route_ways.json
+routes/*/q_*.txt
