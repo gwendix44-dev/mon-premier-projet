@@ -12,3 +12,4 @@ routes/*/ways_tags.json
 routes/*/ways.log
 routes/*/route_ways.json
 routes/*/q_*.txt
+routes/*/near.json
