@@ -121,7 +121,7 @@ window.setFrame = async t => {
   await new Promise(r => { const d = () => r(); map.once('idle', d); map.triggerRepaint(); setTimeout(d, 90000); });
   X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = 1; X.clearRect(0, 0, W, H); X.drawImage(map.getCanvas(), 0, 0, W, H);
   // repères le long du trajet : 'stop' = gare où le train s'arrête (mise en avant), sinon simple repère discret
-  const ca = 1 - sstep(CFG.zov + 2.4, CFG.zov + 4.2, s.zoom), ca2 = 1 - sstep(12.0, 13.0, s.zoom);
+  const ca = 1 - sstep(CFG.zov + 2.4, CFG.zov + 4.2, s.zoom), ca2 = 1;   // les gares d'arrêt restent toujours visibles (seulement masquées hors cadre)
   for (const c of PASS) {
     const pt = map.project(c.ll), a0 = c.stop ? ca2 : ca; if (a0 < 0.01 || pt.x < 30 || pt.x > W - 30 || pt.y < 30 || pt.y > H - 30) continue;
     const passed = s.p >= c.p - 0.0005, since = t - tOfP(c.p), lit = passed ? sstep(0, 0.5, since) : 0;
