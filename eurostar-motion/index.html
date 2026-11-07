@@ -84,6 +84,7 @@ function train(x, y, ang, s, a) {
   X.fillStyle = '#16213d'; for (let i = 0; i < 4; i++) X.fillRect(-26 + i * 9, -4, 6, 5);
   X.restore();
 }
+function tOfP(p) { let lo = P0, hi = P1; for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (sm5((m - P0) / (P1 - P0)) < p) lo = m; else hi = m; } return (lo + hi) / 2; }
 const CARDS = [ // chiffres clés : apparaissent le long du trajet, en douceur
   { a: 0.10, b: 0.30, big: '300 km/h', small: 'TOP SPEED' },
   { a: 0.67, b: 0.80, big: '50 km', small: 'UNDER THE SEA · CHANNEL TUNNEL' },
@@ -116,16 +117,15 @@ window.setFrame = async t => {
     train(ph.x, ph.y, Math.atan2(pb.y - pa.y, pb.x - pa.x), lerp(.75, 1.25, sstep(7, 13, s.zoom)), sstep(0.003, 0.03, s.p) * (1 - sstep(0.97, 0.997, s.p)));
   }
   // compteur km / temps (en bas), barre de progression
-  const bx = W / 2 - 380, by = H - 150, ha = sstep(0.0, 0.8, t) * (1 - sstep(DUR - 0.8, DUR, t));
+  const bx = 60, by = H - 150, ha = sstep(0.0, 0.8, t) * (1 - sstep(DUR - 0.8, DUR, t));
   panel(bx, by, 760, 104, ha);
   txt('PARIS', bx + 34, by + 36, { size: 18, weight: 700, ls: 5, color: '#8ea0d6', alpha: ha }); txt('LONDON', bx + 726, by + 36, { size: 18, weight: 700, ls: 5, color: '#8ea0d6', align: 'right', alpha: ha });
-  txt(`${String(Math.round(s.p * TOTAL)).padStart(3, '0')} km`, W / 2 - 150, by + 74, { size: 44, weight: 800, align: 'center', alpha: ha });
-  txt(fmtTime(s.p * TRIP_MIN), W / 2 + 150, by + 74, { size: 44, weight: 800, align: 'center', alpha: ha });
+  txt(`${String(Math.round(s.p * TOTAL)).padStart(3, '0')} km`, bx + 230, by + 74, { size: 44, weight: 800, align: 'center', alpha: ha });
+  txt(fmtTime(s.p * TRIP_MIN), bx + 530, by + 74, { size: 44, weight: 800, align: 'center', alpha: ha });
   X.save(); X.globalAlpha = ha; X.fillStyle = 'rgba(255,255,255,.14)'; X.beginPath(); X.roundRect(bx + 34, by + 88, 692, 6, 3); X.fill(); X.fillStyle = RED; X.beginPath(); X.roundRect(bx + 34, by + 88, Math.max(6, 692 * s.p), 6, 3); X.fill(); X.restore();
-  txt('km', W / 2 - 62, by + 74, { size: 1, alpha: 0 });
   // chiffres clés
   for (const c of CARDS) {
-    const a = sstep(c.a, c.a + 0.04, s.p) * (1 - sstep(c.b - 0.04, c.b, s.p)); if (a < 0.01) continue; const dx = (1 - a) * -40;
+    const tA = tOfP(c.a), tB = tOfP(c.b), a = sstep(tA, tA + 0.6, t) * (1 - sstep(tB - 0.6, tB, t)); if (a < 0.01) continue; const dx = (1 - a) * -40;
     panel(80 + dx, 80, 560, 150, a); X.save(); X.globalAlpha = a; X.fillStyle = RED; X.fillRect(80 + dx, 80, 8, 150); X.restore();
     txt(c.big, 124 + dx, 160, { size: 70, weight: 800, alpha: a }); txt(c.small, 124 + dx, 204, { size: 20, weight: 600, ls: 5, color: '#9fb0e6', alpha: a });
   }
