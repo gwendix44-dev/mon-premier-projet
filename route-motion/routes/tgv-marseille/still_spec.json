@@ -1,0 +1,231 @@
+{
+ "route": "tgv-marseille",
+ "views": [
+  {
+   "file": "1_vue_ensemble.jpg",
+   "center": [
+    3.9,
+    46.1
+   ],
+   "zoom": 6.35,
+   "title": "Paris Gare de Lyon → Marseille Saint-Charles · 750 km",
+   "segs": [
+    {
+     "k0": 0,
+     "k1": 9.4,
+     "color": "#f08a24",
+     "w": 1.15
+    },
+    {
+     "k0": 9.4,
+     "k1": 742.4,
+     "color": "#1747ff",
+     "w": 1
+    },
+    {
+     "k0": 742.4,
+     "k1": 749.9,
+     "color": "#f08a24",
+     "w": 1.15
+    }
+   ],
+   "legend": [
+    {
+     "color": "#1747ff",
+     "label": "Ligne à grande vitesse (LGV) — 733 km"
+    },
+    {
+     "color": "#f08a24",
+     "label": "Ligne classique — 16 km (Paris et Marseille)"
+    }
+   ],
+   "marks": [
+    {
+     "ll": [
+      2.3733,
+      48.8443
+     ],
+     "name": "Paris Gare de Lyon",
+     "dx": -270,
+     "dy": 6
+    },
+    {
+     "ll": [
+      4.7824,
+      46.2827
+     ],
+     "name": "Mâcon-Loché TGV"
+    },
+    {
+     "ll": [
+      5.077,
+      45.7208
+     ],
+     "name": "Lyon Saint-Exupéry TGV"
+    },
+    {
+     "ll": [
+      4.9788,
+      44.9917
+     ],
+     "name": "Valence TGV"
+    },
+    {
+     "ll": [
+      4.7862,
+      43.9217
+     ],
+     "name": "AVIGNON TGV · arrêt",
+     "stop": true,
+     "dx": 24,
+     "dy": -8
+    },
+    {
+     "ll": [
+      5.3178,
+      43.4553
+     ],
+     "name": "AIX-EN-PROVENCE TGV · arrêt",
+     "stop": true,
+     "dx": 26,
+     "dy": -30
+    },
+    {
+     "ll": [
+      5.3803,
+      43.3028
+     ],
+     "name": "Marseille Saint-Charles",
+     "dx": 26,
+     "dy": 44
+    }
+   ]
+  },
+  {
+   "file": "2_sortie_de_Paris.jpg",
+   "center": [
+    2.463,
+    48.763
+   ],
+   "zoom": 12.3,
+   "title": "Sortie de Paris : de la ligne classique à la LGV",
+   "segs": [
+    {
+     "k0": 0,
+     "k1": 9.4,
+     "color": "#f08a24",
+     "w": 1.1
+    },
+    {
+     "k0": 9.4,
+     "k1": 9.7,
+     "color": "#1747ff"
+    },
+    {
+     "k0": 9.7,
+     "k1": 10.1,
+     "color": "#8e44ff",
+     "w": 1.15
+    },
+    {
+     "k0": 10.1,
+     "k1": 12.2,
+     "color": "#1747ff"
+    },
+    {
+     "k0": 12.2,
+     "k1": 13.2,
+     "color": "#8e44ff",
+     "w": 1.15
+    },
+    {
+     "k0": 13.2,
+     "k1": 13.7,
+     "color": "#1747ff"
+    },
+    {
+     "k0": 13.7,
+     "k1": 15.3,
+     "color": "#ff2a45",
+     "w": 1.0,
+     "dash": true
+    },
+    {
+     "k0": 15.3,
+     "k1": 17.1,
+     "color": "#1747ff"
+    },
+    {
+     "k0": 17.1,
+     "k1": 19.9,
+     "color": "#ff2a45",
+     "w": 1.0,
+     "dash": true
+    },
+    {
+     "k0": 19.9,
+     "k1": 26,
+     "color": "#1747ff"
+    }
+   ],
+   "legend": [
+    {
+     "color": "#f08a24",
+     "label": "Ligne classique (km 0 à 9,4)"
+    },
+    {
+     "color": "#1747ff",
+     "label": "LGV Sud-Est, au sol"
+    },
+    {
+     "color": "#8e44ff",
+     "label": "LGV sur viaduc"
+    },
+    {
+     "color": "#ff2a45",
+     "label": "LGV en tunnel (pointillés)",
+     "dash": true
+    }
+   ],
+   "marks": [
+    {
+     "ll": [
+      2.4352991,
+      48.771492
+     ],
+     "name": "Créteil Pompadour (gare)",
+     "dx": -330,
+     "dy": -20
+    },
+    {
+     "ll": [
+      2.4699741,
+      48.7443189
+     ],
+     "name": "Valenton",
+     "dx": 26,
+     "dy": -12
+    },
+    {
+     "ll": [
+      2.4368,
+      48.7747
+     ],
+     "name": "km 9,4 : la LGV commence",
+     "stop": true,
+     "dx": -420,
+     "dy": 8
+    },
+    {
+     "ll": [
+      2.4320337,
+      48.789033
+     ],
+     "name": "Le Vert de Maisons",
+     "dx": -250,
+     "dy": -8
+    }
+   ]
+  }
+ ]
+}
