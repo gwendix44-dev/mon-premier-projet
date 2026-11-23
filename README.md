@@ -9,16 +9,22 @@ python3 -m http.server 8123
 ```
 puis ouvrir http://localhost:8123 (sur téléphone : « Ajouter à l'écran d'accueil »).
 
-## Contenu actuel (V1)
-| Module | État |
+## Contenu actuel
+| Module | Leçons |
 |---|---|
-| 3. Business et économie | 7 leçons |
-| 5. English Lab (TOEIC, métier, voyage) | 8 leçons, audio ElevenLabs |
-| 1, 2, 4, 6 | à venir (Jets, Opérations, Vente, Entretien FBO) |
+| 1. Business et économie | 7 |
+| 2. Prix et coûts d'un vol | 5 (taux horaire, temps bloc, devis, frais, coût de possession) |
+| 3. Immatriculation et propriété | 3 |
+| 4. Maintenance et navigabilité | 3 |
+| 5. Aéroports d'affaires | 6 (méthode, Le Bourget, Nice/Cannes, Farnborough, Teterboro, comparatif) |
+| 6. English Lab | 8 (TOEIC, téléphone, voyage, audio ElevenLabs) |
+| À venir | Jets et flotte, Opérations, Vente et hospitalité, Entretien FBO |
+
+Toutes les leçons sont ouvertes (pas de verrouillage).
 
 ## Structure
 - `data/modules.json` : la carte des modules.
-- `data/*.json` : les leçons (cartes-cours + exercices). Types : `mcq`, `tf`, `match`, `order`, `write`, `listen`.
+- `data/*.json` : les leçons (cartes-cours + exercices). Types : `mcq`, `tf`, `match`, `order`, `write`, `num` (calcul), `listen`. Cartes : texte, tableau, liste, encadré, schéma.
 - `assets/svg/` : schémas.
 - `audio/` : fichiers générés par `python3 tools/gen_audio.py` (ne génère que ce qui manque).
 - `docs/SOURCES.md` : règles de fiabilité et sources.

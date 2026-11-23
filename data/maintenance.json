@@ -1,0 +1,476 @@
+[
+ {
+  "id": "m1",
+  "title": "Qui fait quoi en maintenance",
+  "sub": "Opérateur, CAMO, Part-145 et certificat de navigabilité",
+  "min": 13,
+  "conf": "check",
+  "src": [
+   [
+    "AESA : Part-M, questions fréquentes",
+    "https://www.easa.europa.eu/the-agency/faqs/part-m"
+   ],
+   [
+    "UK CAA : guide Part-CAMO",
+    "https://www.caa.co.uk/commercial-industry/aircraft/airworthiness/approval-information-and-guidance/guidance-for-part-camo-approval-holders"
+   ],
+   [
+    "The Flying Engineer : qu'est-ce qu'un CAMO",
+    "https://theflyingengineer.com/what-is-a-camo/"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Un avion d'affaires est un « aéronef à motorisation complexe ». Cela impose un cadre strict de suivi de la navigabilité, c'est-à-dire du droit à voler.",
+    "label": "L'idée"
+   },
+   {
+    "t": "En Europe, un avion à réaction entre dans la catégorie des aéronefs à motorisation complexe, ainsi que, entre autres, les avions de plus de 5 700 kg et ceux de plus de 19 sièges passagers.",
+    "label": "Quels avions"
+   },
+   {
+    "t": "Le CAMO (Continuing Airworthiness Management Organisation) planifie l'entretien, vérifie qu'il est fait et suit les consignes de navigabilité. Il ne fait pas les travaux lui-même.",
+    "label": "Le CAMO : le planificateur"
+   },
+   {
+    "t": "Une organisation Part-145 est l'atelier agréé qui réalise physiquement l'entretien et signe les travaux.",
+    "label": "Part-145 : l'atelier"
+   },
+   {
+    "t": "L'ARC (Airworthiness Review Certificate) atteste de la navigabilité de l'avion. Dans le système européen, il est valable un an. Il ne peut pas être délivré avec des constats ouverts.",
+    "label": "L'ARC : le certificat annuel"
+   },
+   {
+    "t": "Le programme d'entretien, qui liste les travaux et leurs échéances, doit être revu au moins une fois par an par le propriétaire ou le CAMO.",
+    "label": "Le programme d'entretien"
+   },
+   {
+    "t": "Un exploitant titulaire d'un AOC doit avoir un agrément CAMO et soit un agrément Part-145, soit un contrat écrit avec une organisation Part-145. Le CAMO peut sous-traiter, sous sa propre responsabilité.",
+    "label": "Cas de l'exploitant charter"
+   },
+   {
+    "t": "Aux États-Unis, le propriétaire ou l'exploitant est le principal responsable du maintien en état de navigabilité (14 CFR 91.403).",
+    "label": "Et aux États-Unis ?"
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Que fait un CAMO ?",
+    "opts": [
+     "Il planifie et suit l'entretien",
+     "Il répare physiquement l'avion",
+     "Il vend les vols",
+     "Il pilote l'avion"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Que fait une organisation Part-145 ?",
+    "opts": [
+     "Elle réalise et signe les travaux d'entretien",
+     "Elle délivre l'AOC",
+     "Elle établit le devis",
+     "Elle forme les passagers"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Quelle est la durée de validité d'un ARC européen ?",
+    "opts": [
+     "Un an",
+     "Cinq ans",
+     "Dix ans",
+     "Un mois"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Un ARC peut être délivré avec des constats ouverts.",
+    "a": false
+   },
+   {
+    "type": "match",
+    "q": "Associez sigle et rôle",
+    "pairs": [
+     [
+      "CAMO",
+      "Planifie l'entretien"
+     ],
+     [
+      "Part-145",
+      "Réalise les travaux"
+     ],
+     [
+      "ARC",
+      "Certificat annuel de navigabilité"
+     ],
+     [
+      "AOC",
+      "Autorisation d'exploiter commercialement"
+     ]
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "Le CAMO fait lui-même les réparations.",
+    "a": false
+   },
+   {
+    "type": "mcq",
+    "q": "À quelle fréquence minimale le programme d'entretien est-il revu ?",
+    "opts": [
+     "Tous les 10 ans",
+     "Une fois par an",
+     "Jamais",
+     "Tous les jours"
+    ],
+    "a": 1
+   },
+   {
+    "type": "mcq",
+    "q": "Un avion à réaction, en Europe, est-il un aéronef à motorisation complexe ?",
+    "opts": [
+     "Oui",
+     "Non",
+     "Seulement s'il est neuf",
+     "Seulement s'il est chinois"
+    ],
+    "a": 0
+   },
+   {
+    "type": "write",
+    "q": "Expliquez la différence entre un CAMO et une organisation Part-145.",
+    "keys": [
+     "planifi|suivi|gère|programme",
+     "atelier|répar|travaux|signe|physique"
+    ],
+    "model": "Le CAMO planifie et suit l'entretien et la navigabilité, alors que l'organisation Part-145 est l'atelier qui réalise les travaux et les signe.",
+    "min": 2
+   }
+  ]
+ },
+ {
+  "id": "m2",
+  "title": "Programmes d'entretien : heures, cycles, calendrier",
+  "sub": "Pourquoi l'entretien pèse sur le prix",
+  "min": 14,
+  "conf": "check",
+  "src": [
+   [
+    "JSSI : programmes moteur",
+    "https://jetsupport.com/maintenance-programs/engine/"
+   ],
+   [
+    "AOPA : faut-il un programme d'entretien moteur ?",
+    "https://www.aopa.org/news-and-media/all-news/2026/february/pilot/turbine-airways-do-you-need-an-engine-maintenance-plan"
+   ],
+   [
+    "AvBuyer : programmes d'entretien à l'heure",
+    "https://AvBuyer.com/articles/maintenance-repair-overhaul/hourly-maintenance-programs-getting-value-for-money-113498"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "L'entretien d'un jet n'attend pas une panne : il suit un programme avec des échéances. Chaque échéance se mesure en trois « horloges ».",
+    "label": "L'idée"
+   },
+   {
+    "t": "Les échéances de travaux se comptent généralement en heures de vol, en cycles (un cycle = un décollage et un atterrissage) et en mois (calendrier). La première limite atteinte déclenche le travail.",
+    "label": "Heures, cycles, calendrier",
+    "callout": [
+     "tip",
+     "Un avion qui fait beaucoup de courts vols use plus de cycles que d'heures."
+    ]
+   },
+   {
+    "t": "Les moteurs sont la plus grosse dépense. Une règle pratique citée : une révision coûte environ un tiers à la moitié du prix d'un moteur neuf.",
+    "label": "Le poids du moteur"
+   },
+   {
+    "t": "Pour lisser ce risque, beaucoup d'exploitants prennent un programme d'entretien à l'heure : ils paient un tarif par heure volée, et le fournisseur prend en charge les travaux couverts.",
+    "label": "Les programmes à l'heure"
+   },
+   {
+    "t": "Le principe existe depuis les années 1960 (Rolls-Royce). Honeywell a lancé son programme MSP en 1976. Il existe des programmes constructeurs (MSP, GE OnPoint) et des programmes indépendants comme JSSI.",
+    "label": "Qui les propose"
+   },
+   {
+    "t": "JSSI propose des formules : moteur seul, ou Tip-to-Tail qui ajoute cellule et APU. Les prêteurs exigent souvent un programme dans les contrats de financement.",
+    "label": "Quelles formules"
+   },
+   {
+    "t": "Un avion avec un programme à jour est plus simple à revendre. Pour un opérateur, cela rend aussi ses coûts plus prévisibles.",
+    "label": "Pourquoi c'est utile"
+   },
+   {
+    "t": "Entretien programmé = avion indisponible à des dates connues. Entretien imprévu = changement d'appareil possible. Les provisions entretien sont intégrées dans le tarif horaire.",
+    "label": "Impact pour un courtier"
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Que mesure-t-on par un cycle ?",
+    "opts": [
+     "Un décollage et un atterrissage",
+     "Une heure de vol",
+     "Un mois",
+     "Un plein"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Les trois horloges d'un programme d'entretien sont…",
+    "opts": [
+     "Heures, cycles, calendrier",
+     "Euros, dollars, livres",
+     "Pistes, slots, FBO",
+     "Équipage, passagers, bagages"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "La première limite atteinte (heures, cycles ou calendrier) déclenche le travail.",
+    "a": true
+   },
+   {
+    "type": "mcq",
+    "q": "Un avion qui fait beaucoup de vols très courts use surtout…",
+    "opts": [
+     "Des cycles",
+     "Des mois",
+     "Du carburant seul",
+     "Rien"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Que fait un programme d'entretien à l'heure ?",
+    "opts": [
+     "Lisse le coût d'entretien par un tarif horaire",
+     "Supprime l'entretien",
+     "Remplace l'AOC",
+     "Fixe le prix du billet"
+    ],
+    "a": 0
+   },
+   {
+    "type": "match",
+    "q": "Associez programme et fournisseur",
+    "pairs": [
+     [
+      "MSP",
+      "Honeywell"
+     ],
+     [
+      "OnPoint",
+      "GE"
+     ],
+     [
+      "Tip-to-Tail",
+      "JSSI"
+     ],
+     [
+      "Engine-only",
+      "JSSI"
+     ]
+    ]
+   },
+   {
+    "type": "num",
+    "q": "Moteur neuf à 3 000 000 €. Une révision coûte un tiers à la moitié de ce prix. Montant minimum de la révision ?",
+    "a": 1000000,
+    "tol": 1000,
+    "unit": "€",
+    "why": "3 000 000 ÷ 3 = 1 000 000 €."
+   },
+   {
+    "type": "tf",
+    "q": "Un avion avec un programme d'entretien à jour est en général plus simple à revendre.",
+    "a": true
+   },
+   {
+    "type": "mcq",
+    "q": "Pourquoi un courtier doit-il connaître les échéances d'entretien d'un avion ?",
+    "opts": [
+     "Elles peuvent rendre un appareil indisponible",
+     "Elles fixent le menu du catering",
+     "Elles changent la piste",
+     "Aucune raison"
+    ],
+    "a": 0
+   },
+   {
+    "type": "write",
+    "q": "Expliquez pourquoi l'entretien est intégré dans le tarif horaire d'un charter.",
+    "keys": [
+     "provision|réserve|coût|moteur|entretien",
+     "heure|vol|prévisible|programme"
+    ],
+    "model": "Chaque heure volée use l'avion et rapproche une échéance d'entretien. L'opérateur met donc de l'argent de côté par heure, ce qui se retrouve dans le tarif.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "m3",
+  "title": "Panne, MEL et AOG",
+  "sub": "Quand un avion ne peut pas partir",
+  "min": 12,
+  "conf": "check",
+  "src": [
+   [
+    "AvBuyer : les MEL des jets d'affaires",
+    "https://www.avbuyer.com/articles/flight-dept-mgt/bizjet-minimum-equipment-lists-why-they-re-important-113009"
+   ],
+   [
+    "AOPA : « inop » et équipements en panne",
+    "https://aopa.org/news-and-media/all-news/2024/may/pilot/mentor-matters-inop"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Une panne ne veut pas toujours dire « pas de vol ». Certaines pannes sont autorisées, sous conditions. D'autres clouent l'avion au sol.",
+    "label": "L'idée"
+   },
+   {
+    "t": "La MMEL (Master Minimum Equipment List) est la liste de référence du constructeur : elle indique quels équipements peuvent être en panne sans empêcher le vol. L'opérateur en tire sa MEL, approuvée par l'autorité, qui est aussi stricte ou plus.",
+    "label": "MMEL et MEL"
+   },
+   {
+    "t": "Une panne tolérée comporte des conditions : procédures d'équipage, placardage de l'équipement, restrictions d'exploitation et délai de réparation.",
+    "label": "Les conditions"
+   },
+   {
+    "t": "D'autres listes complètent la MEL : la CDL (Configuration Deviation List) pour des pièces manquantes, et la NEF (Non-Essential Furnishings) pour des éléments de confort.",
+    "label": "CDL et NEF"
+   },
+   {
+    "t": "En aviation d'affaires, les horaires sont souples : on répare souvent avant de partir. La MEL sert surtout à ramener l'avion à sa base depuis un lieu éloigné.",
+    "label": "Usage en aviation d'affaires"
+   },
+   {
+    "t": "AOG (Aircraft On Ground) désigne un avion qui ne peut pas partir légalement ni sûrement dans son état. Le terme s'applique aussi à une pièce détachée urgente.",
+    "label": "AOG"
+   },
+   {
+    "t": "Quand votre avion devient AOG : trouver un appareil de remplacement équivalent, prévenir le client, vérifier les conditions du contrat et le prix. Une bonne réponse rapide fidélise.",
+    "label": "Votre réaction de courtier",
+    "bullets": [
+     "Informer le client sans attendre",
+     "Proposer un appareil équivalent",
+     "Comparer prix, cabine, autonomie",
+     "Confirmer l'AOC de l'opérateur de remplacement",
+     "Rédiger les nouvelles conditions"
+    ]
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Que signifie AOG ?",
+    "opts": [
+     "Aircraft On Ground",
+     "Air Operations Group",
+     "Annual Overhaul Guide",
+     "Airport Operations Gate"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Que contient une MEL ?",
+    "opts": [
+     "La liste des équipements qui peuvent être en panne sous conditions",
+     "La liste des passagers",
+     "Le tarif du charter",
+     "Les slots"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Toute panne empêche automatiquement le vol.",
+    "a": false
+   },
+   {
+    "type": "match",
+    "q": "Associez liste et rôle",
+    "pairs": [
+     [
+      "MMEL",
+      "Liste de référence du constructeur"
+     ],
+     [
+      "MEL",
+      "Liste de l'opérateur, approuvée"
+     ],
+     [
+      "CDL",
+      "Pièces manquantes"
+     ],
+     [
+      "NEF",
+      "Éléments de confort non essentiels"
+     ]
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "À quoi sert surtout la MEL en aviation d'affaires ?",
+    "opts": [
+     "À ramener l'avion à sa base pour réparation",
+     "À choisir le menu",
+     "À fixer le prix",
+     "À remplacer l'AOC"
+    ],
+    "a": 0
+   },
+   {
+    "type": "order",
+    "q": "Que faites-vous quand un avion devient AOG avant un départ client ?",
+    "items": [
+     "Informer le client",
+     "Trouver un appareil équivalent",
+     "Comparer prix et cabine",
+     "Confirmer l'AOC de l'opérateur",
+     "Mettre à jour le contrat"
+    ],
+    "why": "On informe d'abord : la transparence rassure."
+   },
+   {
+    "type": "tf",
+    "q": "AOG s'applique aussi à une pièce détachée urgente.",
+    "a": true
+   },
+   {
+    "type": "mcq",
+    "q": "Votre client part dans 4 heures et son avion est AOG. Premier réflexe ?",
+    "opts": [
+     "L'informer immédiatement et chercher un remplacement",
+     "Attendre",
+     "Annuler sans prévenir",
+     "Baisser le prix"
+    ],
+    "a": 0
+   },
+   {
+    "type": "write",
+    "q": "Écrivez un court message à un client dont l'avion est AOG.",
+    "keys": [
+     "désolé|regret|malheureusement|informe",
+     "remplacement|solution|appareil|alternative|équivalent"
+    ],
+    "model": "Bonjour, malheureusement l'appareil prévu est immobilisé. Je cherche immédiatement un avion équivalent et reviens vers vous dans l'heure avec une proposition.",
+    "min": 1
+   }
+  ]
+ }
+]

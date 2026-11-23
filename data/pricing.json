@@ -1,0 +1,898 @@
+[
+ {
+  "id": "p1",
+  "title": "D'où vient le taux horaire ?",
+  "sub": "Coûts variables, coûts fixes, marge",
+  "min": 12,
+  "conf": "check",
+  "src": [
+   [
+    "Clay Lacy : coûts d'exploitation d'un jet d'affaires",
+    "https://www.claylacy.com/company/news-views/aircraft-management/business-jet-operating-costs/"
+   ],
+   [
+    "Blade : coût horaire d'un jet privé",
+    "https://www.blade.com/private-jet-cost-per-hour"
+   ],
+   [
+    "Travel Market Report : combien coûte un jet privé",
+    "https://www.travelmarketreport.com/air/articles/how-much-does-it-cost-to-rent-a-private-jet-a-breakdown-for-luxury-travel-advisors"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Le taux horaire est le prix facturé pour une heure de vol. L'opérateur doit y récupérer ses coûts et dégager une marge.",
+    "label": "L'idée"
+   },
+   {
+    "t": "Un avion a deux familles de coûts : ceux qui dépendent des heures volées (variables) et ceux qu'on paie même s'il ne vole pas (fixes).",
+    "label": "Deux familles",
+    "table": [
+     [
+      "Variables (par heure de vol)",
+      "Carburant · entretien (pièces, main-d'œuvre) · provisions moteur · APU · divers"
+     ],
+     [
+      "Fixes (par an)",
+      "Équipage (salaires, formation) · hangar · assurance · abonnements et données · gestion"
+     ]
+    ]
+   },
+   {
+    "t": "Le carburant est le premier poste variable. Il se calcule : prix du carburant × consommation par heure. Plus l'avion est grand, plus la consommation est forte.",
+    "label": "Le carburant"
+   },
+   {
+    "t": "Les provisions moteur (engine reserves) mettent de l'argent de côté à chaque heure pour la future révision des moteurs, une des plus grosses dépenses d'un jet.",
+    "label": "Les provisions"
+   },
+   {
+    "t": "Les coûts fixes se répartissent sur les heures volées. Coûts fixes ÷ heures par an = coût fixe par heure. Un avion qui vole peu coûte donc plus cher à l'heure.",
+    "label": "Pourquoi le volume compte",
+    "callout": [
+     "key",
+     "Exemple : 600 000 € de coûts fixes. À 300 h/an, cela fait 2 000 € par heure. À 150 h/an, 4 000 € par heure."
+    ]
+   },
+   {
+    "t": "Les sources commerciales donnent des ordres de grandeur très variables et se contredisent. Retenez des fourchettes, jamais un chiffre unique.",
+    "label": "Ordres de grandeur (indicatifs, en dollars)",
+    "table": [
+     [
+      "Charter · light",
+      "≈ 2 500 à 5 500 $ par heure"
+     ],
+     [
+      "Charter · midsize",
+      "≈ 4 000 à 8 500 $ par heure"
+     ],
+     [
+      "Charter · super-midsize",
+      "≈ 5 500 à 12 000 $ par heure"
+     ],
+     [
+      "Charter · large cabin",
+      "≈ 8 000 à 18 000 $ par heure"
+     ],
+     [
+      "Coût d'exploitation · midsize",
+      "≈ 1 800 à 3 200 $ par heure"
+     ],
+     [
+      "Coût d'exploitation · large",
+      "≈ 3 000 à 5 000 $ et plus par heure"
+     ]
+    ]
+   },
+   {
+    "t": "Le coût d'exploitation (ce que l'avion coûte) et le tarif charter (ce que paie le client) ne sont pas comparables. Le tarif doit aussi couvrir les coûts fixes, les vols à vide et la marge.",
+    "callout": [
+     "warn",
+     "Ne jamais écrire « il coûte 3 000 € de l'heure à l'opérateur donc je négocie sur cette base » : le client paie un service, pas un coût."
+    ]
+   },
+   {
+    "t": "Le taux varie selon le modèle, l'âge de l'avion, le pays, la saison, la disponibilité et l'opérateur.",
+    "label": "Pourquoi deux taux diffèrent",
+    "bullets": [
+     "Modèle et âge de l'appareil",
+     "Coûts du pays de base (salaires, taxes)",
+     "Saison haute ou basse, événements",
+     "Niveau de service et de sécurité (audits)"
+    ]
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Quel est en général le premier poste de coût variable ?",
+    "opts": [
+     "Le carburant",
+     "Le hangar",
+     "L'assurance",
+     "Le salaire des pilotes"
+    ],
+    "a": 0,
+    "why": "Le carburant dépend directement des heures volées et arrive en tête des coûts variables."
+   },
+   {
+    "type": "mcq",
+    "q": "Lequel est un coût fixe ?",
+    "opts": [
+     "Le carburant",
+     "Les provisions moteur",
+     "L'assurance",
+     "Le catering"
+    ],
+    "a": 2,
+    "why": "L'assurance se paie même si l'avion ne vole pas."
+   },
+   {
+    "type": "num",
+    "q": "Coûts fixes : 600 000 € par an. L'avion vole 300 heures. Quel est le coût fixe par heure ?",
+    "a": 2000,
+    "tol": 0.5,
+    "unit": "€/h",
+    "why": "600 000 ÷ 300 = 2 000 €."
+   },
+   {
+    "type": "num",
+    "q": "Mêmes coûts fixes (600 000 €), mais l'avion ne vole que 150 heures. Coût fixe par heure ?",
+    "a": 4000,
+    "tol": 0.5,
+    "unit": "€/h",
+    "why": "Moins d'heures, donc chaque heure porte plus de coûts fixes."
+   },
+   {
+    "type": "match",
+    "q": "Associez chaque dépense à sa famille",
+    "pairs": [
+     [
+      "Carburant",
+      "Variable"
+     ],
+     [
+      "Hangar",
+      "Fixe"
+     ],
+     [
+      "Provisions moteur",
+      "Variable"
+     ],
+     [
+      "Salaire du pilote",
+      "Fixe"
+     ]
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "Le coût d'exploitation d'un avion est égal au tarif charter.",
+    "a": false,
+    "why": "Le tarif charter couvre aussi les coûts fixes, les vols à vide et la marge."
+   },
+   {
+    "type": "mcq",
+    "q": "Pourquoi un avion qui vole peu a-t-il un coût horaire plus élevé ?",
+    "opts": [
+     "Il consomme plus",
+     "Les coûts fixes sont répartis sur moins d'heures",
+     "Il est moins sûr",
+     "Les pilotes sont payés plus"
+    ],
+    "a": 1
+   },
+   {
+    "type": "order",
+    "q": "Remettez la construction d'un prix dans l'ordre",
+    "items": [
+     "Coûts variables",
+     "Part des coûts fixes",
+     "Marge de l'opérateur",
+     "Marge du courtier"
+    ],
+    "why": "On part des coûts, on ajoute la marge de l'opérateur, puis celle du courtier."
+   },
+   {
+    "type": "mcq",
+    "q": "Selon les ordres de grandeur du cours, quelle catégorie a en général le tarif horaire le plus élevé ?",
+    "opts": [
+     "Light",
+     "Midsize",
+     "Super-midsize",
+     "Large cabin"
+    ],
+    "a": 3
+   },
+   {
+    "type": "write",
+    "q": "Expliquez en deux phrases pourquoi deux opérateurs peuvent proposer des taux différents pour le même modèle.",
+    "keys": [
+     "coût|frais|charges",
+     "âge|base|pays|saison|service|marge|disponib"
+    ],
+    "model": "Leurs coûts fixes et variables diffèrent (pays de base, âge de l'avion, volume d'heures) et chacun fixe sa marge selon la saison et la demande.",
+    "min": 2
+   }
+  ]
+ },
+ {
+  "id": "p2",
+  "title": "Temps de vol, temps bloc et distance",
+  "sub": "La mécanique du calcul",
+  "min": 12,
+  "conf": "ok",
+  "src": [
+   [
+    "Jettly : durée de vol",
+    "https://jettly.com/post/flight-length"
+   ],
+   [
+    "BlackJet : durée de vol",
+    "https://blackjet.com/post/how-long-to-fly"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Les distances aériennes se comptent en milles nautiques (NM), les vitesses en nœuds (kt). 1 nœud = 1 NM par heure.",
+    "label": "Les unités",
+    "callout": [
+     "key",
+     "1 NM = 1,852 km. 100 NM ≈ 185 km."
+    ]
+   },
+   {
+    "t": "Temps de vol = distance ÷ vitesse sol. Exemple : 834 NM à 417 kt = 2 heures.",
+    "label": "La formule de base"
+   },
+   {
+    "t": "La vitesse sol est la vitesse de l'avion corrigée du vent : on ajoute le vent arrière, on retire le vent de face.",
+    "label": "Le vent",
+    "callout": [
+     "tip",
+     "Exemple : 600 NM, avion à 400 kt, vent de face 40 kt. Vitesse sol 360 kt. Temps = 600 ÷ 360 = 1,67 h, soit 1 h 40."
+    ]
+   },
+   {
+    "t": "Le temps bloc va du desserrage des freins au stationnement : il inclut le roulage au départ et à l'arrivée. Le temps de vol (airborne) ne compte que le temps en l'air.",
+    "label": "Temps de vol ou temps bloc ?"
+   },
+   {
+    "t": "Sur un midsize, certains exemples ajoutent 20 à 30 minutes pour le roulage et les procédures. C'est un ordre de grandeur, qui dépend de l'aéroport.",
+    "label": "Combien ajouter ?"
+   },
+   {
+    "t": "Selon les sources, ces plages de vitesse de croisière servent de repères. Elles se contredisent un peu : vérifiez la fiche de l'appareil réel.",
+    "label": "Vitesses de croisière indicatives",
+    "table": [
+     [
+      "Light",
+      "≈ 380 à 450 kt"
+     ],
+     [
+      "Midsize",
+      "≈ 420 à 490 kt"
+     ],
+     [
+      "Heavy",
+      "≈ 470 à 530 kt"
+     ]
+    ]
+   },
+   {
+    "t": "Diviser la distance directe par la vitesse de croisière est une première estimation rapide. La route réelle (couloirs aériens, contrôle) est souvent un peu plus longue.",
+    "label": "Ligne droite ≠ route réelle"
+   },
+   {
+    "t": "Certains opérateurs facturent le temps de vol, d'autres le temps bloc. Il existe aussi des minimums par jour. Posez toujours la question.",
+    "label": "Ce que dit le devis",
+    "callout": [
+     "warn",
+     "Comparer deux devis sans savoir quel temps est facturé donne une comparaison fausse."
+    ]
+   }
+  ],
+  "ex": [
+   {
+    "type": "num",
+    "q": "Un avion vole 834 NM à 417 kt. Combien d'heures en l'air ?",
+    "a": 2,
+    "tol": 0.05,
+    "unit": "h"
+   },
+   {
+    "type": "num",
+    "q": "450 NM à 450 kt, sans vent. Temps de vol en heures ?",
+    "a": 1,
+    "tol": 0.05,
+    "unit": "h"
+   },
+   {
+    "type": "num",
+    "q": "Convertissez 100 NM en kilomètres.",
+    "a": 185.2,
+    "tol": 1,
+    "unit": "km",
+    "why": "1 NM = 1,852 km."
+   },
+   {
+    "type": "num",
+    "q": "600 NM, avion à 400 kt, vent de face de 40 kt. Temps de vol en heures (arrondi au centième) ?",
+    "a": 1.67,
+    "tol": 0.03,
+    "unit": "h",
+    "why": "Vitesse sol 360 kt, 600 ÷ 360 = 1,67 h."
+   },
+   {
+    "type": "num",
+    "q": "300 NM avec une vitesse sol de 450 kt. Temps de vol en minutes ?",
+    "a": 40,
+    "tol": 1,
+    "unit": "min",
+    "why": "300 ÷ 450 = 0,667 h, soit 40 minutes."
+   },
+   {
+    "type": "tf",
+    "q": "Le temps bloc inclut le roulage.",
+    "a": true
+   },
+   {
+    "type": "mcq",
+    "q": "Un vent de face…",
+    "opts": [
+     "augmente la vitesse sol",
+     "diminue la vitesse sol",
+     "ne change rien",
+     "annule le vol"
+    ],
+    "a": 1
+   },
+   {
+    "type": "order",
+    "q": "Remettez l'estimation d'un temps de vol dans l'ordre",
+    "items": [
+     "Mesurer la distance en NM",
+     "Choisir la vitesse de croisière",
+     "Corriger du vent",
+     "Ajouter le roulage pour le temps bloc"
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Deux devis diffèrent de 30 minutes de facturation. Première question à poser ?",
+    "opts": [
+     "Le temps facturé est-il le temps de vol ou le temps bloc ?",
+     "Quelle couleur est l'avion ?",
+     "Qui est le pilote ?",
+     "Quel est le logo ?"
+    ],
+    "a": 0
+   },
+   {
+    "type": "write",
+    "q": "Pourquoi la distance directe ne suffit-elle pas pour un devis ?",
+    "keys": [
+     "route|couloir|contrôle|vent",
+     "bloc|roulage|plus long|temps"
+    ],
+    "model": "La route réelle est plus longue que la ligne droite, le vent change la vitesse sol, et le roulage s'ajoute pour le temps bloc.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "p3",
+  "title": "Construire un devis pas à pas",
+  "sub": "Cas pratique : Le Bourget → Nice",
+  "min": 15,
+  "conf": "check",
+  "src": [
+   [
+    "Evo Jets : bases des prix du charter",
+    "https://www.evojets.com/charter-flight-costs-pricing-basics/"
+   ],
+   [
+    "Travel Market Report : combien coûte un jet privé",
+    "https://www.travelmarketreport.com/air/articles/how-much-does-it-cost-to-rent-a-private-jet-a-breakdown-for-luxury-travel-advisors"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Cas fictif pour s'entraîner. Les chiffres sont inventés pour le calcul, pas des prix du marché.",
+    "label": "Le scénario",
+    "table": [
+     [
+      "Trajet",
+      "Paris-Le Bourget → Nice, aller simple"
+     ],
+     [
+      "Passagers",
+      "4 adultes, 4 valises"
+     ],
+     [
+      "Appareil",
+      "Midsize (exemple)"
+     ],
+     [
+      "Taux fictif",
+      "5 000 € par heure"
+     ]
+    ]
+   },
+   {
+    "t": "Distance directe environ 370 NM (≈ 690 km, approximatif). À 430 kt, environ 52 minutes en l'air. Avec le roulage, l'opérateur facture 1,5 h (temps bloc arrondi, hypothèse du cas).",
+    "label": "Étape 1 · le temps"
+   },
+   {
+    "t": "1,5 h × 5 000 € = 7 500 €. C'est la ligne principale du devis.",
+    "label": "Étape 2 · les heures"
+   },
+   {
+    "t": "Frais d'atterrissage et de handling : 1 600 €. Catering : 300 €. Ce sont des chiffres fictifs, qui varient beaucoup selon l'aéroport et le FBO.",
+    "label": "Étape 3 · les frais"
+   },
+   {
+    "t": "Prix net de l'opérateur : 7 500 + 1 600 + 300 = 9 400 €.",
+    "label": "Étape 4 · le net"
+   },
+   {
+    "t": "Marge du courtier ajoutée au coût : 10 %. 9 400 × 1,10 = 10 340 €. La marge est de 940 €, soit environ 9,1 % du prix de vente.",
+    "label": "Étape 5 · la marge",
+    "callout": [
+     "tip",
+     "Marge sur le coût ≠ marge sur le prix de vente : 10 % ajoutés au coût font 9,1 % du prix final."
+    ]
+   },
+   {
+    "t": "Le devis doit préciser : le temps facturé, les frais inclus ou non, la TVA (à confirmer avec l'opérateur), les conditions d'annulation et la validité de l'offre.",
+    "label": "Étape 6 · ce que le devis doit dire"
+   },
+   {
+    "t": "Si l'avion n'est pas basé au départ, ou doit repartir à vide, l'opérateur peut facturer le repositionnement. Un aller simple peut donc coûter nettement plus que la moitié d'un aller-retour.",
+    "label": "Le piège de l'aller simple",
+    "callout": [
+     "warn",
+     "Un empty leg dans le bon sens peut inverser cette logique : c'est l'intérêt des vols à vide proposés à prix réduit."
+    ]
+   }
+  ],
+  "ex": [
+   {
+    "type": "num",
+    "q": "1,5 h facturée à 5 000 € de l'heure. Montant des heures de vol ?",
+    "a": 7500,
+    "tol": 1,
+    "unit": "€"
+   },
+   {
+    "type": "num",
+    "q": "Heures 7 500 € + atterrissage et handling 1 600 € + catering 300 €. Prix net ?",
+    "a": 9400,
+    "tol": 1,
+    "unit": "€"
+   },
+   {
+    "type": "num",
+    "q": "Marge de 10 % ajoutée au coût sur un net de 9 400 €. Prix client ?",
+    "a": 10340,
+    "tol": 1,
+    "unit": "€",
+    "why": "9 400 × 1,10 = 10 340 €."
+   },
+   {
+    "type": "num",
+    "q": "La marge est de 940 € sur un prix de vente de 10 340 €. Quel pourcentage du prix de vente (une décimale) ?",
+    "a": 9.1,
+    "tol": 0.15,
+    "unit": "%",
+    "why": "940 ÷ 10 340 = 9,09 %."
+   },
+   {
+    "type": "order",
+    "q": "Remettez les étapes du devis dans l'ordre",
+    "items": [
+     "Estimer le temps facturé",
+     "Calculer les heures de vol",
+     "Ajouter les frais",
+     "Ajouter la marge",
+     "Préciser conditions et taxes"
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Un avion basé à Genève doit venir chercher le client à Paris. Que peut apparaître sur le devis ?",
+    "opts": [
+     "Un repositionnement",
+     "Rien",
+     "Une remise automatique",
+     "Un abonnement"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Un aller simple vaut toujours la moitié d'un aller-retour.",
+    "a": false,
+    "why": "Le retour à vide ou le repositionnement peut être facturé."
+   },
+   {
+    "type": "mcq",
+    "q": "Que doit toujours préciser un devis, en plus du prix ?",
+    "opts": [
+     "Le temps facturé et ce qui est inclus",
+     "La couleur de l'avion",
+     "Le nom du copilote",
+     "La météo"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Un client dit « votre concurrent est 800 € moins cher ». Premier réflexe ?",
+    "opts": [
+     "Baisser le prix tout de suite",
+     "Comparer les lignes : temps facturé, frais, taxes, appareil",
+     "Ignorer",
+     "Dire que le concurrent ment"
+    ],
+    "a": 1
+   },
+   {
+    "type": "write",
+    "q": "Rédigez deux lignes pour présenter ce devis à un client, en français professionnel.",
+    "keys": [
+     "10 340|10340|prix",
+     "inclus|taxes|annulation|validité|frais"
+    ],
+    "model": "Le vol Paris-Le Bourget – Nice en midsize pour 4 passagers est proposé à 10 340 € HT, frais d'aéroport et catering inclus. La TVA et les conditions d'annulation sont précisées ci-dessous.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "p4",
+  "title": "Frais annexes et pièges du devis",
+  "sub": "Ce qui fait grimper la facture",
+  "min": 12,
+  "conf": "check",
+  "src": [
+   [
+    "Flying Magazine : coût d'un charter",
+    "https://www.flyingmag.com/guides/private-jet-charter-cost/"
+   ],
+   [
+    "Travel Market Report : combien coûte un jet privé",
+    "https://www.travelmarketreport.com/air/articles/how-much-does-it-cost-to-rent-a-private-jet-a-breakdown-for-luxury-travel-advisors"
+   ],
+   [
+    "Evo Jets : bases des prix du charter",
+    "https://www.evojets.com/charter-flight-costs-pricing-basics/"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Le prix final d'un charter est souvent supérieur au taux horaire de base. Certains guides parlent de 20 à 40 % de plus une fois les frais ajoutés. C'est un repère, pas une règle.",
+    "label": "La facture réelle",
+    "callout": [
+     "warn",
+     "Chiffre issu de pages commerciales : à utiliser comme ordre de grandeur."
+    ]
+   },
+   {
+    "t": "Les principaux frais : atterrissage, handling du FBO, parking, dégivrage, catering, carburant selon le contrat, repositionnement, nuits d'équipage, permis et survol à l'international.",
+    "label": "Les familles de frais",
+    "table": [
+     [
+      "Aéroport",
+      "Atterrissage · parking · nuit · bruit"
+     ],
+     [
+      "Sol",
+      "Handling · FBO · dégivrage · sûreté"
+     ],
+     [
+      "Équipage",
+      "Hôtel · repas · minimum journalier"
+     ],
+     [
+      "Vol",
+      "Repositionnement · surtaxe carburant"
+     ],
+     [
+      "International",
+      "Permis · survol · douane"
+     ]
+    ]
+   },
+   {
+    "t": "Minimum journalier : sur un voyage de plusieurs jours, l'opérateur peut facturer un nombre minimum d'heures par jour, même si l'avion reste au sol.",
+    "label": "Le minimum journalier"
+   },
+   {
+    "t": "Si le client reste plusieurs jours, l'équipage et l'avion restent sur place : hôtel d'équipage, parking, éventuellement un minimum d'heures facturé.",
+    "label": "Voyage avec escale"
+   },
+   {
+    "t": "Un devis comparable demande le même appareil, le même temps facturé et la même liste de frais. Sinon, vous comparez un prix et une promesse.",
+    "label": "Comparer deux offres",
+    "bullets": [
+     "Même catégorie d'avion",
+     "Même base de temps (vol ou bloc)",
+     "Mêmes frais inclus ou exclus",
+     "Mêmes conditions d'annulation"
+    ]
+   },
+   {
+    "t": "Pour éviter les mauvaises surprises : demandez la liste des frais variables, la politique carburant, et ce qui se passe en cas de changement de plan.",
+    "label": "Les bonnes questions"
+   },
+   {
+    "t": "Vendre, c'est aussi protéger le client d'une facture imprévue. Un devis tout compris et clair fidélise davantage qu'un prix très bas.",
+    "label": "Pour votre métier"
+   }
+  ],
+  "ex": [
+   {
+    "type": "num",
+    "q": "Taux de base 10 000 €. Les frais ajoutent 30 % au total. Prix final ?",
+    "a": 13000,
+    "tol": 1,
+    "unit": "€"
+   },
+   {
+    "type": "match",
+    "q": "Associez frais et famille",
+    "pairs": [
+     [
+      "Handling",
+      "Sol"
+     ],
+     [
+      "Hôtel de l'équipage",
+      "Équipage"
+     ],
+     [
+      "Atterrissage",
+      "Aéroport"
+     ],
+     [
+      "Permis de survol",
+      "International"
+     ]
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "Le taux horaire affiché est le prix total du vol.",
+    "a": false
+   },
+   {
+    "type": "mcq",
+    "q": "Que désigne un minimum journalier ?",
+    "opts": [
+     "Un nombre minimum d'heures facturé par jour",
+     "Un prix minimum du carburant",
+     "Une taxe de l'aéroport",
+     "Un tarif de nuit"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Deux devis : 18 000 € (temps bloc) et 17 000 € (temps de vol). Lequel est moins cher ?",
+    "opts": [
+     "Le second, forcément",
+     "On ne peut pas conclure sans comparer les temps facturés et les frais",
+     "Le premier",
+     "Aucun"
+    ],
+    "a": 1
+   },
+   {
+    "type": "order",
+    "q": "Quel est l'ordre logique pour comparer deux offres ?",
+    "items": [
+     "Même appareil",
+     "Même temps facturé",
+     "Mêmes frais",
+     "Prix final"
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "Un devis très bas est toujours le meilleur choix.",
+    "a": false
+   },
+   {
+    "type": "mcq",
+    "q": "Le client prolonge de 2 jours son séjour à Nice. Que revoir dans le devis ?",
+    "opts": [
+     "Minimum journalier, hôtel d'équipage, parking",
+     "La couleur de l'avion",
+     "Rien",
+     "Le prix du billet de train"
+    ],
+    "a": 0
+   },
+   {
+    "type": "write",
+    "q": "Citez trois questions à poser à l'opérateur pour comparer un devis.",
+    "keys": [
+     "temps|bloc",
+     "frais|inclus|handling|repositionnement|carburant",
+     "annulation|taxe|tva|minimum"
+    ],
+    "model": "Quel temps est facturé (vol ou bloc) ? Quels frais sont inclus ? Quelles sont les conditions d'annulation ?",
+    "min": 2
+   }
+  ]
+ },
+ {
+  "id": "p5",
+  "title": "Posséder ou affréter : le vrai coût",
+  "sub": "Combien coûte vraiment un avion",
+  "min": 14,
+  "conf": "check",
+  "src": [
+   [
+    "Clay Lacy : coûts d'exploitation d'un jet d'affaires",
+    "https://www.claylacy.com/company/news-views/aircraft-management/business-jet-operating-costs/"
+   ],
+   [
+    "AOPA : estimer les coûts d'exploitation directs et provisions",
+    "https://aopa.org/go-fly/aircraft-and-ownership/buying-an-aircraft/tips-on-buying-used-aircraft/guidelines-for-estimating-direct-operating-costs-and-reserves"
+   ],
+   [
+    "Blade : coût horaire d'un jet privé",
+    "https://www.blade.com/private-jet-cost-per-hour"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Posséder un jet coûte bien plus que son prix d'achat. Il faut ajouter la perte de valeur, les coûts fixes annuels et les coûts par heure.",
+    "label": "Les trois blocs de coûts",
+    "table": [
+     [
+      "Capital",
+      "Achat, financement, dépréciation (perte de valeur)"
+     ],
+     [
+      "Fixes annuels",
+      "Équipage, hangar, assurance, gestion"
+     ],
+     [
+      "Variables",
+      "Carburant, entretien, provisions moteur"
+     ]
+    ]
+   },
+   {
+    "t": "Des sources commerciales citent des ordres de grandeur très larges : de 200 000 à 400 000 $ par an et par pilote, et 50 000 à 150 000 $ de hangar. Ce sont des fourchettes, pas des tarifs.",
+    "label": "Ordres de grandeur",
+    "callout": [
+     "warn",
+     "À prendre avec prudence : ces sources vendent des services de gestion."
+    ]
+   },
+   {
+    "t": "Le seuil de rentabilité (breakeven) donne le nombre d'heures au-delà duquel posséder devient moins cher qu'affréter. Seuil = coûts fixes ÷ (tarif charter − coût variable par heure).",
+    "label": "Le seuil de rentabilité"
+   },
+   {
+    "t": "Exemple fictif : coûts fixes 900 000 € par an. Coût variable 2 500 € par heure. Tarif charter équivalent 6 000 € par heure. Seuil = 900 000 ÷ (6 000 − 2 500) ≈ 257 heures par an.",
+    "label": "Calcul",
+    "callout": [
+     "tip",
+     "Ce calcul simplifié ignore la dépréciation de l'avion et le capital immobilisé : en pratique, le seuil réel est plus haut."
+    ]
+   },
+   {
+    "t": "Entre l'affrètement ponctuel et la propriété complète, il y a la carte d'heures prépayées et la propriété fractionnée (fractional), qui partagent les coûts.",
+    "label": "Les voies intermédiaires"
+   },
+   {
+    "t": "Un propriétaire peut aussi mettre son avion en charter sous l'AOC d'un opérateur : le revenu compense une partie des coûts, mais l'avion n'est pas toujours disponible.",
+    "label": "Le charter de l'avion du propriétaire"
+   },
+   {
+    "t": "Votre rôle de courtier : aider le client à comprendre son vrai besoin d'heures avant qu'il n'achète. Un bon conseil vaut plus qu'une vente rapide.",
+    "label": "Pour votre métier"
+   }
+  ],
+  "ex": [
+   {
+    "type": "num",
+    "q": "Coûts fixes 900 000 €/an, coût variable 2 500 €/h, tarif charter 6 000 €/h. Seuil de rentabilité en heures par an ?",
+    "a": 257,
+    "tol": 2,
+    "unit": "h",
+    "why": "900 000 ÷ 3 500 ≈ 257 heures."
+   },
+   {
+    "type": "mcq",
+    "q": "Que ne comprend pas le calcul simplifié du seuil de rentabilité ?",
+    "opts": [
+     "La dépréciation et le capital immobilisé",
+     "Le carburant",
+     "Le tarif charter",
+     "Les heures"
+    ],
+    "a": 0
+   },
+   {
+    "type": "match",
+    "q": "Associez chaque coût à son bloc",
+    "pairs": [
+     [
+      "Dépréciation",
+      "Capital"
+     ],
+     [
+      "Hangar",
+      "Fixes annuels"
+     ],
+     [
+      "Carburant",
+      "Variables"
+     ],
+     [
+      "Assurance",
+      "Fixes annuels"
+     ]
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "Posséder un jet coûte seulement son prix d'achat.",
+    "a": false
+   },
+   {
+    "type": "mcq",
+    "q": "Un client vole 40 heures par an, de façon irrégulière. Que proposer d'abord ?",
+    "opts": [
+     "Acheter un avion",
+     "Charter ou carte d'heures",
+     "Fractional haut de gamme",
+     "Rien"
+    ],
+    "a": 1,
+    "why": "À faible volume, la propriété complète est rarement rentable."
+   },
+   {
+    "type": "mcq",
+    "q": "Pour quel profil le fractional ou la propriété deviennent-ils plus intéressants ?",
+    "opts": [
+     "Peu d'heures irrégulières",
+     "Volume élevé et régulier",
+     "Un seul voyage",
+     "Un enfant"
+    ],
+    "a": 1
+   },
+   {
+    "type": "tf",
+    "q": "Mettre un avion en charter garantit sa disponibilité permanente.",
+    "a": false,
+    "why": "L'avion peut être loué : le propriétaire peut ne pas l'avoir quand il le souhaite."
+   },
+   {
+    "type": "num",
+    "q": "Coûts fixes 600 000 €/an, variable 2 000 €/h, charter 5 000 €/h. Seuil en heures par an ?",
+    "a": 200,
+    "tol": 1,
+    "unit": "h",
+    "why": "600 000 ÷ 3 000 = 200 heures."
+   },
+   {
+    "type": "write",
+    "q": "Un prospect veut acheter un jet pour 60 heures par an. Que lui répondez-vous en deux phrases ?",
+    "keys": [
+     "heures|volume|seuil|rentab",
+     "charter|carte|fractional|calcul|comparer"
+    ],
+    "model": "À 60 heures par an, la propriété complète est rarement rentable. Comparons ensemble charter, carte d'heures et fractional sur vos besoins réels.",
+    "min": 1
+   }
+  ]
+ }
+]
