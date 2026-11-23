@@ -1,0 +1,566 @@
+[
+ {
+  "id": "r1",
+  "title": "Lire une immatriculation",
+  "sub": "Préfixe, suffixe et nationalité d'un avion",
+  "min": 12,
+  "conf": "check",
+  "src": [
+   [
+    "OACI : marques de nationalité et d'immatriculation (Annexe 7)",
+    "https://www.icao.int/safety/airnavigation/pages/nationality.aspx"
+   ],
+   [
+    "FAA : numéros N spéciaux et frais",
+    "https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/special_nnumbers/"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Chaque avion porte sur le fuselage une immatriculation unique, comme une plaque de voiture. Elle apparaît sur tous les documents et dans les bases de données.",
+    "label": "L'idée"
+   },
+   {
+    "t": "Une immatriculation a deux parties : la marque de nationalité (le préfixe) et la marque d'immatriculation (le suffixe). Exemple de forme : F-ABCD.",
+    "label": "Deux parties"
+   },
+   {
+    "t": "Le préfixe n'est pas choisi au hasard. Il vient des premiers symboles de l'indicatif radio attribué au pays par l'UIT. Les États notifient l'OACI, qui publie la liste deux fois par an.",
+    "label": "D'où vient le préfixe"
+   },
+   {
+    "t": "Le suffixe compte de 1 à 5 caractères, chiffres ou lettres selon le pays. Un tiret sépare en général les deux parties. Exception notable : les États-Unis, où N est suivi directement du numéro, sans tiret.",
+    "label": "Le suffixe"
+   },
+   {
+    "t": "Quelques préfixes courants (liste officielle : OACI).",
+    "label": "Exemples",
+    "table": [
+     [
+      "F-",
+      "France"
+     ],
+     [
+      "G-",
+      "Royaume-Uni"
+     ],
+     [
+      "D-",
+      "Allemagne"
+     ],
+     [
+      "HB-",
+      "Suisse"
+     ],
+     [
+      "N",
+      "États-Unis (sans tiret)"
+     ],
+     [
+      "OO-",
+      "Belgique"
+     ],
+     [
+      "LX-",
+      "Luxembourg"
+     ],
+     [
+      "9H-",
+      "Malte"
+     ],
+     [
+      "M-",
+      "Île de Man"
+     ],
+     [
+      "VP-B / VP-C",
+      "Bermudes / Îles Caïmans"
+     ],
+     [
+      "T7-",
+      "Saint-Marin"
+     ],
+     [
+      "A6-",
+      "Émirats arabes unis"
+     ]
+    ]
+   },
+   {
+    "t": "Un avion ne peut être immatriculé que dans un seul État à la fois (Convention de Chicago, article 18). Quand il change de pays, il est radié d'un registre puis inscrit dans l'autre.",
+    "label": "Une seule nationalité à la fois"
+   },
+   {
+    "t": "Chaque avion reçoit aussi une adresse OACI de 24 bits, liée à son État d'immatriculation. C'est ce code, différent de l'immatriculation, que les transpondeurs et les sites de suivi utilisent.",
+    "label": "L'adresse Mode S"
+   },
+   {
+    "t": "Les marques communes sont une catégorie à part : elles servent à des organismes d'exploitation internationaux, et permettent d'immatriculer des avions sur une base non nationale.",
+    "label": "Le cas des marques communes"
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "De quoi se compose une immatriculation ?",
+    "opts": [
+     "Un préfixe de nationalité et un suffixe",
+     "Un numéro de série et une date",
+     "Un code postal",
+     "Le nom du propriétaire"
+    ],
+    "a": 0
+   },
+   {
+    "type": "match",
+    "q": "Associez préfixe et pays",
+    "pairs": [
+     [
+      "F-",
+      "France"
+     ],
+     [
+      "HB-",
+      "Suisse"
+     ],
+     [
+      "G-",
+      "Royaume-Uni"
+     ],
+     [
+      "D-",
+      "Allemagne"
+     ]
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Quel pays écrit son immatriculation sans tiret ?",
+    "opts": [
+     "France",
+     "États-Unis",
+     "Suisse",
+     "Belgique"
+    ],
+    "a": 1
+   },
+   {
+    "type": "mcq",
+    "q": "D'où viennent les préfixes de nationalité ?",
+    "opts": [
+     "Des premiers symboles de l'indicatif radio attribué par l'UIT",
+     "D'un tirage au sort",
+     "Du constructeur",
+     "Du propriétaire"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Un avion peut être immatriculé dans deux pays en même temps.",
+    "a": false,
+    "why": "Convention de Chicago, article 18 : une seule immatriculation valide à la fois."
+   },
+   {
+    "type": "mcq",
+    "q": "À quoi sert l'adresse Mode S de 24 bits ?",
+    "opts": [
+     "À l'identification par transpondeur et au suivi du vol",
+     "À payer les taxes",
+     "À réserver un slot",
+     "À décorer l'avion"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Un avion immatriculé « M- » est enregistré dans…",
+    "opts": [
+     "L'Île de Man",
+     "Malte",
+     "Monaco",
+     "Le Mexique"
+    ],
+    "a": 0,
+    "why": "Attention : Malte est 9H-, Île de Man est M-."
+   },
+   {
+    "type": "mcq",
+    "q": "Un avion « 9H-ABC » est immatriculé à…",
+    "opts": [
+     "Malte",
+     "Mexique",
+     "Maroc",
+     "Monaco"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "L'immatriculation et l'adresse de 24 bits sont la même chose.",
+    "a": false
+   },
+   {
+    "type": "write",
+    "q": "Expliquez en deux phrases ce que signifie le préfixe d'une immatriculation.",
+    "keys": [
+     "pays|nation|état",
+     "registre|immatricul|indicatif|origine"
+    ],
+    "model": "Le préfixe indique le pays où l'avion est immatriculé. Il vient des premiers symboles de l'indicatif radio attribué à cet État.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "r2",
+  "title": "Le choix du registre",
+  "sub": "Pourquoi certains jets sont immatriculés ailleurs",
+  "min": 14,
+  "conf": "check",
+  "src": [
+   [
+    "IQEQ : où immatriculer un jet d'affaires",
+    "https://iqeq.com/ch/insights/where-should-business-jet-owners-register-their-aircraft/"
+   ],
+   [
+    "AvBuyer : choisir un registre d'immatriculation",
+    "https://www.avbuyer.com/articles/aircraft-ownership/what-to-consider-when-choosing-an-aircraft-registry-112244"
+   ],
+   [
+    "OACI : marques de nationalité et d'immatriculation (Annexe 7)",
+    "https://www.icao.int/safety/airnavigation/pages/nationality.aspx"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Un propriétaire peut choisir parmi plusieurs registres. Les raisons sont souvent pratiques ou fiscales, et jamais seulement « offshore » au sens de cacher quelque chose.",
+    "label": "L'idée"
+   },
+   {
+    "t": "Les arguments cités par les cabinets spécialisés :",
+    "label": "Les raisons du choix",
+    "bullets": [
+     "Flexibilité d'équipage : un registre peut accepter des pilotes certifiés par plusieurs autorités",
+     "Discrétion sur le propriétaire (selon le registre)",
+     "Fiscalité (selon la juridiction)",
+     "Rapidité de traitement des dossiers",
+     "Coûts de certification parfois plus bas"
+    ]
+   },
+   {
+    "t": "Le registre de l'Île de Man (M-) est souvent cité pour sa flexibilité d'équipage. Les Bermudes (VP-B, VQ-B) sont associées à la discrétion. Saint-Marin (T7-) permet à certains propriétaires étrangers de s'immatriculer via un représentant local.",
+    "label": "Exemples cités"
+   },
+   {
+    "t": "Tous les registres n'autorisent pas le charter. D'après les sources citées, les avions des registres de l'Île de Man et des Îles Caïmans ne peuvent pas être utilisés en charter, alors que ceux de Guernesey et de Malte le peuvent.",
+    "label": "Registre et charter",
+    "callout": [
+     "warn",
+     "À vérifier registre par registre : les règles évoluent."
+    ]
+   },
+   {
+    "t": "Malte appartient à l'Union européenne. Son registre est souvent décrit comme européen avec certains avantages d'un registre étranger.",
+    "label": "Le cas de Malte"
+   },
+   {
+    "t": "L'État d'immatriculation et l'État de l'exploitant ne sont pas toujours les mêmes. Un avion immatriculé à Malte peut être exploité par un opérateur titulaire d'un AOC d'un autre pays.",
+    "label": "Registre ≠ opérateur",
+    "callout": [
+     "key",
+     "Pour vendre un vol, vérifiez l'AOC de l'opérateur, pas seulement l'immatriculation de l'avion."
+    ]
+   },
+   {
+    "t": "Pour exploiter des vols commerciaux vers l'Union européenne, un opérateur d'un pays tiers a en général besoin d'une autorisation spécifique (TCO) délivrée par l'AESA.",
+    "label": "Opérateurs hors UE",
+    "callout": [
+     "tip",
+     "Texte à consulter : règlement (UE) n° 452/2014. À vérifier avant toute vente concernant un opérateur hors UE."
+    ]
+   },
+   {
+    "t": "Les États-Unis (immatriculation N) imposent des conditions de propriété. Les non-Américains passent souvent par une structure juridique spécifique (trust).",
+    "label": "Le registre américain"
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Une raison souvent citée pour choisir un registre étranger ?",
+    "opts": [
+     "Flexibilité d'équipage",
+     "Un avion plus rapide",
+     "Un carburant moins cher",
+     "Une cabine plus grande"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Un avion immatriculé « M- » peut-il être utilisé en charter selon les sources du cours ?",
+    "opts": [
+     "Non",
+     "Oui, toujours",
+     "Seulement la nuit",
+     "Seulement en été"
+    ],
+    "a": 0,
+    "why": "Selon les sources citées, les registres de l'Île de Man et des Caïmans n'autorisent pas le charter."
+   },
+   {
+    "type": "match",
+    "q": "Associez registre et préfixe",
+    "pairs": [
+     [
+      "Malte",
+      "9H-"
+     ],
+     [
+      "Île de Man",
+      "M-"
+     ],
+     [
+      "Saint-Marin",
+      "T7-"
+     ],
+     [
+      "Bermudes",
+      "VP-B"
+     ]
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "L'immatriculation d'un avion suffit à prouver que le vol est légal en charter.",
+    "a": false,
+    "why": "Il faut vérifier l'AOC de l'opérateur et son autorisation."
+   },
+   {
+    "type": "mcq",
+    "q": "Que vérifie un courtier avant de vendre un vol ?",
+    "opts": [
+     "L'AOC et l'autorisation de l'opérateur",
+     "La couleur du fuselage",
+     "Le nom du constructeur",
+     "Rien"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Pourquoi Malte est-il un cas particulier ?",
+    "opts": [
+     "Il appartient à l'Union européenne",
+     "Il n'a pas d'avions",
+     "Il interdit le charter",
+     "Il est un pays tiers"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Un opérateur hors UE peut toujours opérer des vols commerciaux vers l'UE sans autorisation.",
+    "a": false,
+    "why": "Une autorisation de type TCO est en général nécessaire (règlement UE 452/2014, à vérifier)."
+   },
+   {
+    "type": "match",
+    "q": "Associez situation et réflexe",
+    "pairs": [
+     [
+      "Client demande un avion M-",
+      "Vérifier si le charter est autorisé"
+     ],
+     [
+      "Opérateur hors UE",
+      "Vérifier l'autorisation TCO"
+     ],
+     [
+      "Avion de Malte",
+      "Vérifier l'AOC de l'exploitant"
+     ]
+    ]
+   },
+   {
+    "type": "write",
+    "q": "Un client veut affréter un avion immatriculé aux Caïmans. Que répondez-vous ?",
+    "keys": [
+     "vérif|contrôle|confirm",
+     "charter|aoc|opérateur|registre"
+    ],
+    "model": "Je vérifie d'abord si ce registre autorise le charter et quel opérateur détient l'AOC, avant de vous confirmer.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "r3",
+  "title": "Coûts et démarches d'immatriculation",
+  "sub": "Frais officiels, vrais coûts et pièges",
+  "min": 12,
+  "conf": "check",
+  "src": [
+   [
+    "FAA : numéros N spéciaux et frais",
+    "https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/special_nnumbers/"
+   ],
+   [
+    "AOPA : immatriculation et ré-immatriculation",
+    "https://www.aopa.org/go-fly/aircraft-and-ownership/buying-an-aircraft/aircraft-registration-and-re-registration"
+   ],
+   [
+    "14 CFR 47.15 : numéros d'immatriculation (Cornell LII)",
+    "https://www.law.cornell.edu/cfr/text/14/47.15"
+   ],
+   [
+    "Ministère de la Transition écologique : immatriculation des aéronefs",
+    "https://www.ecologie.gouv.fr/politiques-publiques/immatriculation-aeronefs"
+   ],
+   [
+    "IQEQ : où immatriculer un jet d'affaires",
+    "https://iqeq.com/ch/insights/where-should-business-jet-owners-register-their-aircraft/"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Immatriculer un avion ne coûte presque rien en frais officiels. Les vrais coûts viennent de la structure juridique, de la navigabilité et de l'assurance.",
+    "label": "L'idée"
+   },
+   {
+    "t": "Aux États-Unis, la FAA affiche des frais très bas : 5 $ de ré-immatriculation, pour une durée de 7 ans depuis janvier 2023 (avant : 3 ans).",
+    "label": "Frais officiels américains",
+    "table": [
+     [
+      "Ré-immatriculation",
+      "5 $ (validité 7 ans)"
+     ],
+     [
+      "Réserver un numéro N spécial",
+      "10 $"
+     ],
+     [
+      "Renouveler la réservation",
+      "10 $ par an"
+     ]
+    ]
+   },
+   {
+    "t": "Un numéro N annulé sans réservation ne peut pas être réattribué pendant cinq ans (14 CFR 47.15).",
+    "label": "Un numéro annulé"
+   },
+   {
+    "t": "En France, la demande est faite par le propriétaire, avec une preuve de propriété. La réservation des marques doit être demandée avant le dépôt du dossier initial. Les montants et conditions de nationalité sont à vérifier sur la page officielle.",
+    "label": "Le cas français",
+    "callout": [
+     "warn",
+     "Je n'ai pas pu confirmer les frais français : consultez la page du ministère."
+    ]
+   },
+   {
+    "t": "Les registres étrangers affichent aussi leurs frais de certificat de navigabilité. Un registre des Bermudes a, par exemple, annoncé une baisse d'environ 40 % de ces frais pour l'aviation d'affaires.",
+    "label": "Les registres étrangers"
+   },
+   {
+    "t": "Ce qui pèse le plus : conseil juridique, structure de propriété (société, trust), contrôle de navigabilité, gestion continue et assurance. Ces coûts dépassent largement le prix de l'immatriculation.",
+    "label": "Les vrais coûts"
+   },
+   {
+    "t": "À la vente ou à l'export, l'avion est radié de son registre puis inscrit ailleurs. Cela demande des documents de propriété et de navigabilité à jour.",
+    "label": "Radiation et transfert"
+   },
+   {
+    "t": "Votre rôle : savoir expliquer à un client que « l'immatriculation » n'est pas le sujet coûteux, et lui indiquer qui consulter (avocat, gestionnaire d'avion).",
+    "label": "Pour votre métier"
+   }
+  ],
+  "ex": [
+   {
+    "type": "num",
+    "q": "La FAA facture 5 $ pour 7 ans. Combien par an (deux décimales) ?",
+    "a": 0.71,
+    "tol": 0.02,
+    "unit": "$ par an",
+    "why": "5 ÷ 7 ≈ 0,71 $."
+   },
+   {
+    "type": "mcq",
+    "q": "Combien de temps un numéro N annulé sans réservation reste-t-il indisponible ?",
+    "opts": [
+     "1 an",
+     "5 ans",
+     "10 ans",
+     "Jamais"
+    ],
+    "a": 1,
+    "why": "14 CFR 47.15 : cinq ans."
+   },
+   {
+    "type": "match",
+    "q": "Associez élément et montant",
+    "pairs": [
+     [
+      "Ré-immatriculation FAA",
+      "5 $"
+     ],
+     [
+      "Réservation d'un numéro N",
+      "10 $"
+     ],
+     [
+      "Renouvellement de réservation",
+      "10 $ par an"
+     ]
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "L'immatriculation officielle est le poste le plus coûteux d'un avion d'affaires.",
+    "a": false
+   },
+   {
+    "type": "mcq",
+    "q": "Qui dépose la demande d'immatriculation en France ?",
+    "opts": [
+     "Le propriétaire",
+     "Le pilote",
+     "Le FBO",
+     "Le courtier"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Les vrais coûts de la mise en place sont surtout…",
+    "opts": [
+     "Juridiques, navigabilité, assurance et gestion",
+     "Les frais de peinture",
+     "Le prix du hangar seul",
+     "Rien"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Pour un avion exporté, aucune radiation n'est nécessaire.",
+    "a": false
+   },
+   {
+    "type": "tf",
+    "q": "En France, la réservation des marques se demande avant le dépôt du dossier.",
+    "a": true
+   },
+   {
+    "type": "write",
+    "q": "Un client demande « combien coûte l'immatriculation ? ». Que répondez-vous ?",
+    "keys": [
+     "frais|coût|faibles|peu",
+     "juridique|navigabilité|assurance|gestion|structure"
+    ],
+    "model": "Les frais officiels sont faibles, mais la structure juridique, la navigabilité et la gestion représentent l'essentiel du coût. Je vous oriente vers un spécialiste.",
+    "min": 1
+   }
+  ]
+ }
+]

@@ -1,0 +1,1045 @@
+[
+ {
+  "id": "a0",
+  "title": "Méthode : analyser un aéroport d'affaires",
+  "sub": "La grille à appliquer à chaque aéroport",
+  "min": 12,
+  "conf": "ok",
+  "src": [],
+  "cards": [
+   {
+    "t": "Avant de proposer un aéroport, un courtier vérifie toujours les mêmes points. Cette grille sert pour tous les aéroports de la planète.",
+    "label": "L'idée"
+   },
+   {
+    "t": "Un aéroport a deux codes : un code OACI de 4 lettres (LFPB) et un code IATA de 3 lettres (LBG). Les opérateurs et les plans de vol utilisent l'OACI.",
+    "label": "Les codes",
+    "table": [
+     [
+      "OACI (4 lettres)",
+      "LFPB · LFMN · EGLF · KTEB"
+     ],
+     [
+      "IATA (3 lettres)",
+      "LBG · NCE · FAB · TEB"
+     ]
+    ]
+   },
+   {
+    "t": "La grille d'analyse en 10 points :",
+    "label": "La grille",
+    "bullets": [
+     "Distance à la ville et au lieu de rendez-vous",
+     "Longueur de piste et performance de l'avion",
+     "Slots ou PPR (prior permission required)",
+     "Couvre-feu et restrictions de bruit",
+     "Horaires de douane et d'immigration",
+     "Choix de FBO et prestations",
+     "Capacité de parking et hangar",
+     "Limites de masse ou de taille d'avion",
+     "Aéroports de dégagement",
+     "Pics saisonniers et événements"
+    ]
+   },
+   {
+    "t": "Le slot est un créneau d'arrivée ou de départ attribué par un coordinateur. Le PPR est une autorisation préalable. Les deux protègent la capacité de l'aéroport. Les demandes passent le plus souvent par le handling agent.",
+    "label": "Slot ou PPR ?"
+   },
+   {
+    "t": "Les sources officielles : l'AIP (Aeronautical Information Publication) du pays, les NOTAM (avis aux navigants), le site de l'exploitant de l'aéroport, et le handling agent.",
+    "label": "Où vérifier"
+   },
+   {
+    "t": "Une piste courte peut exclure un avion lourd par temps chaud. Il faut comparer la distance de décollage de l'avion avec la piste disponible, avec une marge.",
+    "label": "Piste et performance"
+   },
+   {
+    "t": "Un événement (salon, grand prix, sommet) peut tout changer : créneaux saturés, parking plein, aéroport fermé à l'aviation d'affaires pour certains vols. Vérifiez le calendrier avant de promettre.",
+    "label": "Les événements",
+    "callout": [
+     "warn",
+     "Ne jamais confirmer un vol sans avoir vérifié slot, parking et horaires."
+    ]
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Quel code est un code OACI ?",
+    "opts": [
+     "LFPB",
+     "LBG",
+     "PAR",
+     "NCE"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Quel code est un code IATA ?",
+    "opts": [
+     "LBG",
+     "LFPB",
+     "EGLF",
+     "KTEB"
+    ],
+    "a": 0
+   },
+   {
+    "type": "match",
+    "q": "Associez code OACI et code IATA",
+    "pairs": [
+     [
+      "LFPB",
+      "LBG"
+     ],
+     [
+      "LFMN",
+      "NCE"
+     ],
+     [
+      "EGLF",
+      "FAB"
+     ],
+     [
+      "KTEB",
+      "TEB"
+     ]
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Que désigne PPR ?",
+    "opts": [
+     "Une autorisation préalable d'utiliser l'aéroport",
+     "Un type de carburant",
+     "Un modèle d'avion",
+     "Un permis de pilote"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Un slot est attribué par le courtier.",
+    "a": false,
+    "why": "Il est attribué par un coordinateur de créneaux."
+   },
+   {
+    "type": "mcq",
+    "q": "Où vérifier les restrictions officielles d'un aéroport ?",
+    "opts": [
+     "AIP et NOTAM",
+     "Un forum au hasard",
+     "Un magazine de mode",
+     "Le menu du catering"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Une piste courte n'a jamais d'effet sur le choix de l'avion.",
+    "a": false
+   },
+   {
+    "type": "order",
+    "q": "Quel ordre suivre avant de confirmer un vol ?",
+    "items": [
+     "Choisir l'aéroport",
+     "Vérifier slots et PPR",
+     "Vérifier les horaires et la douane",
+     "Confirmer au client"
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Un salon majeur se tient sur l'aéroport la semaine du vol. Réflexe ?",
+    "opts": [
+     "Vérifier créneaux, parking et restrictions",
+     "Ne rien changer",
+     "Annuler le client",
+     "Choisir un avion plus gros"
+    ],
+    "a": 0
+   },
+   {
+    "type": "write",
+    "q": "Citez cinq éléments de la grille d'analyse d'un aéroport d'affaires.",
+    "keys": [
+     "piste",
+     "slot|ppr",
+     "couvre|bruit",
+     "douane",
+     "parking|fbo|distance"
+    ],
+    "model": "Longueur de piste, slots ou PPR, couvre-feu, douane, parking et FBO.",
+    "min": 3
+   }
+  ]
+ },
+ {
+  "id": "a1",
+  "title": "Paris-Le Bourget (LFPB)",
+  "sub": "Le grand aéroport d'affaires français",
+  "min": 16,
+  "conf": "check",
+  "src": [
+   [
+    "ExecuJet : Paris",
+    "https://www.execujet.com/?p=629"
+   ],
+   [
+    "Jet Aviation : Paris-Le Bourget",
+    "https://www.jetaviation.com/location/paris/"
+   ],
+   [
+    "Universal Aviation : Le Bourget",
+    "https://universalaviation.aero/?p=747"
+   ],
+   [
+    "AIN : profil du FBO Astonsky Le Bourget",
+    "https://ainonline.com/aviation-news/business-aviation/2019-11-05/fbo-profile-astonsky-le-bourget"
+   ],
+   [
+    "Tourisme 93 : aéroport du Bourget",
+    "https://uk.tourisme93.com/paris-le-bourget-airport.html"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Le Bourget est au nord-est de Paris. Il est opéré par Aéroports de Paris (comme Orly et Roissy).",
+    "label": "Identité",
+    "table": [
+     [
+      "Code OACI / IATA",
+      "LFPB / LBG"
+     ],
+     [
+      "Lieu",
+      "Nord-est de Paris"
+     ],
+     [
+      "Exploitant",
+      "Aéroports de Paris"
+     ],
+     [
+      "Spécialité",
+      "Aviation d'affaires"
+     ]
+    ]
+   },
+   {
+    "t": "D'après ExecuJet, Le Bourget est le premier aéroport européen d'aviation d'affaires, dédié exclusivement à l'aviation privée. Le responsable d'un FBO de Jet Aviation cite environ 60 000 mouvements par an.",
+    "label": "Son poids",
+    "callout": [
+     "warn",
+     "Chiffres issus de sites d'opérateurs : ordres de grandeur."
+    ]
+   },
+   {
+    "t": "Trois pistes de longueurs différentes sont citées par une source touristique : environ 2 990 m, 2 395 m et 1 847 m. À vérifier dans l'AIP avant tout calcul de performance.",
+    "label": "Pistes"
+   },
+   {
+    "t": "Le Bourget compte plusieurs FBO concurrents. Les sources citent notamment Jet Aviation (qui a repris les activités FBO en août 2025), ExecuJet (Luxaviation a racheté Sky Valet en 2020), Universal Aviation, Jetex (ouvert en 2009), Signature, Dassault Falcon Service et Astonsky.",
+    "label": "Les FBO",
+    "callout": [
+     "tip",
+     "Le paysage des FBO change vite : vérifiez avant chaque vente."
+    ]
+   },
+   {
+    "t": "Le choix du FBO influence le prix, le niveau de service, le salon, l'accès au hangar et la rapidité de la douane. Un client exigeant choisit le FBO autant que l'avion.",
+    "label": "Pourquoi choisir son FBO"
+   },
+   {
+    "t": "Une source indique des restrictions de nuit pour les jets de plus de 5,7 tonnes, entre 22 h 15 et 6 h. Source secondaire, sans date : à confirmer auprès de l'exploitant ou dans l'AIP.",
+    "label": "Nuit",
+    "callout": [
+     "warn",
+     "Ne l'annoncez à aucun client sans l'avoir vérifié."
+    ]
+   },
+   {
+    "t": "Selon Universal Aviation, son FBO du Bourget n'a pas de slots d'aéroport, mais ses procédures de douane (CIQ) sont rapides. Certaines demandes peuvent toutefois exiger une autorisation préalable. Contrôlez par NOTAM et par votre handling agent.",
+    "label": "Slots et douane"
+   },
+   {
+    "t": "Le Bourget accueille le Salon international de l'aéronautique et de l'espace, tous les deux ans, les années impaires. Pendant le salon, l'organisation du trafic change fortement.",
+    "label": "Le salon"
+   },
+   {
+    "t": "Pour votre projet : Le Bourget est le terrain de jeu idéal. Chaque FBO a des clients, des équipes et des règles. Apprenez qui fait quoi, et comment les FBO se différencient.",
+    "label": "Pour votre carrière"
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Quel est le code OACI de Paris-Le Bourget ?",
+    "opts": [
+     "LFPB",
+     "LBG",
+     "LFPG",
+     "LFPO"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Qui exploite l'aéroport du Bourget ?",
+    "opts": [
+     "Aéroports de Paris",
+     "Luxaviation",
+     "Jetex",
+     "Signature"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Le Bourget est dédié à l'aviation d'affaires selon ExecuJet.",
+    "a": true
+   },
+   {
+    "type": "match",
+    "q": "Associez FBO et information citée",
+    "pairs": [
+     [
+      "Jet Aviation",
+      "A repris les FBO en août 2025"
+     ],
+     [
+      "ExecuJet",
+      "Luxaviation a racheté Sky Valet en 2020"
+     ],
+     [
+      "Jetex",
+      "Ouvert en 2009"
+     ],
+     [
+      "Astonsky",
+      "Cité en 2019 comme septième FBO"
+     ]
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Pourquoi vérifier les restrictions de nuit avant une confirmation ?",
+    "opts": [
+     "La source citée est secondaire et peut être dépassée",
+     "Elles n'existent pas",
+     "Elles ne concernent que les hélicoptères",
+     "Elles sont fixes depuis toujours"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Le Salon de l'aéronautique du Bourget a lieu…",
+    "opts": [
+     "Les années impaires",
+     "Chaque année",
+     "Les années paires",
+     "Tous les 10 ans"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Un FBO du Bourget n'a jamais besoin d'un handling agent.",
+    "a": false
+   },
+   {
+    "type": "mcq",
+    "q": "Que choisit un client exigeant au Bourget ?",
+    "opts": [
+     "Le FBO autant que l'avion",
+     "Seulement l'avion",
+     "Seulement le prix",
+     "Rien"
+    ],
+    "a": 0
+   },
+   {
+    "type": "order",
+    "q": "Que vérifier avant de confirmer un vol vers Le Bourget ?",
+    "items": [
+     "AIP et NOTAM",
+     "Restrictions de nuit",
+     "PPR ou slots",
+     "Choix du FBO",
+     "Douane et horaires"
+    ]
+   },
+   {
+    "type": "write",
+    "q": "Pourquoi Le Bourget est-il important pour un futur courtier ?",
+    "keys": [
+     "fbo|opérateur|client|vol|aviation",
+     "europe|affaires|marché|trafic|contact"
+    ],
+    "model": "C'est un grand aéroport d'affaires européen avec plusieurs FBO, opérateurs et clients : on y apprend le métier de près.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "a2",
+  "title": "Nice et Cannes-Mandelieu",
+  "sub": "La Côte d'Azur, un cas de saturation",
+  "min": 15,
+  "conf": "check",
+  "src": [
+   [
+    "Aéroports de la Côte d'Azur : aviation d'affaires",
+    "https://btob.nice.aeroport.fr/business-aviation-and-helicopters"
+   ],
+   [
+    "Universal Weather : guide aviation d'affaires à Nice",
+    "https://www.universalweather.com/blog/un-ocean-conference-2025-in-nice-france-business-aviation-guide/"
+   ],
+   [
+    "COHOR : Nice Côte d'Azur",
+    "https://www.cohor.org/en/airports/nice-cote-dazur-airport-nce-lfmn/"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "La Côte d'Azur est l'une des zones les plus demandées de la saison. Elle offre deux aéroports : un grand (Nice) et un plus petit (Cannes-Mandelieu).",
+    "label": "L'idée",
+    "table": [
+     [
+      "Nice Côte d'Azur",
+      "LFMN / NCE"
+     ],
+     [
+      "Cannes-Mandelieu",
+      "LFMD / CEQ"
+     ]
+    ]
+   },
+   {
+    "t": "À Nice, un terminal d'aviation d'affaires a ouvert en 2010 près du terminal 2. Il fait environ 1 500 m² et regroupe salons VIP, salles d'opérations et bureaux de plusieurs sociétés.",
+    "label": "Le terminal"
+   },
+   {
+    "t": "Le parking peut accueillir environ 120 avions d'affaires, selon leur taille. Il existe aussi 14 postes pour hélicoptères.",
+    "label": "Capacité"
+   },
+   {
+    "t": "COHOR est le coordinateur de créneaux de Nice. Pour l'aviation d'affaires, les demandes de slot passent par le handling agent. Une rotation de plus de 4 heures doit être approuvée par l'aéroport.",
+    "label": "Slots"
+   },
+   {
+    "t": "À Nice, il faut en général un slot et une autorisation préalable toute l'année. Un écart de plus de 20 minutes par rapport au créneau oblige à redemander.",
+    "label": "Règles strictes"
+   },
+   {
+    "t": "Exemple d'événement : pendant la Conférence des Nations unies sur l'océan, du 6 au 10 juin 2025, toute l'aviation d'affaires était réservée aux vols des délégations officielles.",
+    "label": "Un événement qui change tout",
+    "callout": [
+     "warn",
+     "Un grand événement peut fermer l'accès. Vérifiez toujours le calendrier avant de promettre une date."
+    ]
+   },
+   {
+    "t": "Cannes-Mandelieu est un aéroport plus petit, proche de Cannes, avec une piste nettement plus courte que celle de Nice. Cela limite la taille des avions. Les limites exactes de masse sont à vérifier dans l'AIP et auprès de l'aéroport.",
+    "label": "Cannes-Mandelieu",
+    "callout": [
+     "warn",
+     "Je n'ai pas pu confirmer la limite de masse : ne l'annoncez pas sans l'AIP."
+    ]
+   },
+   {
+    "t": "Les pics de demande dépendent de la saison estivale et d'événements comme le Festival de Cannes ou le Grand Prix de Monaco. Prévoyez tôt et ayez un plan B de dégagement.",
+    "label": "Les pics",
+    "callout": [
+     "tip",
+     "Un client de dernière minute en pleine saison peut voir son créneau refusé : proposer un autre aéroport évite la perte d'une vente."
+    ]
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Quel est le code IATA de Nice ?",
+    "opts": [
+     "NCE",
+     "LFMN",
+     "CEQ",
+     "LBG"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Quel organisme coordonne les créneaux à Nice ?",
+    "opts": [
+     "COHOR",
+     "ADP",
+     "Signature",
+     "L'AESA"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "À Nice, un slot et une autorisation sont en général nécessaires toute l'année pour l'aviation d'affaires.",
+    "a": true
+   },
+   {
+    "type": "mcq",
+    "q": "Une rotation de plus de combien d'heures doit être approuvée par l'aéroport de Nice (aviation d'affaires) ?",
+    "opts": [
+     "4 heures",
+     "1 heure",
+     "10 heures",
+     "24 heures"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Un écart de plus de combien de minutes sur un créneau oblige à redemander ?",
+    "opts": [
+     "20 minutes",
+     "5 minutes",
+     "2 heures",
+     "Jamais"
+    ],
+    "a": 0
+   },
+   {
+    "type": "match",
+    "q": "Associez aéroport et caractéristique citée",
+    "pairs": [
+     [
+      "Nice",
+      "Environ 120 places de parking affaires"
+     ],
+     [
+      "Cannes-Mandelieu",
+      "Piste plus courte, avions limités"
+     ],
+     [
+      "COHOR",
+      "Coordination des créneaux"
+     ]
+    ]
+   },
+   {
+    "type": "tf",
+    "q": "Du 6 au 10 juin 2025, Nice a accueilli normalement tous les vols d'affaires.",
+    "a": false,
+    "why": "L'aviation d'affaires était réservée aux délégations officielles."
+   },
+   {
+    "type": "mcq",
+    "q": "Un client veut un grand avion à Cannes en haute saison. Que faites-vous ?",
+    "opts": [
+     "Vérifier l'AIP et proposer Nice si nécessaire",
+     "Confirmer sans vérifier",
+     "Refuser le client",
+     "Changer de pays"
+    ],
+    "a": 0
+   },
+   {
+    "type": "order",
+    "q": "Face à une demande de dernière minute à Nice en juillet, ordre logique ?",
+    "items": [
+     "Demander slot et PPR au handling agent",
+     "Vérifier le parking",
+     "Préparer un aéroport de dégagement",
+     "Confirmer au client"
+    ]
+   },
+   {
+    "type": "write",
+    "q": "Pourquoi proposer un plan B de dégagement en haute saison à Nice ?",
+    "keys": [
+     "slot|créneau|saturé|plein|refus",
+     "dégagement|alternatif|autre aéroport|cannes|sécur"
+    ],
+    "model": "Parce que les créneaux et le parking peuvent être saturés ; un autre aéroport permet de sauver la vente.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "a3",
+  "title": "Londres-Farnborough (EGLF)",
+  "sub": "Un aéroport sous plafond de mouvements",
+  "min": 14,
+  "conf": "check",
+  "src": [
+   [
+    "Rushmoor : consultation Farnborough Airport",
+    "https://www.rushmoor.gov.uk/airportconsultation"
+   ],
+   [
+    "AIN : Farnborough demande plus de mouvements",
+    "https://ainonline.com/aviation-news/business-aviation/2023-09-20/farnborough-airport-bids-increase-movement-limits"
+   ],
+   [
+    "AIN : Farnborough fait appel (2026)",
+    "https://backend.ainonline.com/aviation-news/business-aviation/2026-06-23/farnborough-airport-appeals-traffic-limit-changes"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Farnborough est au sud-ouest de Londres. C'est un aéroport dédié à l'aviation d'affaires. Il accueille le salon aéronautique de Farnborough les années paires.",
+    "label": "Identité",
+    "table": [
+     [
+      "Code OACI / IATA",
+      "EGLF / FAB"
+     ],
+     [
+      "Vocation",
+      "Aviation d'affaires"
+     ],
+     [
+      "Salon",
+      "Années paires, en juillet"
+     ]
+    ]
+   },
+   {
+    "t": "Ce qui le rend très particulier : un plafond annuel de mouvements, fixé dans son autorisation d'urbanisme. Il est aujourd'hui de 50 000 mouvements par an.",
+    "label": "Le plafond"
+   },
+   {
+    "t": "L'exploitant a demandé en novembre 2023 de le passer à 70 000 mouvements, de façon progressive, jusqu'en 2040. Cette demande est à suivre : elle peut avoir changé.",
+    "label": "La demande d'augmentation",
+    "callout": [
+     "warn",
+     "Dernier élément trouvé : juin 2026, un appel. Je n'ai pas pu confirmer la décision finale."
+    ]
+   },
+   {
+    "t": "Les week-ends ont leur propre plafond : 8 900 mouvements. Une demande vise à le porter à 13 500.",
+    "label": "Le plafond de week-end"
+   },
+   {
+    "t": "Une autre demande concerne des avions un peu plus lourds : la catégorie 50 000–80 000 kg deviendrait 55 000–80 000 kg.",
+    "label": "Les avions plus lourds"
+   },
+   {
+    "t": "Un plafond est une contrainte dure. Si le plafond est atteint, l'aéroport refuse des vols. Il faut donc prévoir tôt les week-ends et les grandes dates.",
+    "label": "Conséquence pour un courtier",
+    "callout": [
+     "key",
+     "Pas de plafond signifie plus de flexibilité. Un plafond signifie anticiper."
+    ]
+   },
+   {
+    "t": "Longueur de piste : environ 2,4 km selon ma connaissance générale, non confirmée par les sources de cette leçon. À vérifier dans l'AIP du Royaume-Uni.",
+    "label": "Piste"
+   },
+   {
+    "t": "Le Salon de Farnborough (années paires) et celui du Bourget (années impaires) alternent. Dans les deux cas, le trafic habituel de l'aéroport est perturbé.",
+    "label": "Le duo des salons"
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Quel est le code OACI de Farnborough ?",
+    "opts": [
+     "EGLF",
+     "FAB",
+     "LFPB",
+     "EGLL"
+    ],
+    "a": 0
+   },
+   {
+    "type": "num",
+    "q": "Plafond annuel actuel de mouvements à Farnborough ?",
+    "a": 50000,
+    "tol": 0,
+    "unit": "mouvements"
+   },
+   {
+    "type": "num",
+    "q": "Plafond de week-end actuel, en mouvements ?",
+    "a": 8900,
+    "tol": 0,
+    "unit": "mouvements"
+   },
+   {
+    "type": "mcq",
+    "q": "Que demandait l'exploitant en novembre 2023 ?",
+    "opts": [
+     "Passer à 70 000 mouvements par an",
+     "Fermer l'aéroport",
+     "Supprimer les week-ends",
+     "Accueillir des A380"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Le plafond est une simple recommandation.",
+    "a": false
+   },
+   {
+    "type": "mcq",
+    "q": "Les années paires, Farnborough accueille…",
+    "opts": [
+     "Un salon aéronautique",
+     "Le Grand Prix de Monaco",
+     "Rien",
+     "Le Festival de Cannes"
+    ],
+    "a": 0
+   },
+   {
+    "type": "match",
+    "q": "Associez aéroport et salon",
+    "pairs": [
+     [
+      "Farnborough",
+      "Années paires"
+     ],
+     [
+      "Le Bourget",
+      "Années impaires"
+     ]
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Un client veut partir de Farnborough un samedi de pointe. Que faites-vous ?",
+    "opts": [
+     "Vérifier les plafonds et les créneaux tôt",
+     "Confirmer directement",
+     "Refuser",
+     "Changer de client"
+    ],
+    "a": 0
+   },
+   {
+    "type": "write",
+    "q": "Expliquez pourquoi un plafond de mouvements change le travail d'un courtier.",
+    "keys": [
+     "plafond|limite|contrainte|saturé",
+     "anticip|tôt|réserv|week-end|créneau"
+    ],
+    "model": "Un plafond de mouvements peut faire refuser un vol : il faut anticiper, surtout les week-ends et les grandes dates.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "a4",
+  "title": "New York-Teterboro (KTEB)",
+  "sub": "Le grand aéroport d'affaires américain",
+  "min": 14,
+  "conf": "check",
+  "src": [
+   [
+    "Port Authority NY/NJ : comité bruit Teterboro",
+    "https://www.panynj.gov/content/dam/port-authority/aircraft-noise/tanaac-meeting-minutes-apr-2023.pdf"
+   ],
+   [
+    "Boeing : Teterboro",
+    "https://www.boeing.com/resources/boeingdotcom/commercial/noise/teterboro.html"
+   ],
+   [
+    "AIN : Teterboro et l'ordre de la FAA",
+    "https://live.ainonline.com/aviation-news/business-aviation/2025-11-07/kteb-among-airports-affected-faa-traffic-curb-order"
+   ]
+  ],
+  "cards": [
+   {
+    "t": "Teterboro est dans le New Jersey, près de New York. C'est l'un des aéroports d'affaires les plus actifs des États-Unis.",
+    "label": "Identité",
+    "table": [
+     [
+      "Code OACI / FAA",
+      "KTEB / TEB"
+     ],
+     [
+      "Propriétaire",
+      "Port Authority of New York and New Jersey"
+     ],
+     [
+      "Gestion",
+      "AFCO AvPORTS (contrat de gestion)"
+     ]
+    ]
+   },
+   {
+    "t": "Aux États-Unis, les codes OACI commencent par la lettre K, suivie du code à 3 lettres de l'aéroport.",
+    "label": "Lire le code"
+   },
+   {
+    "t": "Les jets représentent environ 85 % des mouvements (146 649 dans les données de la Port Authority). C'est un aéroport de jets d'affaires.",
+    "label": "Un aéroport de jets"
+   },
+   {
+    "t": "Un couvre-feu volontaire s'applique à tous les avions, de 23 h à 6 h, heure locale. Il est volontaire : il repose sur l'engagement des exploitants.",
+    "label": "Couvre-feu volontaire",
+    "callout": [
+     "warn",
+     "Volontaire ne veut pas dire sans conséquence : le bruit est un sujet très sensible pour les riverains."
+    ]
+   },
+   {
+    "t": "Deux pistes : 1/19 et 6/24. La 6/24 a connu une réhabilitation importante, avec des effets sur les opérations de week-end et de nuit pendant les travaux.",
+    "label": "Pistes"
+   },
+   {
+    "t": "Fin 2025, un ordre de la FAA de réduire le trafic dans certains grands aéroports d'affaires aurait pu toucher Teterboro, avec une baisse d'environ 10 % citée. Les détails et la durée sont à vérifier.",
+    "label": "L'ordre de la FAA",
+    "callout": [
+     "warn",
+     "Source de presse spécialisée : à confirmer auprès de la FAA et de l'exploitant."
+    ]
+   },
+   {
+    "t": "Le terme FBO est d'origine américaine : aux États-Unis, le FBO est une véritable institution, et le service y est un argument de vente central.",
+    "label": "Le monde des FBO américains"
+   }
+  ],
+  "ex": [
+   {
+    "type": "mcq",
+    "q": "Quel est le code OACI de Teterboro ?",
+    "opts": [
+     "KTEB",
+     "TEB",
+     "LFPB",
+     "EGLF"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Qui est propriétaire de Teterboro ?",
+    "opts": [
+     "La Port Authority de New York et du New Jersey",
+     "Un FBO privé",
+     "Le gouvernement français",
+     "Une compagnie aérienne"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Le couvre-feu de Teterboro est obligatoire et sans exception.",
+    "a": false,
+    "why": "Il est décrit comme volontaire, de 23 h à 6 h."
+   },
+   {
+    "type": "num",
+    "q": "À quelle heure locale commence le couvre-feu volontaire (24 h) ?",
+    "a": 23,
+    "tol": 0,
+    "unit": "h"
+   },
+   {
+    "type": "mcq",
+    "q": "Que représentent environ 85 % des mouvements ?",
+    "opts": [
+     "Les jets",
+     "Les hélicoptères",
+     "Les avions de ligne",
+     "Les planeurs"
+    ],
+    "a": 0
+   },
+   {
+    "type": "match",
+    "q": "Associez aéroport et caractéristique",
+    "pairs": [
+     [
+      "Teterboro",
+      "Couvre-feu volontaire de 23 h à 6 h"
+     ],
+     [
+      "Farnborough",
+      "Plafond annuel de mouvements"
+     ],
+     [
+      "Nice",
+      "Coordination COHOR"
+     ]
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Pourquoi les codes américains commencent-ils par K ?",
+    "opts": [
+     "C'est la règle OACI pour les États-Unis continentaux",
+     "Pour le carburant",
+     "Pour le bruit",
+     "Au hasard"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "L'ordre de la FAA de 2025 est confirmé dans ses détails par les sources du cours.",
+    "a": false,
+    "why": "Détails et durée à vérifier."
+   },
+   {
+    "type": "write",
+    "q": "Un client veut partir de Teterboro à 23 h 30. Que lui dites-vous ?",
+    "keys": [
+     "couvre-feu|volontaire|bruit|23",
+     "vérif|alternative|horaire|avancer|retarder"
+    ],
+    "model": "Il existe un couvre-feu volontaire de 23 h à 6 h : je vérifie la possibilité et je propose un horaire plus tôt.",
+    "min": 1
+   }
+  ]
+ },
+ {
+  "id": "a5",
+  "title": "Comparer les aéroports d'affaires",
+  "sub": "Quatre profils, quatre contraintes",
+  "min": 12,
+  "conf": "check",
+  "src": [],
+  "cards": [
+   {
+    "t": "Chaque aéroport a sa contrainte dominante. La connaître, c'est savoir poser les bonnes questions dès le premier appel.",
+    "label": "L'idée"
+   },
+   {
+    "t": "Tableau de synthèse (informations issues du cours).",
+    "table": [
+     [
+      "Le Bourget",
+      "Très grand pôle européen · plusieurs FBO · salon années impaires · restrictions de nuit à vérifier"
+     ],
+     [
+      "Nice",
+      "Slots + autorisation toute l'année · parking limité · événements"
+     ],
+     [
+      "Farnborough",
+      "Plafond annuel de mouvements · plafond de week-end · salon années paires"
+     ],
+     [
+      "Teterboro",
+      "Couvre-feu volontaire 23 h–6 h · forte pression de bruit · FBO nombreux"
+     ]
+    ]
+   },
+   {
+    "t": "Pour l'Europe, les contraintes citées dans ce module sont les slots, les plafonds et les événements. Pour les États-Unis, c'est surtout le bruit et le couvre-feu.",
+    "label": "Deux zones, deux logiques",
+    "callout": [
+     "tip",
+     "Chaque aéroport a ses propres règles : vérifiez toujours dans l'AIP et auprès du handling agent."
+    ]
+   },
+   {
+    "t": "Quand un client demande un aéroport, posez toujours trois questions : à quelle heure ? quel avion ? quelle date ? Ces trois réponses suffisent souvent à voir le problème.",
+    "label": "Les trois questions"
+   },
+   {
+    "t": "Si un aéroport est contraint, proposez un aéroport alternatif proche, avec le temps de transfert. Un bon courtier transforme un refus en solution.",
+    "label": "Transformer la contrainte"
+   }
+  ],
+  "ex": [
+   {
+    "type": "match",
+    "q": "Associez aéroport et contrainte dominante",
+    "pairs": [
+     [
+      "Le Bourget",
+      "Plusieurs FBO en concurrence"
+     ],
+     [
+      "Nice",
+      "Slots et autorisation toute l'année"
+     ],
+     [
+      "Farnborough",
+      "Plafond de mouvements"
+     ],
+     [
+      "Teterboro",
+      "Couvre-feu volontaire"
+     ]
+    ]
+   },
+   {
+    "type": "mcq",
+    "q": "Un client veut un départ de Farnborough un samedi de juillet d'année paire. Quel point surveiller ?",
+    "opts": [
+     "Plafond de week-end et salon",
+     "Le carburant",
+     "La couleur de l'avion",
+     "Rien"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Un client demande Nice à 2 h du matin. Quel point vérifier ?",
+    "opts": [
+     "Les horaires, le slot et l'autorisation",
+     "Le prix du caviar",
+     "Le nom du pilote",
+     "Rien"
+    ],
+    "a": 0
+   },
+   {
+    "type": "mcq",
+    "q": "Quelles sont les trois questions à poser d'abord ?",
+    "opts": [
+     "Heure, avion, date",
+     "Couleur, prix, nom",
+     "Slot, menu, musique",
+     "Aucune"
+    ],
+    "a": 0
+   },
+   {
+    "type": "tf",
+    "q": "Un bon courtier propose un aéroport alternatif quand le premier est contraint.",
+    "a": true
+   },
+   {
+    "type": "mcq",
+    "q": "Un client veut quitter Teterboro à minuit. Que dire ?",
+    "opts": [
+     "Il y a un couvre-feu volontaire : je vérifie et propose une alternative",
+     "Rien",
+     "C'est interdit pour toujours",
+     "Partez sans prévenir"
+    ],
+    "a": 0
+   },
+   {
+    "type": "order",
+    "q": "Que faire face à une contrainte d'aéroport ?",
+    "items": [
+     "Identifier la contrainte",
+     "Vérifier les sources officielles",
+     "Proposer une alternative",
+     "Informer le client avec clarté"
+    ]
+   },
+   {
+    "type": "write",
+    "q": "Choisissez deux aéroports du cours et comparez leur contrainte principale en deux phrases.",
+    "keys": [
+     "nice|bourget|farnborough|teterboro",
+     "slot|plafond|couvre|bruit|fbo|autorisation"
+    ],
+    "model": "Nice impose slot et autorisation toute l'année. Farnborough a un plafond annuel de mouvements.",
+    "min": 1
+   }
+  ]
+ }
+]

@@ -1,12 +1,9 @@
 [
-  {"id":"jets","n":1,"icon":"✈️","color":"#0ea5e9","status":"soon","title":{"fr":"Jets et flotte","en":"Jets and fleet"},
-   "topics":[{"fr":"Catégories (light → ultra-long-range)","en":"Categories (light → ultra-long-range)"},{"fr":"Performances, cabine, pistes","en":"Performance, cabin, runways"},{"fr":"Choisir le bon appareil","en":"Choosing the right aircraft"}]},
-  {"id":"ops","n":2,"icon":"🛫","color":"#14b8a6","status":"soon","title":{"fr":"Opérations et réglementation","en":"Operations and regulation"},
-   "topics":[{"fr":"AOC, handling, FBO, slots","en":"AOC, handling, FBO, slots"},{"fr":"Douane, temps de service équipage","en":"Customs, crew duty time"},{"fr":"Avinode, ARGUS, Wyvern","en":"Avinode, ARGUS, Wyvern"}]},
-  {"id":"business","n":3,"icon":"💼","color":"#1d4ed8","file":"data/business.json","title":{"fr":"Business et économie","en":"Business and economics"}},
-  {"id":"sales","n":4,"icon":"🤝","color":"#a855f7","status":"soon","title":{"fr":"Vente, clients et hospitalité VIP","en":"Sales, clients and VIP hospitality"},
-   "topics":[{"fr":"Comprendre un client fortuné","en":"Understanding a wealthy client"},{"fr":"Négociation, objections, relances","en":"Negotiation, objections, follow-ups"},{"fr":"Protocole et service haut de gamme","en":"Protocol and premium service"}]},
-  {"id":"english","n":5,"icon":"🗣️","color":"#f97316","file":"data/english.json","title":{"fr":"English Lab","en":"English Lab"}},
-  {"id":"interview","n":6,"icon":"🎓","color":"#64748b","status":"soon","title":{"fr":"Entretien FBO (à la fin)","en":"FBO interview (at the end)"},
-   "topics":[{"fr":"Questions types, vos atouts","en":"Typical questions, your strengths"},{"fr":"CV et lettre en anglais","en":"CV and cover letter in English"}]}
+ {"id":"business","n":1,"cover":"bars","color":"#1e3a5f","file":"data/business.json","title":{"fr":"Business et économie","en":"Business and economics"},"blurb":{"fr":"Les acteurs, la marge, les formules de vol","en":"Players, margin, ways to fly"}},
+ {"id":"pricing","n":2,"cover":"gauge","color":"#7a5a1f","file":"data/pricing.json","title":{"fr":"Prix et coûts d'un vol","en":"Flight pricing and costs"},"blurb":{"fr":"Taux horaire, temps bloc, devis, coût de possession","en":"Hourly rate, block time, quotes, ownership cost"}},
+ {"id":"registration","n":3,"cover":"tail","color":"#2f4a45","file":"data/registration.json","title":{"fr":"Immatriculation et propriété","en":"Registration and ownership"},"blurb":{"fr":"Préfixes, registres étrangers, coûts et démarches","en":"Prefixes, foreign registries, costs and procedures"}},
+ {"id":"maintenance","n":4,"cover":"turbine","color":"#4a3a5a","file":"data/maintenance.json","title":{"fr":"Maintenance et navigabilité","en":"Maintenance and airworthiness"},"blurb":{"fr":"CAMO, Part-145, programmes moteur, MEL, AOG","en":"CAMO, Part-145, engine programs, MEL, AOG"}},
+ {"id":"airports","n":5,"cover":"runway","color":"#233b52","file":"data/airports.json","title":{"fr":"Aéroports d'affaires","en":"Business airports"},"blurb":{"fr":"Méthode d'analyse, Le Bourget, Nice, Farnborough, Teterboro","en":"Analysis method, Le Bourget, Nice, Farnborough, Teterboro"}},
+ {"id":"english","n":6,"cover":"waves","color":"#6b3a2a","file":"data/english.json","title":{"fr":"English Lab","en":"English Lab"},"blurb":{"fr":"TOEIC, téléphone, vocabulaire, voyage","en":"TOEIC, phone calls, vocabulary, travel"}},
+ {"id":"soon","soon":true,"title":{"fr":"À venir","en":"Coming soon"},"topics":[{"fr":"Jets et flotte : catégories, performances, choix de l'appareil","en":"Jets and fleet"},{"fr":"Opérations : slots, handling, douane, temps de service","en":"Operations"},{"fr":"Vente, clients et hospitalité VIP","en":"Sales and VIP hospitality"},{"fr":"Entretien FBO : questions types, CV et lettre en anglais","en":"FBO interview"}]}
 ]

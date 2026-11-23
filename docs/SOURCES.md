@@ -21,3 +21,10 @@ Remplacer les sources commerciales par des textes primaires (EASA, DGAC, BOFiP, 
 - TOEIC : format (parties, types de questions) cité d'après la page officielle IIBC ; aucun nombre de questions par partie n'est affiché dans l'application.
 - Anglais courant (badge « Anglais courant ») : contenu linguistique standard, sans source externe.
 - Limites connues : les schémas SVG restent en français aux niveaux 3 et 4 ; le contenu Business n'a pas encore toutes ses traductions anglaises ; la réponse écrite est notée par mots-clés (indulgente, ignore les accents).
+
+## Modules ajoutés (V2)
+- **Prix et coûts** : les fourchettes de tarifs viennent de pages commerciales qui se contredisent. Les calculs sont des exemples fictifs, présentés comme tels. Distance Paris–Nice (~370 NM) : approximation.
+- **Immatriculation** : structure (préfixe, suffixe, tiret, exception N) et origine UIT : OACI. Table des préfixes : connaissance générale, à vérifier dans la liste OACI. Frais FAA (5 $ / 7 ans, 10 $ réservation) : sources FAA/AOPA. Frais français et conditions de nationalité : non confirmés.
+- **Registres étrangers** : avantages et règles de charter par registre issus de cabinets (IQEQ) et d'AvBuyer ; à revérifier avant tout vol réel. TCO (UE 452/2014) : cité de mémoire, à contrôler.
+- **Maintenance** : CAMO, Part-145, ARC (1 an), programme revu chaque année : sources AESA/CAA. Programmes moteur : JSSI, AOPA, AvBuyer. MEL, AOG : AvBuyer, AOPA.
+- **Aéroports** : Le Bourget (chiffres d'opérateurs, restrictions de nuit à confirmer), Nice (terminal, COHOR, 120 places, règles de slots), Farnborough (plafond 50 000, week-end 8 900, demandes d'augmentation), Teterboro (couvre-feu volontaire 23 h–6 h, ~85 % de jets). Longueurs de piste et limites de masse non confirmées : signalées « à vérifier ».
